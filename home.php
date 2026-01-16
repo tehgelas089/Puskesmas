@@ -234,6 +234,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
   <!--====== ABOUT FIVE PART ENDS ======-->
 
+
   <!-- ===== service-area start ===== -->
   <section id="galeri" class="services-area services-eight">
     <div class="section-title-five">
@@ -242,15 +243,17 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
           <?php while ($row = mysqli_fetch_assoc($data)) : ?>
             <div class="col-md-4">
-              <div class="card h-100 shadow">
+              <a href="detail.php?id=<?= $row['id']; ?>" class="card-link">
+                <div class="card h-100 shadow">
 
-                <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar">
+                  <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar">
 
-                <div class="card-body">
-                  <p class="card-text"><?= $row['deskripsi']; ?></p>
+                  <div class="card-body">
+                    <p class="card-text"><?= $row['deskripsi']; ?></p>
+                  </div>
+
                 </div>
-
-              </div>
+              </a>
             </div>
           <?php endwhile; ?>
 

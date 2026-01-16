@@ -141,11 +141,12 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         <?php while ($row = mysqli_fetch_assoc($data)) : ?>
           <tr>
             <td>
-              <img src="../uploads/<?= $row['gambar'] ?>" width="120">
+              <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar" style="width: 50px;" height="50px"">
+
             </td>
             <td><?= $row['deskripsi'] ?></td>
             <td>
-              <a href="edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+              <a href=" edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
               <a href="hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus?')">Hapus</a>
             </td>
           </tr>
