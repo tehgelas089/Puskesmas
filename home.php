@@ -1,3 +1,8 @@
+<?php
+include 'koneksi.php';
+$data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!--====== Title ======-->
-  <title>PuskesMedia</title>
+  <title>Home page</title>
 
   <!--====== Favicon Icon ======-->
   <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg" />
@@ -135,11 +140,11 @@
           <div class="header-content">
             <h1>Website Puskesmas sangkanhrip.</h1>
             <p>
-              Website ini adalah media informasi resmi yang menyediakan edukasi kesehatan bagi masyarakat,dan pemantauan kegiatan   sehingga mudah diakses secara cepat dan terpercaya.
+              Website ini adalah media informasi resmi yang menyediakan edukasi kesehatan bagi masyarakat,dan pemantauan kegiatan sehingga mudah diakses secara cepat dan terpercaya.
             </p>
             <div class="button">
-              <a href="auth.php" class="btn primary-btn">Masuk</a>
-             
+              <a href="#galeri" class="btn primary-btn">Lihat</a>
+
             </div>
           </div>
         </div>
@@ -155,14 +160,14 @@
 
   <!--====== ABOUT FIVE PART START ======-->
 
- <section class="about-area about-five" id="promosi">
+  <!-- <section class="about-area about-five" id="promosi">
   <div class="container">
 
     <h2 class="text-center mb-4">Promosi</h2>
 
     <div class="row justify-content-center g-4">
 
-      <!-- Card 1 -->
+     
       <div class="col-12 col-md-4 col-lg-3">
         <div class="card h-100">
           <img src="poster.jpeg" class="card-img-top" alt="poster">
@@ -172,7 +177,7 @@
         </div>
       </div>
 
-      <!-- Card 2 -->
+     
       <div class="col-12 col-md-4 col-lg-3">
         <div class="card h-100">
           <img src="poster.jpeg" class="card-img-top" alt="poster">
@@ -182,7 +187,7 @@
         </div>
       </div>
 
-      <!-- Card 3 -->
+     
       <div class="col-12 col-md-4 col-lg-3">
         <div class="card h-100">
           <img src="poster.jpeg" class="card-img-top" alt="poster">
@@ -192,7 +197,7 @@
         </div>
       </div>
 
-      <!-- Card 4 -->
+      
       <div class="col-12 col-md-4 col-lg-3">
         <div class="card h-100">
           <img src="poster.jpeg" class="card-img-top" alt="poster">
@@ -202,7 +207,7 @@
         </div>
       </div>
 
-      <!-- Card 5 -->
+     
       <div class="col-12 col-md-4 col-lg-3">
         <div class="card h-100">
           <img src="poster.jpeg" class="card-img-top" alt="poster">
@@ -212,7 +217,7 @@
         </div>
       </div>
 
-      <!-- Card 6 -->
+      
       <div class="col-12 col-md-4 col-lg-3">
         <div class="card h-100">
           <img src="poster.jpeg" class="card-img-top" alt="poster">
@@ -224,153 +229,72 @@
 
     </div>
   </div>
-</section>
+</section> -->
 
 
   <!--====== ABOUT FIVE PART ENDS ======-->
 
   <!-- ===== service-area start ===== -->
-  <section id="galeri" class="services-area services-eight" >
-    <!--======  Start Section Title Five ======-->
+  <section id="galeri" class="services-area services-eight">
     <div class="section-title-five">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>Services</h6>
-              <h2 class="fw-bold">Our Best Services</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
-              </p>
+      <div class="container py-4">
+        <div class="row g-4">
+
+          <?php while ($row = mysqli_fetch_assoc($data)) : ?>
+            <div class="col-md-4">
+              <div class="card h-100 shadow">
+
+                <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar">
+
+                <div class="card-body">
+                  <p class="card-text"><?= $row['deskripsi']; ?></p>
+                </div>
+
+              </div>
             </div>
-          </div>
-        </div>
-        <!-- row -->
-      </div>
-      <!-- container -->
-    </div>
-    <!--======  End Section Title Five ======-->
-   <div class="container">
-  <div class="row g-4">
+          <?php endwhile; ?>
 
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="img/landscape.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Landscape Image</h4>
-          <p>Gambar horizontal tidak terpotong.</p>
         </div>
       </div>
     </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="img/portrait.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Portrait Image</h4>
-          <p>Gambar vertikal tetap proporsional.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="img/square.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Square Image</h4>
-          <p>Tidak gepeng & tidak crop.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="container">
-  <div class="row g-4">
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="img/landscape.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Landscape Image</h4>
-          <p>Gambar horizontal tidak terpotong.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="img/portrait.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Portrait Image</h4>
-          <p>Gambar vertikal tetap proporsional.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="img/square.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Square Image</h4>
-          <p>Tidak gepeng & tidak crop.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
   </section>
+
 
   <style>
     .gallery-card {
-  height: 100%;
-  transition: 0.3s ease;
-}
+      height: 100%;
+      transition: 0.3s ease;
+    }
 
-.gallery-image {
-  width: 100%;
-  aspect-ratio: 4 / 3; /* bisa ganti 1/1 atau 16/9 */
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+    .gallery-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      /* bisa ganti 1/1 atau 16/9 */
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-.gallery-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* INI KUNCI BIAR GK KE POTONG */
-}
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* INI KUNCI BIAR GK KE POTONG */
+    }
 
-/* Hover efek (opsional) */
-.gallery-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
-
+    /* Hover efek (opsional) */
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
   </style>
   <!-- ===== service-area end ===== -->
 
 
   <!-- Start Pricing  Area -->
- 
+
   <!--/ End Pricing  Area -->
 
 
@@ -741,7 +665,7 @@
   </footer>
   <!--/ End Footer Area -->
 
-	
+
 
   <a href="#" class="scroll-top btn-hover">
     <i class="lni lni-chevron-up"></i>
@@ -754,12 +678,11 @@
   <script src="assets/js/tiny-slider.js"></script>
 
   <script>
-
     //===== close navbar-collapse when a  clicked
     let navbarTogglerNine = document.querySelector(
       ".navbar-nine .navbar-toggler"
     );
-    navbarTogglerNine.addEventListener("click", function () {
+    navbarTogglerNine.addEventListener("click", function() {
       navbarTogglerNine.classList.toggle("active");
     });
 
@@ -768,11 +691,11 @@
     let overlayLeft = document.querySelector(".overlay-left");
     let sidebarClose = document.querySelector(".sidebar-close .close");
 
-    overlayLeft.addEventListener("click", function () {
+    overlayLeft.addEventListener("click", function() {
       sidebarLeft.classList.toggle("open");
       overlayLeft.classList.toggle("open");
     });
-    sidebarClose.addEventListener("click", function () {
+    sidebarClose.addEventListener("click", function() {
       sidebarLeft.classList.remove("open");
       overlayLeft.classList.remove("open");
     });
@@ -780,7 +703,7 @@
     // ===== navbar nine sideMenu
     let sideMenuLeftNine = document.querySelector(".navbar-nine .menu-bar");
 
-    sideMenuLeftNine.addEventListener("click", function () {
+    sideMenuLeftNine.addEventListener("click", function() {
       sidebarLeft.classList.add("open");
       overlayLeft.classList.add("open");
     });
@@ -793,7 +716,6 @@
       'width': 900,
       'autoplayVideos': true,
     });
-
   </script>
 </body>
 
