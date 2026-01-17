@@ -150,7 +150,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         </div>
         <div class="col-lg-6 col-md-12 col-12">
           <div class="header-image">
-            <img src="assets/images/header/hero-image.jpg" alt="#" />
+            <img src="assets/images/sangkanhurip.jpg" alt="#" />
           </div>
         </div>
       </div>
@@ -246,19 +246,22 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
               <a href="detail.php?id=<?= $row['id']; ?>" class="card-link">
                 <div class="card h-100 shadow">
 
-                  <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar">
+                  <!-- <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar"> -->
+                  <?php $foto = explode(',', $row['gambar']); ?>
+                  <img src="assets/images/blog/<?= $foto[0]; ?>"">
 
-                  <div class="card-body">
-                    <p class="card-text"><?= $row['deskripsi']; ?></p>
-                  </div>
 
+                  <div class=" card-body">
+                  <p class="card-text"><?= $row['deskripsi']; ?></p>
                 </div>
-              </a>
-            </div>
-          <?php endwhile; ?>
 
+            </div>
+            </a>
         </div>
+      <?php endwhile; ?>
+
       </div>
+    </div>
     </div>
   </section>
 
@@ -333,100 +336,41 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <!--======  Start Section Title Five ======-->
     <div class="section-title-five">
       <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>latest news</h6>
-              <h2 class="fw-bold">Latest News & Blog</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
-              </p>
-            </div>
+        <?php
+        include 'koneksi.php';
+        $data = mysqli_query($conn, "SELECT * FROM promosi ORDER BY tanggal ASC");
+        ?>
+
+        <section class="container py-5">
+          <div class="row g-4">
+
+            <?php while ($row = mysqli_fetch_assoc($data)) : ?>
+              <div class="col-md-4">
+                <div class="card h-100 shadow">
+                  <img src="assets/images/acara/<?= $row['gambar']; ?>" class="card-img-top">
+
+                  <div class="card-body">
+                    <small class="text-muted">
+                      📅 <?= date('d M Y', strtotime($row['tanggal'])); ?>
+                    </small>
+
+                    <p class="card-text mt-2">
+                      <?= substr($row['deskripsi'], 0, 80); ?>...
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <?php endwhile; ?>
+
           </div>
-        </div>
-        <!-- row -->
+        </section>
+
+
       </div>
-      <!-- container -->
+      <!-- End Single News -->
     </div>
-    <!--======  End Section Title Five ======-->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/1.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)"> Make your team a Design driven company </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/2.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">
-                  The newest web framework that changed the world
-                </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/3.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">
-                  5 ways to improve user retention for your startup
-                </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-      </div>
-    </div>
+  </div>
+  </div>
   </div>
   <!-- End Latest News Area -->
 

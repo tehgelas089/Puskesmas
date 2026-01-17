@@ -157,156 +157,56 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   </section>
 
 
-  <!--====== ABOUT FIVE PART ENDS ======-->
 
-  <!-- ===== service-area start ===== -->
   <section id="galeri" class="services-area services-eight">
-    <!--======  Start Section Title Five ======-->
+
     <div class="section-title-five">
       <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>Services</h6>
-              <h2 class="fw-bold">Our Best Services</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- row -->
-      </div>
-      <!-- container -->
-    </div>
-    <!--======  End Section Title Five ======-->
-    <div class="container">
-      <div class="row g-4">
+        <!-- tabel acara -->
 
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services gallery-card">
-            <div class="gallery-image">
-              <img src="img/landscape.jpg" alt="Gallery Image">
-            </div>
-            <div class="service-content text-center">
-              <h4>Landscape Image</h4>
-              <p>Gambar horizontal tidak terpotong.</p>
-            </div>
-          </div>
-        </div>
+        <?php
+        $acara = mysqli_query($conn, "SELECT * FROM promosi ORDER BY tanggal DESC");
+        ?>
 
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services gallery-card">
-            <div class="gallery-image">
-              <img src="img/portrait.jpg" alt="Gallery Image">
-            </div>
-            <div class="service-content text-center">
-              <h4>Portrait Image</h4>
-              <p>Gambar vertikal tetap proporsional.</p>
-            </div>
-          </div>
-        </div>
+        <h3 class="mb-3">Data Promosi Acara</h3>
+        <a href="addEvent.php" class="btn btn-primary mb-3">+ Tambah Acara</a>
 
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services gallery-card">
-            <div class="gallery-image">
-              <img src="img/square.jpg" alt="Gallery Image">
-            </div>
-            <div class="service-content text-center">
-              <h4>Square Image</h4>
-              <p>Tidak gepeng & tidak crop.</p>
-            </div>
-          </div>
-        </div>
+        <table class="table table-bordered">
+          <tr>
+            <th>Gambar</th>
+            <th>Deskripsi Acara</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+          </tr>
 
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row g-4">
-
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services gallery-card">
-            <div class="gallery-image">
-              <img src="img/landscape.jpg" alt="Gallery Image">
-            </div>
-            <div class="service-content text-center">
-              <h4>Landscape Image</h4>
-              <p>Gambar horizontal tidak terpotong.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services gallery-card">
-            <div class="gallery-image">
-              <img src="img/portrait.jpg" alt="Gallery Image">
-            </div>
-            <div class="service-content text-center">
-              <h4>Portrait Image</h4>
-              <p>Gambar vertikal tetap proporsional.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services gallery-card">
-            <div class="gallery-image">
-              <img src="img/square.jpg" alt="Gallery Image">
-            </div>
-            <div class="service-content text-center">
-              <h4>Square Image</h4>
-              <p>Tidak gepeng & tidak crop.</p>
-            </div>
-          </div>
-        </div>
+          <?php while ($row = mysqli_fetch_assoc($acara)) : ?>
+            <tr>
+              <td>
+                <img src="assets/images/acara/<?= $row['gambar']; ?>" width="60" alt="gambar">
+              </td>
+              <td><?= $row['deskripsi']; ?></td>
+              <td><?= date('d M Y', strtotime($row['tanggal'])); ?></td>
+              <td>
+                <a href="editEvent.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                <a href="deleteEvent.php?id=<?= $row['id']; ?>"
+                  class="btn btn-danger btn-sm"
+                  onclick="return confirm('Hapus acara?')">Hapus</a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </table>
 
       </div>
     </div>
 
   </section>
 
-  <style>
-    .gallery-card {
-      height: 100%;
-      transition: 0.3s ease;
-    }
-
-    .gallery-image {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      /* bisa ganti 1/1 atau 16/9 */
-      background: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .gallery-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      /* INI KUNCI BIAR GK KE POTONG */
-    }
-
-    /* Hover efek (opsional) */
-    .gallery-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-    }
-  </style>
-  <!-- ===== service-area end ===== -->
-
-
-  <!-- Start Pricing  Area -->
-
-  <!--/ End Pricing  Area -->
 
 
 
-  <!-- Start Cta Area -->
+
+
+
   <section id="call-action" class="call-action">
     <div class="container">
       <div class="row justify-content-center">

@@ -59,7 +59,7 @@
     </div>
 
     <!-- PERUBAHAN: BUTTON USER LANGSUNG MASUK -->
-    <a href="home.html" class="sign-in_apl d-flex justify-content-center align-items-center">
+    <a href="home.php" class="sign-in_apl d-flex justify-content-center align-items-center">
       <span>Lanjutkan sebagai pengguna</span>
     </a>
 
