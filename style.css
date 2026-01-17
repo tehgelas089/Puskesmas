@@ -1905,3 +1905,7 @@ p {
   color: var(--white);
   background-color: var(--primary-dark);
 }
+
+.navbar-brand img {
+  max-height: 100px;
+}
