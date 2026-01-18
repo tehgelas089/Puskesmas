@@ -45,7 +45,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="index.html">
-              <img src="assets/images/white-logo.svg" alt="Logo" />
+              <img src="assets/images/puskes.png" alt="Logo" style="height: 50px; width: 50px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
               aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +81,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     </div>
     <div class="sidebar-content">
       <div class="sidebar-logo">
-        <a href="index.html"><img src="assets/images/logo.svg" alt="Logo" /></a>
+        <a href="index.html"><img src="assets/images/puskes.png" alt="Logo" style="width: 80px; height: 80px;" /></a>
       </div>
       <p class="text">Lorem ipsum dolor sit amet adipisicing elit. Sapiente fuga nisi rerum iusto intro.</p>
       <!-- logo -->
@@ -233,105 +233,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
 
   <!-- Start Latest News Area -->
-  <div id="blog" class="latest-news-area section">
-    <!--======  Start Section Title Five ======-->
-    <div class="section-title-five">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>latest news</h6>
-              <h2 class="fw-bold">Latest News & Blog</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- row -->
-      </div>
-      <!-- container -->
-    </div>
-    <!--======  End Section Title Five ======-->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/1.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)"> Make your team a Design driven company </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/2.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">
-                  The newest web framework that changed the world
-                </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/3.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">
-                  5 ways to improve user retention for your startup
-                </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- End Latest News Area -->
 
   <!-- Start Brand Area -->
@@ -342,11 +244,10 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         <div class="row">
           <div class="col-12">
             <div class="content">
-              <h6>Meet our Clients</h6>
-              <h2 class="fw-bold">Our Awesome Clients</h2>
+
+              <h2 class="fw-bold">Dibangun oleh:</h2>
               <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
+                Website ini dibangun oleh Puskesmas Sangkanhurip yang berkolaborasi dengan SMKS Mahaputra cerdas utama
               </p>
             </div>
           </div>
@@ -359,25 +260,18 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2 col-12">
-          <div class="clients-logos">
+          <div class="clients-logos d-flex justify-content-center align-items-center gap-4">
+
             <div class="single-image">
-              <img src="assets/images/client-logo/graygrids.svg" alt="Brand Logo Images" />
+              <img src="assets/images/puskes.png" alt="Brand Logo Images" />
             </div>
             <div class="single-image">
-              <img src="assets/images/client-logo/uideck.svg" alt="Brand Logo Images" />
+              <img src="assets/images/mplogo.png" alt="Brand Logo Images" style="height: 150px; width: 150px;" />
             </div>
-            <div class="single-image">
+            <!-- <div class="single-image">
               <img src="assets/images/client-logo/ayroui.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/lineicons.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/tailwindtemplates.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/ecomhtml.svg" alt="Brand Logo Images" />
-            </div>
+            </div> -->
+
           </div>
         </div>
       </div>
@@ -487,13 +381,13 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <!-- ========================= contact-section end ========================= -->
 
   <!-- ========================= map-section end ========================= -->
-  <section class="map-section map-style-9">
+  <!-- <section class="map-section map-style-9">
     <div class="map-container">
       <object style="border:0; height: 500px; width: 100%;"
         data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.7887109309127!2d-77.44196278417968!3d38.95165507956235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU3JzA2LjAiTiA3N8KwMjYnMjMuMiJX!5e0!3m2!1sen!2sbd!4v1545420879707"></object>
     </div>
     </div>
-  </section>
+  </section> -->
   <!-- ========================= map-section end ========================= -->
 
   <!-- Start Footer Area -->
