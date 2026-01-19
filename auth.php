@@ -18,7 +18,7 @@
 
     <div class="title_container">
       <p class="title">Login untuk masuk</p>
-      <span class="subtitle">Get started with our app, just create an account and enjoy the experience.</span>
+      <span class="subtitle">"Jika anda adalah pengunjung maka silakan lanjutkaan sebagai pengguna".</span>
     </div>
 
     <div class="input_container">
@@ -59,7 +59,7 @@
     </div>
 
     <!-- PERUBAHAN: BUTTON USER LANGSUNG MASUK -->
-    <a href="home.html" class="sign-in_apl d-flex justify-content-center align-items-center">
+    <a href="home.php" class="sign-in_apl d-flex justify-content-center align-items-center">
       <span>Lanjutkan sebagai pengguna</span>
     </a>
 

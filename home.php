@@ -44,7 +44,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
             <a class="navbar-brand" href="index.html">
-              <img src="assets/images/white-logo.svg" alt="Logo" />
+              <img src="assets/images/puskes.png" alt="Logo" style="width: 60px; height: 60px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
               aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +93,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     </div>
     <div class="sidebar-content">
       <div class="sidebar-logo">
-        <a href="index.html"><img src="assets/images/logo.svg" alt="Logo" /></a>
+        <a href="index.html"><img src="assets/images/puskes.png" alt="Logo" style="width: 100px; height: 100px;" /></a>
       </div>
       <p class="text">Lorem ipsum dolor sit amet adipisicing elit. Sapiente fuga nisi rerum iusto intro.</p>
       <!-- logo -->
@@ -150,7 +150,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         </div>
         <div class="col-lg-6 col-md-12 col-12">
           <div class="header-image">
-            <img src="assets/images/header/hero-image.jpg" alt="#" />
+            <img src="assets/images/sangkanhurip.jpg" alt="#" />
           </div>
         </div>
       </div>
@@ -158,151 +158,124 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   </section>
   <!-- End header Area -->
 
-  <!--====== ABOUT FIVE PART START ======-->
-
-  <!-- <section class="about-area about-five" id="promosi">
-  <div class="container">
-
-    <h2 class="text-center mb-4">Promosi</h2>
-
-    <div class="row justify-content-center g-4">
-
-     
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="poster.jpeg" class="card-img-top" alt="poster">
-          <div class="card-body text-center">
-            <p class="card-text">Some quick example text.</p>
-          </div>
-        </div>
-      </div>
-
-     
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="poster.jpeg" class="card-img-top" alt="poster">
-          <div class="card-body text-center">
-            <p class="card-text">Some quick example text.</p>
-          </div>
-        </div>
-      </div>
-
-     
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="poster.jpeg" class="card-img-top" alt="poster">
-          <div class="card-body text-center">
-            <p class="card-text">Some quick example text.</p>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="poster.jpeg" class="card-img-top" alt="poster">
-          <div class="card-body text-center">
-            <p class="card-text">Some quick example text.</p>
-          </div>
-        </div>
-      </div>
-
-     
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="poster.jpeg" class="card-img-top" alt="poster">
-          <div class="card-body text-center">
-            <p class="card-text">Some quick example text.</p>
-          </div>
-        </div>
-      </div>
-
-      
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="poster.jpeg" class="card-img-top" alt="poster">
-          <div class="card-body text-center">
-            <p class="card-text">Some quick example text.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section> -->
 
 
-  <!--====== ABOUT FIVE PART ENDS ======-->
+
 
 
   <!-- ===== service-area start ===== -->
+  <!-- ===== service-area start ===== -->
+  <style>
+    #galeri .section-title-five {
+      max-width: 100% !important;
+    }
+  </style>
   <section id="galeri" class="services-area services-eight">
     <div class="section-title-five">
-      <div class="container py-4">
-        <div class="row g-4">
+      <h2 class="text-center">Agenda Acara</h2>
+      <div class="container-fluid px-5 py-4">
 
-          <?php while ($row = mysqli_fetch_assoc($data)) : ?>
-            <div class="col-md-4">
-              <a href="detail.php?id=<?= $row['id']; ?>" class="card-link">
-                <div class="card h-100 shadow">
 
-                  <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar">
+        <?php
+        include 'koneksi.php';
+        $data = mysqli_query($conn, "SELECT * FROM promosi ORDER BY tanggal ASC");
+        ?>
 
-                  <div class="card-body">
-                    <p class="card-text"><?= $row['deskripsi']; ?></p>
+        <div id="acaraCarousel" class="carousel slide" data-bs-ride="carousel">
+
+          <!-- indikator (titik bawah) -->
+          <div class="carousel-indicators">
+            <?php
+            $i = 0;
+            mysqli_data_seek($data, 0);
+            while ($row = mysqli_fetch_assoc($data)) :
+            ?>
+              <button type="button"
+                data-bs-target="#acaraCarousel"
+                data-bs-slide-to="<?= $i; ?>"
+                class="<?= $i == 0 ? 'active' : ''; ?>">
+              </button>
+            <?php $i++;
+            endwhile; ?>
+          </div>
+
+          <!-- isi slide -->
+          <div class="carousel-inner">
+            <?php
+            $i = 0;
+            mysqli_data_seek($data, 0);
+            while ($row = mysqli_fetch_assoc($data)) :
+            ?>
+              <div class="carousel-item <?= $i == 0 ? 'active' : ''; ?>">
+                <div class="d-flex justify-content-center">
+                  <!-- PERUBAHAN: ukuran card diperbesar -->
+                  <div class="card mb-3 shadow" style="max-width: 980px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="assets/images/acara/<?= $row['gambar']; ?>"
+                          class="img-fluid rounded-start"
+                          alt="acara">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Acara</h5>
+                          <p class="card-text">
+                            <?= substr($row['deskripsi'], 0, 150); ?>...
+                          </p>
+                          <p class="card-text" style="color: blue;">
+                            <small class="text-body-secondary">
+                              📅 <?= date('d M Y', strtotime($row['tanggal'])); ?>
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
                 </div>
-              </a>
-            </div>
-          <?php endwhile; ?>
+              </div>
+            <?php $i++;
+            endwhile; ?>
+          </div>
+
+          <!-- TAMBAHAN: tombol slide manual -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#acaraCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" style="background-color: aqua;"></span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#acaraCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" style="background-color: aqua;"></span>
+          </button>
 
         </div>
+
       </div>
     </div>
   </section>
 
-
+  <!-- TAMBAHAN: percepat animasi slide -->
   <style>
-    .gallery-card {
-      height: 100%;
-      transition: 0.3s ease;
-    }
-
-    .gallery-image {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      /* bisa ganti 1/1 atau 16/9 */
-      background: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .gallery-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      /* INI KUNCI BIAR GK KE POTONG */
-    }
-
-    /* Hover efek (opsional) */
-    .gallery-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    .carousel-item {
+      transition: transform 0.3s ease-in-out;
     }
   </style>
-  <!-- ===== service-area end ===== -->
+
+  <!-- PERUBAHAN: percepat interval auto slide -->
+  <script>
+    const acaraCarousel = document.querySelector('#acaraCarousel');
+    new bootstrap.Carousel(acaraCarousel, {
+      interval: 20,
+      ride: 'carousel',
+      pause: false
+    });
+  </script>
 
 
-  <!-- Start Pricing  Area -->
-
-  <!--/ End Pricing  Area -->
 
 
 
-  <!-- Start Cta Area -->
+
+
+
   <section id="call-action" class="call-action">
     <div class="container">
       <div class="row justify-content-center">
@@ -327,122 +300,297 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <!-- End Cta Area -->
 
 
+  <style>
+    #blog .section-title-five {
+      max-width: 100% !important;
+    }
 
-  <!-- Start Latest News Area -->
+
+    .input {
+      width: 100%;
+      max-width: 270px;
+      height: 60px;
+      padding: 12px;
+      font-size: 18px;
+      font-family: "Courier New", monospace;
+      color: #000;
+      background-color: #fff;
+      border: 4px solid #000;
+      border-radius: 0;
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: 8px 8px 0 #000;
+    }
+
+    .input::placeholder {
+      color: #888;
+    }
+
+    .input:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0 #000;
+    }
+
+    .input:focus {
+      background-color: #000;
+      color: #fff;
+      border-color: #ffffff;
+    }
+
+    .input:focus::placeholder {
+      color: #fff;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    .input:focus::after {
+      content: "|";
+      position: absolute;
+      right: 10px;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    .input:valid {
+      animation: typing 2s steps(30, end);
+    }
+
+    .input-container {
+      position: relative;
+      width: 100%;
+      max-width: 270px;
+    }
+
+    .input {
+      width: 100%;
+      height: 60px;
+      padding: 12px;
+      font-size: 18px;
+      font-family: "Courier New", monospace;
+      color: #000;
+      background-color: #fff;
+      border: 4px solid #000;
+      border-radius: 0;
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: 8px 8px 0 #000;
+    }
+
+    .input::placeholder {
+      color: #888;
+    }
+
+    .input:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0 #000;
+    }
+
+    .input:focus {
+      background-color: #010101;
+      color: #fff;
+      border-color: #d6d9dd;
+    }
+
+    .input:focus::placeholder {
+      color: #fff;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px) rotate(-5deg);
+      }
+
+      50% {
+        transform: translateX(5px) rotate(5deg);
+      }
+
+      75% {
+        transform: translateX(-5px) rotate(-5deg);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .input:focus {
+      animation: shake 0.5s ease-in-out;
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: none;
+        opacity: 1;
+      }
+
+      7% {
+        transform: skew(-0.5deg, -0.9deg);
+        opacity: 0.75;
+      }
+
+      10% {
+        transform: none;
+        opacity: 1;
+      }
+
+      27% {
+        transform: none;
+        opacity: 1;
+      }
+
+      30% {
+        transform: skew(0.8deg, -0.1deg);
+        opacity: 0.75;
+      }
+
+      35% {
+        transform: none;
+        opacity: 1;
+      }
+
+      52% {
+        transform: none;
+        opacity: 1;
+      }
+
+      55% {
+        transform: skew(-1deg, 0.2deg);
+        opacity: 0.75;
+      }
+
+      50% {
+        transform: none;
+        opacity: 1;
+      }
+
+      72% {
+        transform: none;
+        opacity: 1;
+      }
+
+      75% {
+        transform: skew(0.4deg, 1deg);
+        opacity: 0.75;
+      }
+
+      80% {
+        transform: none;
+        opacity: 1;
+      }
+
+      100% {
+        transform: none;
+        opacity: 1;
+      }
+    }
+
+    .input:not(:placeholder-shown) {
+      animation: glitch 1s linear infinite;
+    }
+
+    .input-container::after {
+      content: "|";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #000;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .input:focus+.input-container::after {
+      color: #fff;
+    }
+
+    .input:not(:placeholder-shown) {
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0px 0px 0 #000;
+    }
+  </style>
+
   <div id="blog" class="latest-news-area section">
-    <!--======  Start Section Title Five ======-->
     <div class="section-title-five">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>latest news</h6>
-              <h2 class="fw-bold">Latest News & Blog</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- row -->
+      <h2 class="text-center">Materi </h2>
+
+      <div class="input-container flex justify-content-center">
+        <input
+          class="input"
+          name="text"
+          type="text"
+          placeholder="cari Materi..." />
       </div>
-      <!-- container -->
-    </div>
-    <!--======  End Section Title Five ======-->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/1.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
+
+
+      <section class="container-fluid px-5 py-5">
+
+
+        <div class="row g-4">
+
+          <?php
+          include 'koneksi.php';
+          $data = mysqli_query($conn, "SELECT * FROM postingan");
+          while ($row = mysqli_fetch_assoc($data)) :
+            $foto = explode(',', $row['gambar']);
+          ?>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+
+              <a href="detail.php?id=<?= $row['id']; ?>" class="card-link">
+                <div class="card h-100 shadow">
+                  <img src="assets/images/blog/<?= $foto[0]; ?>" class="card-img-top">
+                  <div class="card-body">
+                    <p class="card-text"><?= $row['deskripsi']; ?></p>
+                  </div>
+                </div>
+              </a>
             </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)"> Make your team a Design driven company </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
+          <?php endwhile; ?>
+
         </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/2.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">
-                  The newest web framework that changed the world
-                </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <!-- Single News -->
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/3.jpg" alt="Blog" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/b6.jpg" alt="Author" />
-                <span>BY TIM NORTON</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">
-                  5 ways to improve user retention for your startup
-                </a>
-              </h4>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard.
-              </p>
-            </div>
-          </div>
-          <!-- End Single News -->
-        </div>
-      </div>
+
+      </section>
     </div>
   </div>
+  <!-- End Single News -->
+
   <!-- End Latest News Area -->
 
   <!-- Start Brand Area -->
-  <div id="clients" class="brand-area section">
+  <div id="clients" class="brand-area section mb-5">
     <!--======  Start Section Title Five ======-->
     <div class="section-title-five">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="content">
-              <h6>Meet our Clients</h6>
-              <h2 class="fw-bold">Our Awesome Clients</h2>
+
+              <h2 class="fw-bold">Dibangun oleh:</h2>
               <p>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form.
+                Website ini dibangun oleh Puskesmas Sangkanhurip yang berkolaborasi dengan SMKS Mahaputra cerdas utama
               </p>
             </div>
           </div>
@@ -455,25 +603,18 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2 col-12">
-          <div class="clients-logos">
+          <div class="clients-logos d-flex justify-content-center align-items-center gap-4">
+
             <div class="single-image">
-              <img src="assets/images/client-logo/graygrids.svg" alt="Brand Logo Images" />
+              <img src="assets/images/puskes.png" alt="Brand Logo Images" />
             </div>
             <div class="single-image">
-              <img src="assets/images/client-logo/uideck.svg" alt="Brand Logo Images" />
+              <img src="assets/images/mplogo.png" alt="Brand Logo Images" style="height: 150px; width: 150px;" />
             </div>
-            <div class="single-image">
+            <!-- <div class="single-image">
               <img src="assets/images/client-logo/ayroui.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/lineicons.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/tailwindtemplates.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/ecomhtml.svg" alt="Brand Logo Images" />
-            </div>
+            </div> -->
+
           </div>
         </div>
       </div>
@@ -481,106 +622,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   </div>
   <!-- End Brand Area -->
 
-  <!-- ========================= contact-section start ========================= -->
-  <section id="contact" class="contact-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-4">
-          <div class="contact-item-wrapper">
-            <div class="row">
-              <div class="col-12 col-md-6 col-xl-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-phone"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Contact</h4>
-                    <p>0984537278623</p>
-                    <p>yourmail@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-xl-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-map-marker"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Address</h4>
-                    <p>175 5th Ave, New York, NY 10010</p>
-                    <p>United States</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-xl-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-alarm-clock"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Schedule</h4>
-                    <p>24 Hours / 7 Days Open</p>
-                    <p>Office time: 10 AM - 5:30 PM</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-8">
-          <div class="contact-form-wrapper">
-            <div class="row">
-              <div class="col-xl-10 col-lg-8 mx-auto">
-                <div class="section-title text-center">
-                  <span> Get in Touch </span>
-                  <h2>
-                    Ready to Get Started
-                  </h2>
-                  <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    quiblanditiis praesentium
-                  </p>
-                </div>
-              </div>
-            </div>
-            <form action="#" class="contact-form">
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" name="name" id="name" placeholder="Name" required />
-                </div>
-                <div class="col-md-6">
-                  <input type="email" name="email" id="email" placeholder="Email" required />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" name="phone" id="phone" placeholder="Phone" required />
-                </div>
-                <div class="col-md-6">
-                  <input type="text" name="subject" id="email" placeholder="Subject" required />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <textarea name="message" id="message" placeholder="Type Message" rows="5"></textarea>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="button text-center rounded-buttons">
-                    <button type="submit" class="btn primary-btn rounded-full">
-                      Send Message
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ========================= contact-section end ========================= -->
+
 
   <!-- ========================= map-section end ========================= -->
   <section class="map-section map-style-9">
@@ -608,11 +650,10 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
                   </a>
                 </div>
                 <p>
-                  Making the world a better place through constructing elegant
-                  hierarchies.
+                  "Puskesmas Beraksi"
                 </p>
                 <p class="copyright-text">
-                  <span>© 2024 Ayro UI.</span>Designed and Developed by
+                  <span>©Copyright SMKS Mahaputra 2026</span>Designed and Developed by
                   <a href="javascript:void(0)" rel="nofollow"> Ayro UI </a>. <br> Distributed by <a href="http://themewagon.com" target="_blank">ThemeWagon</a>
                 </p>
               </div>
@@ -621,12 +662,12 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
             <div class="col-lg-2 col-md-6 col-12">
               <!-- Single Widget -->
               <div class="footer-widget f-link">
-                <h5>Solutions</h5>
+                <h5>Anggota</h5>
                 <ul>
-                  <li><a href="javascript:void(0)">Marketing</a></li>
-                  <li><a href="javascript:void(0)">Analytics</a></li>
-                  <li><a href="javascript:void(0)">Commerce</a></li>
-                  <li><a href="javascript:void(0)">Insights</a></li>
+                  <li><a href="javascript:void(0)">Dion</a></li>
+                  <li><a href="javascript:void(0)">Aiman</a></li>
+                  <li><a href="javascript:void(0)">Septian</a></li>
+                  <!-- <li><a href="javascript:void(0)">Insights</a></li> -->
                 </ul>
               </div>
               <!-- End Single Widget -->
@@ -647,16 +688,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
             <div class="col-lg-4 col-md-6 col-12">
               <!-- Single Widget -->
               <div class="footer-widget newsletter">
-                <h5>Subscribe</h5>
-                <p>Subscribe to our newsletter for the latest updates</p>
-                <form action="#" method="get" target="_blank" class="newsletter-form">
-                  <input name="EMAIL" placeholder="Email address" required="required" type="email" />
-                  <div class="button">
-                    <button class="sub-btn">
-                      <i class="lni lni-envelope"></i>
-                    </button>
-                  </div>
-                </form>
+
               </div>
               <!-- End Single Widget -->
             </div>

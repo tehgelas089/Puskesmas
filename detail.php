@@ -40,10 +40,33 @@ $data = mysqli_fetch_assoc(
 
       <!-- GAMBAR -->
       <div class="col-lg-6 col-md-12">
-        <img
-          src="assets/images/blog/<?= $data['gambar']; ?>"
-          class="detail-img"
-          alt="gambar postingan">
+
+        <?php $foto = explode(',', $data['gambar']); ?>
+
+        <div id="carouselDetail" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+
+            <?php foreach ($foto as $i => $img) : ?>
+              <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
+                <img
+                  src="assets/images/blog/<?= $img; ?>"
+                  class="detail-img"
+                  alt="gambar postingan">
+              </div>
+            <?php endforeach; ?>
+
+          </div>
+
+          <?php if (count($foto) > 1) : ?>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselDetail" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon " style="background-color: aqua;"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselDetail" data-bs-slide="next">
+              <span class="carousel-control-next-icon" style="background-color: aqua;"></span>
+            </button>
+          <?php endif; ?>
+        </div>
+
       </div>
 
       <!-- DETAIL -->
@@ -63,6 +86,9 @@ $data = mysqli_fetch_assoc(
     </div>
 
   </div>
+
+  <!-- WAJIB untuk slider -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
