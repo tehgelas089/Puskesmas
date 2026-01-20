@@ -88,7 +88,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <div class="sidebar-menu">
         <h5 class="menu-title">Quick Links</h5>
         <ul>
-          <li><a href="admin/konten.php">About Us</a></li>
+          <li><a href="menu.php">About Us</a></li>
           <li><a href="admin/konten.php">Our Team</a></li>
           <li><a href="admin/konten.php">Latest News</a></li>
           <li><a href="admin/konten.php">Contact Us</a></li>

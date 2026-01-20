@@ -95,15 +95,15 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <div class="sidebar-logo">
         <a href="index.html"><img src="assets/images/puskes.png" alt="Logo" style="width: 100px; height: 100px;" /></a>
       </div>
-      <p class="text">Lorem ipsum dolor sit amet adipisicing elit. Sapiente fuga nisi rerum iusto intro.</p>
+      <p class="text text-uppercase text-black fw-bold">Sangkanhurip Beraksi.</p>
       <!-- logo -->
       <div class="sidebar-menu">
-        <h5 class="menu-title">Quick Links</h5>
+        <h5 class="menu-title">Menu</h5>
         <ul>
-          <li><a href="admin/konten.php">About Us</a></li>
-          <li><a href="admin/konten.php">Our Team</a></li>
-          <li><a href="admin/konten.php">Latest News</a></li>
-          <li><a href="admin/konten.php">Contact Us</a></li>
+          <li><a href="menu.php">Menu list</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Latest News</a></li>
+          <li><a href="#">Contact Us</a></li>
         </ul>
       </div>
       <!-- menu -->
@@ -111,16 +111,16 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         <h5 class="social-title">Follow Us On</h5>
         <ul>
           <li>
-            <a href="admin/konten.php"><i class="lni lni-facebook-filled"></i></a>
+            <a href="#"><i class="lni lni-facebook-filled"></i></a>
           </li>
           <li>
-            <a href="admin/konten.php"><i class="lni lni-twitter-original"></i></a>
+            <a href="#"><i class="lni lni-twitter-original"></i></a>
           </li>
           <li>
-            <a href="admin/konten.php"><i class="lni lni-linkedin-original"></i></a>
+            <a href="#"><i class="lni lni-linkedin-original"></i></a>
           </li>
           <li>
-            <a href="admin/konten.php"><i class="lni lni-youtube"></i></a>
+            <a href="#"><i class="lni lni-youtube"></i></a>
           </li>
         </ul>
       </div>
