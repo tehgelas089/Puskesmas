@@ -49,7 +49,7 @@
     mysqli_query($conn, "INSERT INTO postingan (gambar, deskripsi)
       VALUES ('$gambar', '$deskripsi')");
 
-    echo "<script>alert('Berhasil');location='home.php';</script>";
+    echo "<script>alert('Berhasil');location='dasbor.php';</script>";
   }
   ?>
 

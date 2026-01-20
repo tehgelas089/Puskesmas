@@ -8,33 +8,131 @@ $folder = __DIR__ . '/assets/images/blog/';
 $foto = explode(',', $data['gambar']);
 ?>
 
-<form method="POST" enctype="multipart/form-data">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Postingan</title>
 
-  <p><b>Foto Saat Ini</b></p>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <?php foreach ($foto as $i => $img): ?>
-    <div class="mb-3 border p-2 rounded">
+  <style>
+    body {
+      background: #f1f3f5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-      <img src="assets/images/blog/<?= $img ?>" width="120" class="mb-2"><br>
+    .edit-wrapper {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 32px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
 
-      <!-- ganti foto -->
-      <input type="file" name="ganti_foto[<?= $i ?>]" class="form-control mb-2">
+    .edit-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
 
-      <!-- hapus foto (tidak boleh hapus semua) -->
-      <?php if (count($foto) > 1): ?>
-        <button name="hapus_foto" value="<?= $i ?>" class="btn btn-danger btn-sm"
-          onclick="return confirm('Hapus foto ini?')">
-          Hapus Foto Ini
-        </button>
-      <?php endif; ?>
+    .foto-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
 
+    .foto-item {
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fafafa;
+    }
+
+    .foto-item img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 24px;
+    }
+    .header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="edit-wrapper">
+
+  <div class="header-bar">
+  <div class="edit-title">Edit Postingan</div>
+  <a href="dasbor.php" class="btn btn-secondary btn-sm">
+    Kembali
+  </a>
+</div>
+
+  <form method="POST" enctype="multipart/form-data">
+
+    <div class="mb-3 fw-semibold">Foto Saat Ini</div>
+
+    <div class="foto-grid">
+      <?php foreach ($foto as $i => $img): ?>
+        <div class="foto-item">
+
+          <img src="assets/images/blog/<?= $img ?>">
+
+          <input type="file"
+                 name="ganti_foto[<?= $i ?>]"
+                 class="form-control form-control-sm mb-2">
+
+          <?php if (count($foto) > 1): ?>
+            <button name="hapus_foto"
+                    value="<?= $i ?>"
+                    class="btn btn-outline-danger btn-sm w-100"
+                    onclick="return confirm('Hapus foto ini?')">
+              Hapus Foto
+            </button>
+          <?php endif; ?>
+
+        </div>
+      <?php endforeach; ?>
     </div>
-  <?php endforeach; ?>
 
-  <textarea name="deskripsi" class="form-control mb-3"><?= $data['deskripsi'] ?></textarea>
+    <div class="mt-4">
+      <label class="fw-semibold mb-1">Deskripsi</label>
+      <textarea name="deskripsi" class="form-control"><?= $data['deskripsi'] ?></textarea>
+    </div>
 
-  <button name="update" class="btn btn-primary">Update</button>
-</form>
+    <div class="action-bar">
+      <button name="update" class="btn btn-primary px-4">
+        Simpan Perubahan
+      </button>
+    </div>
+
+  </form>
+
+</div>
+
+</body>
+</html>
 
 <?php
 // ======================= UPDATE DATA =======================
@@ -42,12 +140,10 @@ if (isset($_POST['update'])) {
 
   $deskripsi = $_POST['deskripsi'];
 
-  // ganti foto satu-satu
   if (!empty($_FILES['ganti_foto']['name'])) {
     foreach ($_FILES['ganti_foto']['name'] as $i => $name) {
       if ($name != '') {
 
-        // hapus foto lama
         if (file_exists($folder . $foto[$i])) {
           unlink($folder . $foto[$i]);
         }
