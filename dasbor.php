@@ -147,7 +147,14 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
             <td><?= $row['deskripsi'] ?></td>
             <td>
               <a href=" edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-              <a href="hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus?')">Hapus</a>
+              <form action="hapus.php" method="POST" style="display:inline;"
+      onsubmit="return confirm('Yakin mau hapus?')">
+  <input type="hidden" name="id" value="<?= $row['id'] ?>">
+  <button type="submit" class="btn btn-danger btn-sm">
+    Hapus
+  </button>
+</form>
+
             </td>
           </tr>
         <?php endwhile; ?>
@@ -219,7 +226,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
               kewajiban serta akan melakukan perbaikan<br /> secara terus menerus, apabila kami tidak
               memberikan pelayanan sesuai dengan standar yang ditetapkan kami siap menerima
               sanksi sesuai dengan peraturan perundang-undangan yang berlaku.
-            </p>x
+            </p>
           </div>
         </div>
       </div>

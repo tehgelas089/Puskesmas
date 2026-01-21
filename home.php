@@ -14,7 +14,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!--====== Title ======-->
-  <title>Home page</title>
+  <title>Beranda</title>
 
   <!--====== Favicon Icon ======-->
   <link rel="icon" href="assets/images/puskes.png" type="image/png">
@@ -56,17 +56,17 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
             <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
               <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                  <a class="page-scroll active" href="#hero-area">Home</a>
+                  <a class="page-scroll active" href="#hero-area">Beranda</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll" href="#promosi">promosi</a>
+                  <a class="page-scroll" href="#promosi">Promosi</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="page-scroll" href="#galeri">Gallery</a>
+                  <a class="page-scroll" href="#galeri">Galeri</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll" href="#contact">Contact</a>
+                  <a class="page-scroll" href="#contact">Kontak</a>
                 </li>
               </ul>
             </div>
@@ -534,13 +534,14 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="section-title-five">
       <h2 class="text-center">Materi </h2>
 
-      <div class="input-container flex justify-content-center">
-        <input
-          class="input"
-          name="text"
-          type="text"
-          placeholder="cari Materi..." />
-      </div>
+      <div class="d-flex justify-content-center my-4">
+  <input
+    type="text"
+    id="searchMateri"
+    class="form-control w-50"
+    placeholder="Cari materi..." />
+</div>
+
 
 
       <section class="container-fluid px-5 py-5">
@@ -749,6 +750,17 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       'width': 900,
       'autoplayVideos': true,
     });
+
+    document.getElementById('searchMateri').addEventListener('keyup', function () {
+  let keyword = this.value.toLowerCase();
+  let cards = document.querySelectorAll('#blog .card');
+
+  cards.forEach(card => {
+    let text = card.innerText.toLowerCase();
+    card.parentElement.style.display =
+      text.includes(keyword) ? '' : 'none';
+  });
+});
   </script>
 </body>
 
