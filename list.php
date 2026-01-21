@@ -83,7 +83,7 @@
       <!-- WRAPPER RESPONSIVE -->
       <div class="col-12 col-md-10 col-lg-8 col-xl-6">
 
-        <h3 class="text-center mb-4 text-white fw-bold">Aktivitas Sehat</h3>
+        <h3 class="text-center mb-4 text-white fw-bold">Perilaku Hidup Sehat (PHS)</h3>
 
         <!-- LIST GRID -->
         <div class="row g-3" id="list"></div>
@@ -121,17 +121,17 @@
 
   <script>
     const activities = [{
-        name: "Olahraga",
+        name: "Aktivitas Fisik",
         value: 30,
         done: false
       },
       {
-        name: "Sarapan",
+        name: "Konsumsi buah dan Sayur",
         value: 20,
         done: false
       },
       {
-        name: "Mandi",
+        name: "Cuci tangan ",
         value: 10,
         done: false
       },
@@ -170,7 +170,7 @@
         checkbox.disabled = act.done;
 
         card.appendChild(checkbox);
-        card.appendChild(document.createTextNode(`${act.name} (${act.value}%)`));
+        card.appendChild(document.createTextNode(`${act.name}`));
 
         card.addEventListener("click", () => {
           if (!act.done) {

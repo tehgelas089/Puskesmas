@@ -139,19 +139,19 @@
     <div class="row g-4 justify-content-center">
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list.php" class="menu-card w-100">Aktivitas Sehat</a>
+        <a href="list.php" class="menu-card w-100">Perilaku Hidup Sehat</a>
       </div>
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list_gigi.php" class="menu-card w-100">Pola Kesehatan Gigi</a>
+        <a href="list_gigi.php" class="menu-card w-100">Pencegahan penyakit tidak menular</a>
       </div>
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list-olahraga.html" class="menu-card w-100">Olahraga</a>
+        <a href="list-olahraga.html" class="menu-card w-100">Pencegahan penyakit menular</a>
       </div>
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list-kebersihan.html" class="menu-card w-100">Kebersihan</a>
+        <a href="list-kebersihan.html" class="menu-card w-100">Gizi seimbang</a>
       </div>
 
 
