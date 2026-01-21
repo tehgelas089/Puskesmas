@@ -17,7 +17,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <title>Home page</title>
 
   <!--====== Favicon Icon ======-->
-  <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg" />
+  <link rel="icon" href="assets/images/puskes.png" type="image/png">
 
   <!--====== Bootstrap css ======-->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -281,16 +281,14 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
           <div class="inner-content">
-            <h2>We love to make perfect <br />solutions for your business</h2>
+        <h2>MAKLUMAT PELAYANAN <br />PUSKESMAS SANGKANHURIP</h2>
             <p>
-              Why I say old chap that is, spiffing off his nut cor blimey
-              guvnords geeza<br />
-              bloke knees up bobby, sloshed arse William cack Richard. Bloke
-              fanny around chesed of bum bag old lost the pilot say there
-              spiffing off his nut.
+              Kami siap memberikan pelayanan sesuai dengan standar pelayanan dan memberikan pelayanan sesuai
+              dengan
+              kewajiban serta akan melakukan perbaikan<br /> secara terus menerus, apabila kami tidak
+              memberikan pelayanan sesuai dengan standar yang ditetapkan kami siap menerima
+              sanksi sesuai dengan peraturan perundang-undangan yang berlaku.
             </p>
-            <div class="light-rounded-buttons">
-              <a href="javascript:void(0)" class="btn primary-btn-outline">Get Started</a>
             </div>
           </div>
         </div>

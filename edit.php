@@ -75,6 +75,56 @@ $foto = explode(',', $data['gambar']);
   margin-bottom: 24px;
 }
 
+/* ===== MODAL NOTIF STYLE ===== */
+#notifModal .modal-content {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+#notifModal .modal-header {
+  border-bottom: none;
+  padding: 20px 24px 0;
+}
+
+#notifModal .modal-title {
+  font-weight: 600;
+}
+
+#notifModal .modal-body {
+  padding: 20px 24px;
+  font-size: 15px;
+  color: #555;
+}
+
+#notifModal .modal-footer {
+  border-top: none;
+  padding: 0 24px 20px;
+}
+
+.notif-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.notif-success {
+  background: #e6f4ea;
+  color: #2e7d32;
+}
+
+.notif-error {
+  background: #fdecea;
+  color: #c62828;
+}
+
+
   </style>
 </head>
 
@@ -131,6 +181,62 @@ $foto = explode(',', $data['gambar']);
 
 </div>
 
+<!-- Modal Notifikasi -->
+<div class="modal fade" id="notifModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body text-center">
+
+        <div id="notifIcon" class="notif-icon mx-auto"></div>
+
+        <h5 id="notifTitle" class="mt-2 mb-1">Judul</h5>
+        <p id="notifMessage" class="mb-3">Pesan</p>
+
+        <button class="btn btn-secondary px-4" data-bs-dismiss="modal">
+          Oke
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function showNotif(title, message, type = 'success', redirect = null) {
+  const icon = document.getElementById('notifIcon');
+  const titleEl = document.getElementById('notifTitle');
+  const messageEl = document.getElementById('notifMessage');
+
+  titleEl.innerText = title;
+  messageEl.innerHTML = message;
+
+  icon.className = 'notif-icon mx-auto';
+
+  if (type === 'success') {
+    icon.classList.add('notif-success');
+    icon.innerHTML = '✓';
+  } else {
+    icon.classList.add('notif-error');
+    icon.innerHTML = '✕';
+  }
+
+  const modal = new bootstrap.Modal(document.getElementById('notifModal'));
+  modal.show();
+
+  if (redirect) {
+    setTimeout(() => {
+      window.location.href = redirect;
+    }, 1500);
+  }
+}
+</script>
+
+
 </body>
 </html>
 
@@ -160,14 +266,31 @@ if (isset($_POST['update'])) {
     SET gambar='$gambar', deskripsi='$deskripsi' 
     WHERE id='$id'");
 
-  echo "<script>alert('Update berhasil');location='dasbor.php';</script>";
+ echo "
+<script>
+  showNotif(
+    'Berhasil',
+    'Postingan berhasil diperbarui',
+    'success',
+    'dasbor.php'
+  );
+</script>";
+
 }
 
 // ======================= HAPUS SATU FOTO =======================
 if (isset($_POST['hapus_foto'])) {
 
   if (count($foto) <= 1) {
-    echo "<script>alert('Minimal harus ada 1 foto');</script>";
+    echo "
+<script>
+  showNotif(
+    'Gagal',
+    'Minimal harus ada 1 foto',
+    'error'
+  );
+</script>";
+
   } else {
 
     $index = $_POST['hapus_foto'];
@@ -185,7 +308,15 @@ if (isset($_POST['hapus_foto'])) {
       SET gambar='$gambar' 
       WHERE id='$id'");
 
-    echo "<script>alert('Foto dihapus');location='edit.php?id=$id';</script>";
-  }
-}
-?>
+    echo "
+     <script>
+     showNotif(
+     'Berhasil',
+     'Foto berhasil dihapus',
+     'success',
+     'edit.php?id=$id'
+       );
+       </script>";
+       }
+       }
+       ?>
