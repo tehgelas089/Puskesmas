@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!--====== Favicon Icon ======-->
-  <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/svg" />
+  <link rel="icon" href="assets/images/puskes.png" type="image/png">
 
   <!--====== Bootstrap css ======-->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
