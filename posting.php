@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <title>Tambah Postingan</title>
@@ -34,118 +35,127 @@
 
 <body class="p-4">
 
-<h3>Tambah Postingan</h3>
+  <h3>Tambah Postingan</h3>
 
-<form method="POST" enctype="multipart/form-data">
+  <form method="POST" enctype="multipart/form-data">
 
-  <div id="file-wrapper">
-    <input type="file" name="gambar[]" class="form-control mb-2" required>
-  </div>
+    <div id="file-wrapper">
+      <input type="file" name="gambar[]" class="form-control mb-2" required>
+    </div>
 
-  <button type="button"
-          class="btn btn-secondary btn-sm mb-3"
-          onclick="tambahFile()">
-    + Tambah Foto
-  </button>
+    <button type="button"
+      class="btn btn-secondary btn-sm mb-3"
+      onclick="tambahFile()">
+      + Tambah Foto
+    </button>
 
-  <textarea name="deskripsi"
-            class="form-control mb-3"
-            placeholder="Deskripsi"
-            required></textarea>
+    <input type="text"
+      name="judul"
+      class="form-control mb-3"
+      placeholder="Judul Postingan"
+      required>
 
-  <button class="btn btn-success" name="simpan">
-    Simpan
-  </button>
-</form>
 
-<!-- MODAL -->
-<div class="modal fade" id="notifModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body text-center">
+    <textarea name="deskripsi"
+      class="form-control mb-3"
+      placeholder="Deskripsi"
+      required></textarea>
 
-        <div id="notifIcon" class="notif-icon"></div>
-        <h5 id="notifTitle"></h5>
-        <p id="notifMessage"></p>
+    <button class="btn btn-success" name="simpan">
+      Simpan
+    </button>
+  </form>
 
-        <button class="btn btn-secondary" data-bs-dismiss="modal">
-          Oke
-        </button>
+  <!-- MODAL -->
+  <div class="modal fade" id="notifModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
 
+          <div id="notifIcon" class="notif-icon"></div>
+          <h5 id="notifTitle"></h5>
+          <p id="notifMessage"></p>
+
+          <button class="btn btn-secondary" data-bs-dismiss="modal">
+            Oke
+          </button>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- BOOTSTRAP JS (WAJIB) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- BOOTSTRAP JS (WAJIB) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-function showNotif(title, message, type = 'success', redirect = null) {
-  const icon = document.getElementById('notifIcon');
-  const titleEl = document.getElementById('notifTitle');
-  const msgEl = document.getElementById('notifMessage');
+  <script>
+    function showNotif(title, message, type = 'success', redirect = null) {
+      const icon = document.getElementById('notifIcon');
+      const titleEl = document.getElementById('notifTitle');
+      const msgEl = document.getElementById('notifMessage');
 
-  titleEl.innerText = title;
-  msgEl.innerText = message;
+      titleEl.innerText = title;
+      msgEl.innerText = message;
 
-  icon.className = 'notif-icon';
+      icon.className = 'notif-icon';
 
-  if (type === 'success') {
-    icon.classList.add('notif-success');
-    icon.innerHTML = '✓';
-  } else {
-    icon.classList.add('notif-error');
-    icon.innerHTML = '✕';
-  }
+      if (type === 'success') {
+        icon.classList.add('notif-success');
+        icon.innerHTML = '✓';
+      } else {
+        icon.classList.add('notif-error');
+        icon.innerHTML = '✕';
+      }
 
-  const modal = new bootstrap.Modal(document.getElementById('notifModal'));
-  modal.show();
+      const modal = new bootstrap.Modal(document.getElementById('notifModal'));
+      modal.show();
 
-  if (redirect) {
-    setTimeout(() => {
-      window.location.href = redirect;
-    }, 1500);
-  }
-}
-
-function tambahFile() {
-  const wrapper = document.getElementById('file-wrapper');
-
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.name = 'gambar[]';
-  input.className = 'form-control mb-2';
-
-  wrapper.appendChild(input);
-}
-</script>
-
-<?php
-if (isset($_POST['simpan'])) {
-
-  $deskripsi = $_POST['deskripsi'];
-  $folder = __DIR__ . '/assets/images/blog/';
-  $namaFile = [];
-
-  foreach ($_FILES['gambar']['name'] as $i => $name) {
-    if ($name != '') {
-      move_uploaded_file(
-        $_FILES['gambar']['tmp_name'][$i],
-        $folder . $name
-      );
-      $namaFile[] = $name;
+      if (redirect) {
+        setTimeout(() => {
+          window.location.href = redirect;
+        }, 1500);
+      }
     }
-  }
 
-  $gambar = implode(',', $namaFile);
+    function tambahFile() {
+      const wrapper = document.getElementById('file-wrapper');
 
-  mysqli_query($conn, "
-    INSERT INTO postingan (gambar, deskripsi)
-    VALUES ('$gambar', '$deskripsi')
-  ");
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.name = 'gambar[]';
+      input.className = 'form-control mb-2';
 
-  echo "
+      wrapper.appendChild(input);
+    }
+  </script>
+
+  <?php
+  if (isset($_POST['simpan'])) {
+
+    $judul = $_POST['judul'];
+    $deskripsi = $_POST['deskripsi'];
+
+    $folder = __DIR__ . '/assets/images/blog/';
+    $namaFile = [];
+
+    foreach ($_FILES['gambar']['name'] as $i => $name) {
+      if ($name != '') {
+        move_uploaded_file(
+          $_FILES['gambar']['tmp_name'][$i],
+          $folder . $name
+        );
+        $namaFile[] = $name;
+      }
+    }
+
+    $gambar = implode(',', $namaFile);
+
+    mysqli_query($conn, "
+  INSERT INTO postingan (judul, gambar, deskripsi)
+  VALUES ('$judul', '$gambar', '$deskripsi')
+");
+
+    echo "
   <script>
     showNotif(
       'Berhasil',
@@ -154,8 +164,9 @@ if (isset($_POST['simpan'])) {
       'dasbor.php'
     );
   </script>";
-}
-?>
+  }
+  ?>
 
 </body>
+
 </html>

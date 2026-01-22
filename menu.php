@@ -139,11 +139,11 @@
     <div class="row g-4 justify-content-center">
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list.php" class="menu-card w-100">Perilaku Hidup Sehat</a>
+        <a href="list.php" class="menu-card w-100">Pencegahan penyakit tidak menular</a>
       </div>
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list_gigi.php" class="menu-card w-100">Pencegahan penyakit tidak menular</a>
+        <a href="list_gigi.php" class="menu-card w-100">Perilaku Hidup Sehat</a>
       </div>
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">

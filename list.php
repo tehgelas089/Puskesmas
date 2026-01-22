@@ -3,210 +3,330 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Aktivitas Sehat</title>
+  <title>pencegahaan penyakit tidak menular</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #626161;
+      background: #f3f6fa;
       padding: 20px;
     }
 
-    .activity-card {
-      background: linear-gradient(135deg, #4a80f0, #6a9cff);
-      color: white;
-      padding: 18px;
-      border-radius: 18px;
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* ================= BUTTON LIST ================= */
+    .button {
+      height: 50px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease-in-out;
+      margin-bottom: 12px;
+    }
+
+    /* HOVER DIMATIKAN */
+    .button:hover {
+      box-shadow: none;
+    }
+
+    .type1::after {
+      content: "Selesai ✓";
+      height: 50px;
+      width: 100%;
+      background-color: #27ae60;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(50px);
+      font-size: 1rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      cursor: pointer;
-      transition: 0.2s;
-      height: 100%;
+      justify-content: center;
+      transition: all 0.5s ease-in-out;
     }
 
-    .activity-card:hover {
-      transform: scale(1.02);
+    .type1::before {
+      content: attr(data-text);
+      height: 50px;
+      width: 100%;
+      background-color: #4a80f0;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(0);
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease-in-out;
+      text-align: center;
+      padding: 0 10px;
     }
 
-    .activity-card.done {
-      opacity: 0.6;
-      text-decoration: line-through;
+    /* ANIMASI AKTIF SETELAH DI KLIK */
+    .button.done::after {
+      transform: translateY(0) scale(1.2);
     }
 
-    .activity-card input {
-      margin-right: 12px;
+    .button.done::before {
+      transform: translateY(-50px) scale(0) rotate(120deg);
+    }
+
+    .button.done {
+      opacity: 0.7;
       pointer-events: none;
     }
 
-    .btn-primary {
+    /* =============================================== */
+
+    button.btn-primary {
       background: #4a80f0;
-      border: none;
-      border-radius: 14px;
+      color: white;
+      width: 100%;
       padding: 14px;
+      border-radius: 14px;
+      margin-top: 12px;
+      border: none;
     }
 
     .btn-reset {
       background: #27ae60;
-      /* border: none; */
-      border-radius: 14px;
+      color: white;
+      width: 100%;
       padding: 14px;
+      border-radius: 14px;
+      margin-top: 12px;
+      border: none;
     }
 
-    .btn-reset:hover {
-      background-color: green;
+    .info-box {
+      background: #8e8e8e;
+      color: white;
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .qa {
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, .3);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .4);
+      display: none;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-content {
-      border-radius: 18px;
-      text-align: center;
+      background: white;
       padding: 24px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
     }
 
-    .score {
-      font-size: 36px;
-      font-weight: bold;
-      color: #4a80f0;
+    .warning {
+      background: white;
+      color: #856404;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: left;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .close {
+      margin-top: 20px;
+      background: #57564F;
+      color: white;
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+    }
+
+    .close:hover {
+      background-color: #44444E;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- CONTAINER FLUID -->
-  <div class="container-fluid">
-    <div class="row justify-content-center">
+  <div class="container">
+    <h2 class="mb-5">Pencegahaan penyakit tidak menular</h2>
 
-      <!-- WRAPPER RESPONSIVE -->
-      <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+    <div class="row justify-content-center g-4">
 
-        <h3 class="text-center mb-4 text-white fw-bold">Perilaku Hidup Sehat (PHS)</h3>
-
-        <!-- LIST GRID -->
-        <div class="row g-3" id="list"></div>
-
-        <div class="row mt-4">
-          <div class="col-12 col-md-6 mb-2">
-            <button class="btn btn-primary w-100" onclick="showModal()">
-              Lihat Kesehatan Saya
-            </button>
-          </div>
-          <div class="col-12 col-md-6">
-            <button class="btn btn-reset w-100 text-white" onclick="resetAll()">
-              Buat Baru
-            </button>
-          </div>
-        </div>
-
+      <div class="col-lg-5 col-12">
+        <div id="list"></div>
+        <button class="btn-primary" onclick="submitCheck()">Lihat Kesehatan</button>
+        <button class="btn-reset" onclick="resetAll()">Buat Baru</button>
       </div>
+
+      <div class="col-lg-4 col-12">
+        <div class="info-box" id="infoBox"></div>
+      </div>
+
+    </div>
+
+    <div class="modal" id="modal">
+      <div class="modal-content" id="modalContent"></div>
     </div>
   </div>
-
-  <!-- MODAL -->
-  <div class="modal fade" id="modal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <h5>Nilai Kesehatan</h5>
-        <div class="score"><span id="score">0</span>%</div>
-        <button class="btn btn-danger mt-3" onclick="closeModal()">Tutup</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     const activities = [{
         name: "Aktivitas Fisik",
-        value: 30,
-        done: false
+        done: false,
+        impact: "Otot dan jantung melemah.",
+        solution: "Luangkan waktu olahraga minimal 30 menit/hari."
       },
       {
-        name: "Konsumsi buah dan Sayur",
-        value: 20,
-        done: false
+        name: "Jaga pola makan sehat",
+        done: false,
+        impact: "Daya tahan tubuh menurun.",
+        solution: "Pilih menu gizi seimbang."
       },
       {
-        name: "Cuci tangan ",
-        value: 10,
-        done: false
+        name: "Jaga berat badan ideal",
+        done: false,
+        impact: "Beban kerja jantung meningkat.",
+        solution: "Seimbangkan pola makan dan aktivitas fisik."
       },
       {
-        name: "Minum Air",
-        value: 40,
-        done: false
+        name: "Hindari rokok dan alkohol",
+        done: false,
+        impact: "Risiko kanker paru dan Kerusakan hati dan organ tubuh lainnya.",
+        solution: "Hindari dan jauhi rokok dan alkohol."
+      },
+      {
+        name: "Istirahan yang cukup",
+        done: false,
+        impact: "Konsentrasi menurun.",
+        solution: "Atur waktu kerja dan istirahat."
+      },
+      {
+        name: "Cek kesehatan berkala",
+        done: false,
+        impact: "Penyakit tidak terdeteksi sejak dini.",
+        solution: "Lakukan pemeriksaan meski merasa sehat."
       }
     ];
 
     const listEl = document.getElementById("list");
-    const scoreEl = document.getElementById("score");
-    const modalEl = new bootstrap.Modal(document.getElementById("modal"));
-
-    const saved = JSON.parse(localStorage.getItem("activities"));
-    if (saved) saved.forEach((a, i) => activities[i].done = a.done);
+    const infoBox = document.getElementById("infoBox");
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modalContent");
 
     function render() {
       listEl.innerHTML = "";
-      let total = 0;
-      let completed = true;
+      infoBox.innerHTML = "";
+      const notDone = [];
 
       activities.forEach(act => {
-        if (act.done) total += act.value;
-        if (!act.done) completed = false;
+        if (!act.done) notDone.push(act);
 
-        const col = document.createElement("div");
-        col.className = "col-12 col-md-6";
+        const btn = document.createElement("button");
+        btn.className = "button type1" + (act.done ? " done" : "");
+        btn.setAttribute("data-text", act.name);
 
-        const card = document.createElement("div");
-        card.className = "activity-card" + (act.done ? " done" : "");
-
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.checked = act.done;
-        checkbox.disabled = act.done;
-
-        card.appendChild(checkbox);
-        card.appendChild(document.createTextNode(`${act.name}`));
-
-        card.addEventListener("click", () => {
+        btn.onclick = () => {
           if (!act.done) {
             act.done = true;
-            save();
             render();
           }
-        });
+        };
 
-        col.appendChild(card);
-        listEl.appendChild(col);
+        listEl.appendChild(btn);
       });
 
-      scoreEl.innerText = total;
-      if (completed) showModal();
+      if (notDone.length) {
+        notDone.forEach(a => {
+          infoBox.innerHTML += `
+            <div class="qa">
+              <strong>${a.name}</strong><br>
+              Solusi: ${a.solution}
+            </div>`;
+        });
+        infoBox.style.display = "block";
+      }
     }
 
-    function save() {
-      localStorage.setItem("activities", JSON.stringify(activities));
+    function submitCheck() {
+      const total = activities.length;
+      const doneCount = activities.filter(a => a.done).length;
+      const ratio = doneCount / total;
+
+      let kategori = "",
+        pesan = "",
+        bgColor = "";
+
+      if (ratio === 1) {
+        kategori = "Sangat Sehat";
+        pesan = "Bagus! Semua aktivitas telah dilakukan.";
+        bgColor = "#2ecc71"; // hijau cerah
+      } else if (ratio >= 0.5) {
+        kategori = "Sehat";
+        pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
+        bgColor = "#27ae60"; // hijau
+      } else {
+        kategori = "Kurang Baik untuk Kesehatan";
+        pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
+        bgColor = "#e74c3c"; // merah
+      }
+
+      modalContent.innerHTML = `
+    <h3>${kategori}</h3>
+    <p>${pesan}</p>
+    <div class="warning">
+      <strong>Dampak jika tidak melakukan:</strong>
+      <ul>
+        ${activities.filter(a => !a.done).map(a =>
+          `<li><strong>${a.name}:</strong> ${a.impact}</li>`
+        ).join("")}
+      </ul>
+    </div>
+    <button class="close" onclick="closeModal()">Tutup</button>
+  `;
+
+      /* TAMBAHAN AMAN (TIDAK MERUBAH STRUKTUR) */
+      modalContent.style.background = bgColor;
+      modalContent.style.color = "white";
+
+      modal.style.display = "flex";
     }
 
-    function showModal() {
-      modalEl.show();
-    }
 
     function closeModal() {
-      modalEl.hide();
+      modal.style.display = "none";
     }
 
     function resetAll() {
-      if (confirm("Mulai aktivitas baru?")) {
-        activities.forEach(act => act.done = false);
-        localStorage.removeItem("activities");
-        closeModal();
-        render();
-      }
+      activities.forEach(a => a.done = false);
+      closeModal();
+      render();
     }
 
     render();

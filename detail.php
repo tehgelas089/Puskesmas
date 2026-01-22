@@ -73,6 +73,11 @@ $data = mysqli_fetch_assoc(
       <div class="col-lg-6 col-md-12">
         <div class="detail-box h-100">
           <h4 class="mb-3 text-dark">Detail Postingan</h4>
+          <h5 class="fw-semibold text-dark mb-3">
+            <?= $data['judul']; ?>
+          </h5>
+
+
           <p class="text-dark">
             <?= nl2br($data['deskripsi']); ?>
           </p>

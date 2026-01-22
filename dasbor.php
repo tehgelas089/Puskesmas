@@ -134,9 +134,11 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <table class="table table-bordered">
         <tr>
           <th>Gambar</th>
+          <th>Judul</th>
           <th>Deskripsi</th>
           <th>Aksi</th>
         </tr>
+
 
         <?php while ($row = mysqli_fetch_assoc($data)) : ?>
           <tr>
@@ -144,16 +146,18 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
               <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar" style="width: 50px;" height="50px"">
 
             </td>
+            <td><?= $row['judul'] ?></td>
+
             <td><?= $row['deskripsi'] ?></td>
             <td>
               <a href=" edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
               <form action="hapus.php" method="POST" style="display:inline;"
-      onsubmit="return confirm('Yakin mau hapus?')">
-  <input type="hidden" name="id" value="<?= $row['id'] ?>">
-  <button type="submit" class="btn btn-danger btn-sm">
-    Hapus
-  </button>
-</form>
+                onsubmit="return confirm('Yakin mau hapus?')">
+                <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                <button type="submit" class="btn btn-danger btn-sm">
+                  Hapus
+                </button>
+              </form>
 
             </td>
           </tr>
@@ -219,7 +223,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
           <div class="inner-content">
-                 <h2>MAKLUMAT PELAYANAN <br />PUSKESMAS SANGKANHURIP</h2>
+            <h2>MAKLUMAT PELAYANAN <br />PUSKESMAS SANGKANHURIP</h2>
             <p>
               Kami siap memberikan pelayanan sesuai dengan standar pelayanan dan memberikan pelayanan sesuai
               dengan
@@ -523,12 +527,12 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     });
 
     function openHapusModal(id) {
-  document.getElementById('hapusId').value = id;
-  const modal = new bootstrap.Modal(
-    document.getElementById('hapusModal')
-  );
-  modal.show();
-}
+      document.getElementById('hapusId').value = id;
+      const modal = new bootstrap.Modal(
+        document.getElementById('hapusModal')
+      );
+      modal.show();
+    }
   </script>
 </body>
 

@@ -5,24 +5,15 @@
   <meta charset="UTF-8">
   <title>Aktivitas Sehat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    /* === TIDAK DIUBAH === */
     body {
       font-family: Arial, sans-serif;
       background: #f3f6fa;
       padding: 20px;
-    }
-
-    .wrapper {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .container {
-      max-width: 420px;
-      width: 100%;
     }
 
     h2 {
@@ -30,65 +21,111 @@
       margin-bottom: 20px;
     }
 
-    .item {
-      background: #4a80f0;
-      color: white;
-      padding: 14px 16px;
-      border-radius: 14px;
+    /* ================= BUTTON LIST ================= */
+    .button {
+      height: 50px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease-in-out;
       margin-bottom: 12px;
+    }
+
+    /* HOVER DIMATIKAN */
+    .button:hover {
+      box-shadow: none;
+    }
+
+    .type1::after {
+      content: "Selesai ✓";
+      height: 50px;
+      width: 100%;
+      background-color: #27ae60;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(50px);
+      font-size: 1rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease-in-out;
     }
 
-    .item.done {
-      opacity: 0.6;
-      text-decoration: line-through;
-    }
-
-    .item input {
-      margin-right: 10px;
-    }
-
-    button {
+    .type1::before {
+      content: attr(data-text);
+      height: 50px;
       width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 14px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 12px;
+      background-color: #4a80f0;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(0);
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease-in-out;
+      text-align: center;
+      padding: 0 10px;
     }
 
-    .btn-primary {
+    /* ANIMASI AKTIF SETELAH DI KLIK */
+    .button.done::after {
+      transform: translateY(0) scale(1.2);
+    }
+
+    .button.done::before {
+      transform: translateY(-50px) scale(0) rotate(120deg);
+    }
+
+    .button.done {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* =============================================== */
+
+    button.btn-primary {
       background: #4a80f0;
       color: white;
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      margin-top: 12px;
+      border: none;
     }
 
     .btn-reset {
       background: #27ae60;
       color: white;
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      margin-top: 12px;
+      border: none;
     }
 
     .info-box {
-      width: 300px;
       background: #8e8e8e;
       color: white;
       padding: 16px;
       border-radius: 16px;
       font-size: 14px;
       display: none;
-      margin-top: 52px;
     }
 
     .qa {
       margin-bottom: 12px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255, 255, 255, .3);
-    }
-
-    .qa strong {
-      display: block;
-      margin-bottom: 4px;
     }
 
     .modal {
@@ -104,13 +141,13 @@
       background: white;
       padding: 24px;
       border-radius: 16px;
-      width: 85%;
-      max-width: 340px;
+      width: 100%;
+      max-width: 500px;
       text-align: center;
     }
 
     .warning {
-      background: #fff3cd;
+      background: white;
       color: #856404;
       padding: 12px;
       border-radius: 10px;
@@ -119,65 +156,82 @@
       margin-top: 10px;
     }
 
-    .warning ul {
-      padding-left: 18px;
-      margin: 0;
-    }
-
     .close {
       margin-top: 20px;
-      background: #e74c3c;
+      background: #57564F;
       color: white;
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+    }
+
+    .close:hover {
+      background-color: #44444E;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
-    <div class="container">
-      <h2>Tips Gigi Sehat</h2>
-      <div id="list"></div>
-      <button class="btn-primary" onclick="submitCheck()">Lihat Kesehatan gigi Saya</button>
-      <button class="btn-reset" onclick="resetAll()">Buat Baru</button>
-    </div>
-    <div class="info-box" id="infoBox"></div>
-  </div>
+  <div class="container">
+    <h2 class="mb-5">Prilaku Hidup Sehat</h2>
 
-  <div class="modal" id="modal">
-    <div class="modal-content" id="modalContent"></div>
+    <div class="row justify-content-center g-4">
+
+      <div class="col-lg-5 col-12">
+        <div id="list"></div>
+        <button class="btn-primary" onclick="submitCheck()">Lihat Kesehatan</button>
+        <button class="btn-reset" onclick="resetAll()">Buat Baru</button>
+      </div>
+
+      <div class="col-lg-4 col-12">
+        <div class="info-box" id="infoBox"></div>
+      </div>
+
+    </div>
+
+    <div class="modal" id="modal">
+      <div class="modal-content" id="modalContent"></div>
+    </div>
   </div>
 
   <script>
     const activities = [{
-        name: "Ativitas Fisik",
+        name: "Aktivitas Fisik",
         done: false,
-        impact: "Solusi: Lakukan aktivitas fisik rutin untuk menjaga kebugaran."
+        impact: "Kurang bergerak meningkatkan risiko obesitas dan penyakit jantung.",
+        solution: "Lakukan aktivitas fisik rutin untuk menjaga kebugaran."
       },
       {
         name: "Konsumsi buah dan sayur",
         done: false,
-        impact: "Solusi: Perbanyak buah dan sayur untuk daya tahan tubuh."
+        impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
+        solution: "Perbanyak buah dan sayur untuk daya tahan tubuh."
       },
       {
         name: "Cuci tangan dengan benar",
         done: false,
-        impact: "Solusi: Cuci tangan untuk mencegah penyakit menular."
+        impact: "Risiko infeksi dan penyakit menular meningkat.",
+        solution: "Cuci tangan untuk mencegah penyakit menular."
       },
       {
         name: "Tidak merokok",
         done: false,
-        impact: "Solusi: Hindari rokok untuk kesehatan paru-paru."
+        impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
+        solution: "Hindari rokok untuk kesehatan paru-paru."
       },
       {
         name: "Cek tekanan darah",
         done: false,
-        impact: "Solusi: Cek rutin untuk mencegah hipertensi."
+        impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
+        solution: "Cek rutin untuk mencegah hipertensi."
       },
       {
         name: "Cek gula darah",
         done: false,
-        impact: "Solusi: Kontrol gula darah untuk cegah diabetes."
+        impact: "Diabetes dapat berkembang tanpa disadari.",
+        solution: "Kontrol gula darah untuk cegah diabetes."
       }
     ];
 
@@ -193,61 +247,77 @@
 
       activities.forEach(act => {
         if (!act.done) notDone.push(act);
-        const div = document.createElement("div");
-        div.className = "item" + (act.done ? " done" : "");
-        const cb = document.createElement("input");
-        cb.type = "checkbox";
-        cb.checked = act.done;
-        cb.disabled = act.done;
-        cb.onchange = () => {
-          act.done = true;
-          render();
+
+        const btn = document.createElement("button");
+        btn.className = "button type1" + (act.done ? " done" : "");
+        btn.setAttribute("data-text", act.name);
+
+        btn.onclick = () => {
+          if (!act.done) {
+            act.done = true;
+            render();
+          }
         };
-        div.append(cb, document.createTextNode(act.name));
-        listEl.appendChild(div);
+
+        listEl.appendChild(btn);
       });
 
       if (notDone.length) {
         notDone.forEach(a => {
-          infoBox.innerHTML += `<div class="qa"><strong>${a.name}</strong>${a.impact}</div>`;
+          infoBox.innerHTML += `
+            <div class="qa">
+              <strong>${a.name}</strong><br>
+              Solusi: ${a.solution}
+            </div>`;
         });
         infoBox.style.display = "block";
       }
     }
 
-    /* === SISTEM PENILAIAN BARU === */
     function submitCheck() {
       const total = activities.length;
       const doneCount = activities.filter(a => a.done).length;
       const ratio = doneCount / total;
 
       let kategori = "",
-        pesan = "";
+        pesan = "",
+        bgColor = "";
 
       if (ratio === 1) {
         kategori = "Sangat Sehat";
-        pesan = "Semua aktivitas telah dilakukan. Pertahankan gaya hidup sehat 👍";
+        pesan = "Bagus! Semua aktivitas telah dilakukan.";
+        bgColor = "#2ecc71"; // hijau cerah
       } else if (ratio >= 0.5) {
         kategori = "Sehat";
         pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
+        bgColor = "#27ae60"; // hijau
       } else {
         kategori = "Kurang Baik untuk Kesehatan";
         pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
+        bgColor = "#e74c3c"; // merah
       }
 
       modalContent.innerHTML = `
     <h3>${kategori}</h3>
     <p>${pesan}</p>
     <div class="warning">
-      <strong>Aktivitas yang belum dilakukan:</strong>
+      <strong>Dampak jika tidak dilakukan:</strong>
       <ul>
-        ${activities.filter(a=>!a.done).map(a=>`<li>${a.name}</li>`).join("")}
+        ${activities.filter(a => !a.done).map(a =>
+          `<li><strong>${a.name}:</strong> ${a.impact}</li>`
+        ).join("")}
       </ul>
     </div>
     <button class="close" onclick="closeModal()">Tutup</button>
   `;
+
+      /* TAMBAHAN AMAN (TIDAK MERUBAH STRUKTUR) */
+      modalContent.style.background = bgColor;
+      modalContent.style.color = "white";
+
       modal.style.display = "flex";
     }
+
 
     function closeModal() {
       modal.style.display = "none";

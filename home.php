@@ -281,7 +281,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
           <div class="inner-content">
-        <h2>MAKLUMAT PELAYANAN <br />PUSKESMAS SANGKANHURIP</h2>
+            <h2>MAKLUMAT PELAYANAN <br />PUSKESMAS SANGKANHURIP</h2>
             <p>
               Kami siap memberikan pelayanan sesuai dengan standar pelayanan dan memberikan pelayanan sesuai
               dengan
@@ -289,10 +289,10 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
               memberikan pelayanan sesuai dengan standar yang ditetapkan kami siap menerima
               sanksi sesuai dengan peraturan perundang-undangan yang berlaku.
             </p>
-            </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
   <!-- End Cta Area -->
@@ -534,13 +534,20 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="section-title-five">
       <h2 class="text-center">Materi </h2>
 
-      <div class="d-flex justify-content-center my-4">
-  <input
-    type="text"
-    id="searchMateri"
-    class="form-control w-50"
-    placeholder="Cari materi..." />
-</div>
+      <div class="d-flex justify-content-center my-4 gap-2">
+        <input
+          type="text"
+          id="searchMateri"
+          class="form-control w-50"
+          placeholder="Cari materi..." />
+
+        <button
+          class="btn btn-primary"
+          id="btnCariMateri">
+          Cari
+        </button>
+      </div>
+
 
 
 
@@ -555,14 +562,19 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
           while ($row = mysqli_fetch_assoc($data)) :
             $foto = explode(',', $row['gambar']);
           ?>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 materi-item"
+              data-judul="<?= strtolower($row['judul']); ?>"
+              data-deskripsi="<?= strtolower($row['deskripsi']); ?>">
+
 
 
               <a href="detail.php?id=<?= $row['id']; ?>" class="card-link">
                 <div class="card h-100 shadow">
                   <img src="assets/images/blog/<?= $foto[0]; ?>" class="card-img-top">
                   <div class="card-body">
+                    <h6 class="fw-semibold mb-1"><?= $row['judul']; ?></h6>
                     <p class="card-text"><?= $row['deskripsi']; ?></p>
+
                   </div>
                 </div>
               </a>
@@ -751,16 +763,36 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       'autoplayVideos': true,
     });
 
-    document.getElementById('searchMateri').addEventListener('keyup', function () {
-  let keyword = this.value.toLowerCase();
-  let cards = document.querySelectorAll('#blog .card');
+    document.getElementById('searchMateri').addEventListener('keyup', function() {
+      let keyword = this.value.toLowerCase();
+      let cards = document.querySelectorAll('#blog .card');
 
-  cards.forEach(card => {
-    let text = card.innerText.toLowerCase();
-    card.parentElement.style.display =
-      text.includes(keyword) ? '' : 'none';
-  });
-});
+      cards.forEach(card => {
+        let text = card.innerText.toLowerCase();
+        card.parentElement.style.display =
+          text.includes(keyword) ? '' : 'none';
+      });
+    });
+
+    // search
+
+    const searchInput = document.getElementById('searchMateri');
+    const materiItems = document.querySelectorAll('.materi-item');
+
+    searchInput.addEventListener('keyup', function() {
+      const keyword = this.value.toLowerCase();
+
+      materiItems.forEach(item => {
+        const judul = item.getAttribute('data-judul');
+        const deskripsi = item.getAttribute('data-deskripsi');
+
+        if (judul.includes(keyword) || deskripsi.includes(keyword)) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
 
