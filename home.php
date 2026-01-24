@@ -534,8 +534,9 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="section-title-five">
       <h2 class="text-center">Materi </h2>
 
-      <div class="d-flex justify-content-center my-4 gap-2">
-        <input
+      <div class="d-flex justify-content-center align-items-start flex-wrap gap-2">
+
+        <!-- <input
           type="text"
           id="searchMateri"
           class="form-control w-50"
@@ -545,9 +546,76 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
           class="btn btn-primary"
           id="btnCariMateri">
           Cari
-        </button>
+        </button> -->
+        <div class="justify-content-center my-4 flex-wrap" style="max-width: 700px; width: 100%;">
+          <div class="input-group">
+
+            <input
+              type="text"
+              id="searchMateri"
+              class="form-control"
+              placeholder="Cari postingan...">
+
+            <button id="btnCariMateri" class="btn btn-primary">
+              Cari
+            </button>
+          </div>
+
+          <p id="notFoundText" class="w-100 text-center fw-semibold mt-3" style="display:none;">
+            Postingan tidak ditemukan
+          </p>
+        </div>
+
+
+
       </div>
 
+      <script>
+        document.getElementById("btnCariMateri").addEventListener("click", function() {
+          const keyword = document.getElementById("searchMateri").value.toLowerCase();
+          const items = document.querySelectorAll(".materi-item");
+
+          items.forEach(item => {
+            const judul = item.getAttribute("data-judul");
+
+            if (judul.includes(keyword)) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+
+        // optional: search langsung saat mengetik
+        document.getElementById("searchMateri").addEventListener("keyup", function() {
+          const keyword = this.value.toLowerCase();
+          const items = document.querySelectorAll(".materi-item");
+
+          items.forEach(item => {
+            const judul = item.getAttribute("data-judul");
+
+            item.style.display = judul.includes(keyword) ? "block" : "none";
+          });
+        });
+
+        function cekPostingan() {
+          const items = document.querySelectorAll(".materi-item");
+          const notFoundText = document.getElementById("notFoundText");
+
+          let adaYangTampil = false;
+
+          items.forEach(item => {
+            if (item.style.display !== "none") {
+              adaYangTampil = true;
+            }
+          });
+
+          notFoundText.style.display = adaYangTampil ? "none" : "block";
+        }
+
+        document.getElementById("btnCariMateri").addEventListener("click", cekPostingan);
+        document.getElementById("searchMateri").addEventListener("keyup", cekPostingan);
+      </script>
 
 
 
@@ -761,37 +829,6 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       'source': 'youtube', //vimeo, youtube or local
       'width': 900,
       'autoplayVideos': true,
-    });
-
-    document.getElementById('searchMateri').addEventListener('keyup', function() {
-      let keyword = this.value.toLowerCase();
-      let cards = document.querySelectorAll('#blog .card');
-
-      cards.forEach(card => {
-        let text = card.innerText.toLowerCase();
-        card.parentElement.style.display =
-          text.includes(keyword) ? '' : 'none';
-      });
-    });
-
-    // search
-
-    const searchInput = document.getElementById('searchMateri');
-    const materiItems = document.querySelectorAll('.materi-item');
-
-    searchInput.addEventListener('keyup', function() {
-      const keyword = this.value.toLowerCase();
-
-      materiItems.forEach(item => {
-        const judul = item.getAttribute('data-judul');
-        const deskripsi = item.getAttribute('data-deskripsi');
-
-        if (judul.includes(keyword) || deskripsi.includes(keyword)) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      });
     });
   </script>
 </body>
