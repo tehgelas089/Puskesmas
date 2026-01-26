@@ -125,49 +125,49 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
   <!--====== ABOUT FIVE PART START ======-->
 
-  <section class="about-area about-five" id="promosi">
-    <div class="container">
 
-      <h3>Data Postingan</h3>
-      <a href="posting.php" class="btn btn-primary mb-3">+ Tambah Post</a>
+  <section id="galeri" class="services-area services-eight">
 
-      <table class="table table-bordered">
-        <tr>
-          <th>Gambar</th>
-          <th>Judul</th>
-          <th>Deskripsi</th>
-          <th>Aksi</th>
-        </tr>
+    <div class="section-title-five">
+      <div class="container">
+        <!-- tabel acara -->
 
+        <?php
+        $acara = mysqli_query($conn, "SELECT * FROM promosi ORDER BY tanggal DESC");
+        ?>
 
-        <?php while ($row = mysqli_fetch_assoc($data)) : ?>
+        <h3 class="mb-3">Data Promosi Acara</h3>
+        <a href="addEvent.php" class="btn btn-primary mb-3">+ Tambah Acara</a>
+
+        <table class="table table-bordered">
           <tr>
-            <td>
-              <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar" style="width: 50px;" height="50px"">
-
-            </td>
-            <td><?= $row['judul'] ?></td>
-
-            <td><?= $row['deskripsi'] ?></td>
-            <td>
-              <a href=" edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
-              <form action="hapus.php" method="POST" style="display:inline;"
-                onsubmit="return confirm('Yakin mau hapus?')">
-                <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                <button type="submit" class="btn btn-danger btn-sm">
-                  Hapus
-                </button>
-              </form>
-
-            </td>
+            <th>Gambar</th>
+            <th>Deskripsi Acara</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
           </tr>
-        <?php endwhile; ?>
-      </table>
 
+          <?php while ($row = mysqli_fetch_assoc($acara)) : ?>
+            <tr>
+              <td>
+                <img src="assets/images/acara/<?= $row['gambar']; ?>" width="60" alt="gambar">
+              </td>
+              <td><?= $row['deskripsi']; ?></td>
+              <td><?= date('d M Y', strtotime($row['tanggal'])); ?></td>
+              <td>
+                <a href="editEvent.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                <a href="deleteEvent.php?id=<?= $row['id']; ?>"
+                  class="btn btn-danger btn-sm"
+                  onclick="return confirm('Hapus acara?')">Hapus</a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </table>
+
+      </div>
     </div>
+
   </section>
-
-
 
 
 
@@ -241,7 +241,6 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <!-- End Brand Area -->
 
   <!-- ========================= contact-section start ========================= -->
-
   <!-- ========================= contact-section end ========================= -->
 
   <!-- ========================= map-section end ========================= -->

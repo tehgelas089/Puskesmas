@@ -34,7 +34,7 @@
     }
 
     .menu-card {
-      background: #9e9e9e;
+      background: #71C9CE;
       color: black;
       border-radius: 18px;
       height: 110px;
@@ -49,7 +49,7 @@
     }
 
     .menu-card:hover {
-      background: #7f7f7f;
+      background: #A6E3E9;
       transform: scale(1.03);
     }
   </style>
