@@ -255,7 +255,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
               <h2 class="fw-bold">Dibangun oleh:</h2>
               <p>
-                Website ini dibangun oleh Puskesmas Sangkanhurip yang berkolaborasi dengan SMKS Mahaputra cerdas utama
+                Website ini dibangun oleh Puskesmas Sangkanhurip yang berkolaborasi dengan SMKS Mahaputra cerdas utama.
               </p>
             </div>
           </div>
@@ -294,27 +294,27 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         <div class="col-xl-4">
           <div class="contact-item-wrapper">
             <div class="row">
-              <div class="col-12 col-md-6 col-xl-12">
+              <div class="col-12">
                 <div class="contact-item">
                   <div class="contact-icon">
                     <i class="lni lni-phone"></i>
                   </div>
                   <div class="contact-content">
-                    <h4>Contact</h4>
-                    <p>0984537278623</p>
-                    <p>yourmail@gmail.com</p>
+                    <h4>Kontak</h4>
+                    <p>08124787781</p>
+                    <p>pkmsangkanhurip@bandungkab.go.id</p>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-xl-12">
+              <div class="col-12">
                 <div class="contact-item">
                   <div class="contact-icon">
                     <i class="lni lni-map-marker"></i>
                   </div>
                   <div class="contact-content">
-                    <h4>Address</h4>
-                    <p>175 5th Ave, New York, NY 10010</p>
-                    <p>United States</p>
+                    <h4>Alamat</h4>
+                    <p>Jl.Katapang Andir No.117 RT 03 RW 06 Desa Sukamukti Kec.Katapang</p>
+                    <p>Bandung</p>
                   </div>
                 </div>
               </div>
@@ -324,9 +324,10 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
                     <i class="lni lni-alarm-clock"></i>
                   </div>
                   <div class="contact-content">
-                    <h4>Schedule</h4>
-                    <p>24 Hours / 7 Days Open</p>
-                    <p>Office time: 10 AM - 5:30 PM</p>
+                    <h4>Jam Operasi</h4>
+                    <p>5 jam / 6 Hari buka</p>
+                    <p>Senin-Kamis:07.30-11.00 WIB</p>
+                    <p>Jumat-Sabtu:07.30-10.00 WIB</p>
                   </div>
                 </div>
               </div>
@@ -528,6 +529,37 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       modal.show();
     }
   </script>
+  <style>
+     #contact {
+    padding-bottom: 80px;
+  }
+
+  .map-section {
+    position: relative;
+    z-index: 0;
+    margin-top: 120px;
+  }
+   .contact-item {
+  display: flex;
+  align-items: flex-start; /* BUKAN center */
+  gap: 16px;
+  padding: 24px;
+  min-height: 160px; /* bikin card tinggi */
+}
+
+.contact-icon {
+  flex-shrink: 0;
+}
+
+.contact-content p {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.contact-content h4 {
+  margin-bottom: 4% ;
+}
+  </style>
 </body>
 
 </html>
