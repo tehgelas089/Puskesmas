@@ -239,11 +239,11 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
           <!-- TAMBAHAN: tombol slide manual -->
           <button class="carousel-control-prev" type="button" data-bs-target="#acaraCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" style="background-color: aqua;"></span>
+            <span class="carousel-control-prev-icon"></span>
           </button>
 
           <button class="carousel-control-next" type="button" data-bs-target="#acaraCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" style="background-color: aqua;"></span>
+            <span class="carousel-control-next-icon"></span>
           </button>
 
         </div>
@@ -253,11 +253,26 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   </section>
 
   <!-- TAMBAHAN: percepat animasi slide -->
-  <style>
-    .carousel-item {
-      transition: transform 0.3s ease-in-out;
-    }
-  </style>
+   <style>
+ /* ===== AGENDA ACARA STYLE FIX ===== */
+#acaraCarousel .card {
+  border: 2px solid #000;   /* border hitam */
+  background: transparent; /* tanpa background */
+}
+
+/* icon panah hitam */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+/* hover biar keliatan hidup */
+#acaraCarousel .card:hover {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+}
+</style>
+
 
   <!-- PERUBAHAN: percepat interval auto slide -->
   <script>
@@ -705,12 +720,14 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
   <!-- ========================= map-section end ========================= -->
   <section class="map-section map-style-9">
-    <div class="map-container">
-      <object style="border:0; height: 500px; width: 100%;"
-        data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.7887109309127!2d-77.44196278417968!3d38.95165507956235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU3JzA2LjAiTiA3N8KwMjYnMjMuMiJX!5e0!3m2!1sen!2sbd!4v1545420879707"></object>
-    </div>
-    </div>
-  </section>
+  <div class="map-container">
+    <object
+      style="border:0; height: 500px; width: 100%;"
+      data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9408290939426!2d107.5767775!3d-6.9974503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e94c18338fed%3A0xc33b63c7a6ba30c6!2sPuskesmas%20Sangkanhurip!5e0!3m2!1sid!2sid!4v1737550000000">
+    </object>
+  </div>
+</section>
+
   <!-- ========================= map-section end ========================= -->
 
   <!-- Start Footer Area -->
@@ -722,12 +739,12 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
           <div class="row">
             <div class="col-lg-4 col-md-6 col-12">
               <!-- Single Widget -->
-              <div class="footer-widget f-about">
-                <div class="logo">
-                  <a href="index.html">
-                    <img src="assets/images/logo.svg" alt="#" class="img-fluid" />
-                  </a>
-                </div>
+               <div class="footer-widget f-about">
+              <div class="logo">
+                <a href="index.html">
+                  <img src="assets/images/puskes.png" alt="" class="img-fluid" />
+                </a>
+              </div>
                 <p>
                   "Puskesmas Beraksi"
                 </p>

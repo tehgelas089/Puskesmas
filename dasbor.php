@@ -245,14 +245,15 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <!-- ========================= contact-section end ========================= -->
 
   <!-- ========================= map-section end ========================= -->
-  <!-- <section class="map-section map-style-9">
-    <div class="map-container">
-      <object style="border:0; height: 500px; width: 100%;"
-        data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.7887109309127!2d-77.44196278417968!3d38.95165507956235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDU3JzA2LjAiTiA3N8KwMjYnMjMuMiJX!5e0!3m2!1sen!2sbd!4v1545420879707"></object>
-    </div>
-    </div>
-  </section> -->
-  <!-- ========================= map-section end ========================= -->
+<section class="map-section map-style-9">
+  <div class="map-container">
+    <object
+      style="border:0; height: 500px; width: 100%;"
+      data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9408290939426!2d107.5767775!3d-6.9974503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e94c18338fed%3A0xc33b63c7a6ba30c6!2sPuskesmas%20Sangkanhurip!5e0!3m2!1sid!2sid!4v1737550000000">
+    </object>
+  </div>
+</section>
+
 
   <!-- Start Footer Area -->
   <footer class="footer-area footer-eleven">
@@ -263,12 +264,12 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
           <div class="row">
             <div class="col-lg-4 col-md-6 col-12">
               <!-- Single Widget -->
-              <div class="footer-widget f-about">
-                <div class="logo">
-                  <a href="index.html">
-                    <img src="assets/images/logo.svg" alt="#" class="img-fluid" />
-                  </a>
-                </div>
+             <div class="footer-widget f-about">
+              <div class="logo">
+                <a href="index.html">
+                  <img src="assets/images/puskes.png" alt="" class="img-fluid" />
+                </a>
+              </div>
                 <p>
                   Making the world a better place through constructing elegant
                   hierarchies.
@@ -374,13 +375,6 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     });
 
     //========= glightbox
-    GLightbox({
-      'href': 'https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM',
-      'type': 'video',
-      'source': 'youtube', //vimeo, youtube or local
-      'width': 900,
-      'autoplayVideos': true,
-    });
 
     function openHapusModal(id) {
       document.getElementById('hapusId').value = id;
