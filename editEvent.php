@@ -26,6 +26,6 @@ if (isset($_POST['update'])) {
     mysqli_query($conn, "UPDATE promosi SET deskripsi='$deskripsi', tanggal='$tanggal' WHERE id='$id'");
   }
 
-  echo "<script>alert('Promosi diperbarui');location='dasbor.php';</script>";
+  echo "<script>alert('Promosi diperbarui');location='Agenda.php';</script>";
 }
 ?>

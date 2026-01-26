@@ -7,4 +7,4 @@ $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM promosi WHERE id='
 unlink("assets/images/acara/" . $data['gambar']);
 mysqli_query($conn, "DELETE FROM promosi WHERE id='$id'");
 
-header("location:dasbor.php");
+header("location:Agenda.php");
