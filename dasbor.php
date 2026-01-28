@@ -129,11 +129,11 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="container">
 
       <h3>Data Postingan</h3>
-      <a href="posting.php" class="btn btn-primary mb-3">+ Tambah Post</a>
+      <a href="posting.php" class="btn btn-primary mb-3">Tambah Postingan</a>
 
-      <table class="table table-bordered">
-        <tr>
-          <th>Gambar</th>
+      <table class="table table-bordered" style="border: 2px;">
+        <tr class="text-center">
+          <th>Postingan</th>
           <th>Judul</th>
           <th>Deskripsi</th>
           <th>Aksi</th>
@@ -143,18 +143,32 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         <?php while ($row = mysqli_fetch_assoc($data)) : ?>
           <tr>
             <td>
-              <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="gambar" style="width: 50px;" height="50px"">
+              <!-- <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="postingan" style="width: 100px;" height="100px"> -->
+              <?php
+              $gambar = explode(',', $row['gambar']);
+              $preview = $gambar[0];
+              ?>
+
+              <img src="assets/images/blog/<?= $preview ?>"
+                class="card-img-top"
+                alt="postingan"
+                style="width: 100px; height:100px; object-fit:cover;">
 
             </td>
             <td><?= $row['judul'] ?></td>
 
             <td><?= $row['deskripsi'] ?></td>
             <td>
-              <a href=" edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+
+
+
+              <a href=" edit.php?id=<?= $row['id'] ?>" class="cdn" style="line-height: 2.3em;">
+                EDIT
+              </a>
               <form action="hapus.php" method="POST" style="display:inline;"
                 onsubmit="return confirm('Yakin mau hapus?')">
                 <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                <button type="submit" class="btn btn-danger btn-sm">
+                <button type="submit" class="hps">
                   Hapus
                 </button>
               </form>
@@ -168,7 +182,87 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   </section>
 
 
+  <style>
+    .cdn {
+      width: 6.5em;
+      height: 2.3em;
+      margin: 0.5em;
+      background: #EEA727;
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      text-align: center;
+    }
 
+    .cdn:hover {
+      color: white;
+    }
+
+    .cdn:after {
+      content: "";
+      background: #222222;
+      position: absolute;
+      z-index: -1;
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.5s;
+    }
+
+    .cdn:hover:after {
+      transform: skewX(-45deg) scale(1, 1);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+
+    .hps {
+      width: 6.5em;
+      height: 2.3em;
+      margin: 0.5em;
+      background: #FF4646;
+      color: white;
+      border: none;
+      border-radius: 0.625em;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hps:hover {
+      color: white;
+    }
+
+    .hps:after {
+      content: "";
+      background: #222222;
+      position: absolute;
+      z-index: -1;
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.5s;
+    }
+
+    .hps:hover:after {
+      transform: skewX(-45deg) scale(1, 1);
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+  </style>
 
 
   <section id="call-action" class="call-action">
@@ -198,7 +292,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <!-- End Latest News Area -->
 
   <!-- Start Brand Area -->
-  <div id="clients" class="brand-area section">
+  <div id="clients" class="brand-area section mb-5">
     <!--======  Start Section Title Five ======-->
     <div class="section-title-five">
       <div class="container">
@@ -245,14 +339,14 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <!-- ========================= contact-section end ========================= -->
 
   <!-- ========================= map-section end ========================= -->
-<section class="map-section map-style-9">
-  <div class="map-container">
-    <object
-      style="border:0; height: 500px; width: 100%;"
-      data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9408290939426!2d107.5767775!3d-6.9974503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e94c18338fed%3A0xc33b63c7a6ba30c6!2sPuskesmas%20Sangkanhurip!5e0!3m2!1sid!2sid!4v1737550000000">
-    </object>
-  </div>
-</section>
+  <section class="map-section map-style-9 ">
+    <div class="map-container">
+      <object
+        style="border:0; height: 500px; width: 100%;"
+        data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9408290939426!2d107.5767775!3d-6.9974503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e94c18338fed%3A0xc33b63c7a6ba30c6!2sPuskesmas%20Sangkanhurip!5e0!3m2!1sid!2sid!4v1737550000000">
+      </object>
+    </div>
+  </section>
 
 
   <!-- Start Footer Area -->
@@ -264,12 +358,12 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
           <div class="row">
             <div class="col-lg-4 col-md-6 col-12">
               <!-- Single Widget -->
-             <div class="footer-widget f-about">
-              <div class="logo">
-                <a href="index.html">
-                  <img src="assets/images/puskes.png" alt="" class="img-fluid" />
-                </a>
-              </div>
+              <div class="footer-widget f-about">
+                <div class="logo">
+                  <a href="index.html">
+                    <img src="assets/images/puskes.png" alt="" class="img-fluid" />
+                  </a>
+                </div>
                 <p>
                   Making the world a better place through constructing elegant
                   hierarchies.

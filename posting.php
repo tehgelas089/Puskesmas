@@ -30,6 +30,45 @@
       background: #fdecea;
       color: #c62828;
     }
+
+    /* === TAMBAHAN STYLE (TIDAK MENGUBAH YANG LAMA) === */
+    .preview-card {
+      width: 100%;
+      height: 180px;
+      background: #9e9e9e;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .preview-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-btn {
+      height: 48px;
+      border-radius: 16px;
+      font-weight: 600;
+    }
+
+    .preview-card {
+      cursor: pointer;
+    }
+
+    #file-wrapper {
+      max-height: 200px;
+      /* muat ±4 input file */
+      overflow-y: auto;
+      /* scroll ke bawah */
+      padding-right: 6px;
+      /* biar scrollbar nggak nabrak */
+    }
   </style>
 </head>
 
@@ -39,34 +78,56 @@
 
   <form method="POST" enctype="multipart/form-data">
 
-    <div id="file-wrapper">
-      <input type="file" name="gambar[]" class="form-control mb-2" required>
+    <!-- === BAGIAN TAMPILAN FILE + PREVIEW (DITERAPKAN LANGSUNG) === -->
+    <div class="row g-3 mb-3">
+
+
+      <!-- === INPUT YANG LAMA TETAP === -->
+      <input type="text"
+        name="judul"
+        class="form-control mb-3"
+        placeholder="Judul Postingan"
+        required>
+
+      <textarea name="deskripsi"
+        class="form-control mb-3"
+        placeholder="Deskripsi"
+        required></textarea>
+
+      <div class="col-md-4">
+        <div class="preview-card" id="preview">
+          Gambar Postingan
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div id="file-wrapper">
+          <input
+            type="file"
+            name="gambar[]"
+            class="form-control mb-2"
+            accept="image/*"
+            onchange="previewImage(this)"
+            required>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm mt-2"
+          onclick="tambahFile()">
+          + Tambah Foto
+        </button>
+      </div>
+
     </div>
 
-    <button type="button"
-      class="btn btn-secondary btn-sm mb-3"
-      onclick="tambahFile()">
-      + Tambah Foto
-    </button>
 
-    <input type="text"
-      name="judul"
-      class="form-control mb-3"
-      placeholder="Judul Postingan"
-      required>
-
-
-    <textarea name="deskripsi"
-      class="form-control mb-3"
-      placeholder="Deskripsi"
-      required></textarea>
-
-    <button class="btn btn-success" name="simpan">
-      Simpan
+    <button class="btn btn-success w-100 post-btn" name="simpan">
+      Posting
     </button>
   </form>
 
-  <!-- MODAL -->
+  <!-- MODAL (TETAP) -->
   <div class="modal fade" id="notifModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -85,7 +146,8 @@
     </div>
   </div>
 
-  <!-- BOOTSTRAP JS (WAJIB) -->
+
+  <!-- BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
@@ -124,9 +186,34 @@
       input.type = 'file';
       input.name = 'gambar[]';
       input.className = 'form-control mb-2';
+      input.accept = 'image/*';
+      input.onchange = function() {
+        previewImage(this);
+      };
 
       wrapper.appendChild(input);
     }
+
+    /* === TAMBAHAN PREVIEW GAMBAR === */
+    function previewImage(input) {
+      const preview = document.getElementById('preview');
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          preview.innerHTML = `<img src="${e.target.result}">`;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    document.getElementById('preview').addEventListener('click', function() {
+      const input = document.querySelector('#file-wrapper input[type="file"]');
+      if (input) {
+        input.click();
+      }
+    });
   </script>
 
   <?php
@@ -151,19 +238,19 @@
     $gambar = implode(',', $namaFile);
 
     mysqli_query($conn, "
-  INSERT INTO postingan (judul, gambar, deskripsi)
-  VALUES ('$judul', '$gambar', '$deskripsi')
-");
+      INSERT INTO postingan (judul, gambar, deskripsi)
+      VALUES ('$judul', '$gambar', '$deskripsi')
+    ");
 
     echo "
-  <script>
-    showNotif(
-      'Berhasil',
-      'Postingan berhasil ditambahkan',
-      'success',
-      'dasbor.php'
-    );
-  </script>";
+      <script>
+        showNotif(
+          'Berhasil',
+          'Postingan berhasil ditambahkan',
+          'success',
+          'dasbor.php'
+        );
+      </script>";
   }
   ?>
 

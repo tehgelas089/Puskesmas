@@ -147,11 +147,17 @@ $foto = explode(',', $data['gambar']);
         <?php foreach ($foto as $i => $img): ?>
           <div class="foto-item">
 
-            <img src="assets/images/blog/<?= $img ?>">
+            <!-- <img src="assets/images/blog/<?= $img ?>"> -->
+            <img src="assets/images/blog/<?= $img ?>" id="preview<?= $i ?>">
+
+            <!-- <input type="file"
+              name="ganti_foto[<?= $i ?>]"
+              class="form-control form-control-sm mb-2"> -->
 
             <input type="file"
               name="ganti_foto[<?= $i ?>]"
-              class="form-control form-control-sm mb-2">
+              class="form-control form-control-sm mb-2"
+              onchange="previewFoto(this, <?= $i ?>)">
 
             <?php if (count($foto) > 1): ?>
               <button name="hapus_foto"
@@ -242,6 +248,20 @@ $foto = explode(',', $data['gambar']);
         setTimeout(() => {
           window.location.href = redirect;
         }, 1500);
+      }
+    }
+
+    function previewFoto(input, index) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+
+
+        reader.onload = function(e) {
+          document.getElementById('preview' + index).src = e.target.result;
+        };
+
+
+        reader.readAsDataURL(input.files[0]);
       }
     }
   </script>

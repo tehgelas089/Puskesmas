@@ -179,7 +179,7 @@
 <body>
 
   <div class="container">
-    <h2 class="mb-5">Prilaku Hidup Sehat</h2>
+    <h2 class="mb-5">Perilaku Hidup Sehat</h2>
 
     <div class="row justify-content-center g-4">
       <div class="col-lg-5 col-12">
@@ -203,7 +203,7 @@
         name: "Aktivitas Fisik",
         done: false,
         impact: "Kurang bergerak meningkatkan risiko obesitas dan penyakit jantung.",
-        solution: "Aktivitas fisik adalah setiap gerakan tubuh yang dilakukan oleh otot rangka dan memerlukan energi, seperti berjalan, berolahraga, bekerja, atau melakukan kegiatan sehari-hari, <br> Manfaat aktivitas fisik sangat besar bagi kesehatan, antara lain meningkatkan kekuatan otot dan tulang, menjaga kesehatan jantung dan paru-paru, melancarkan peredaran darah, serta membantu mengontrol berat badan. "
+        solution: "Aktivitas fisik adalah setiap gerakan tubuh yang dilakukan oleh otot rangka dan memerlukan energi.Ini mencakup aktivitas apapun yang menggerakkan tubuh, seperti bekerja, bermain, berjalan, dan melakukan pekerjaan rumah tangga. Dilakukan minimal 30 menit setiap hari.  <br> Manfaat aktivitas fisik sangat besar bagi kesehatan, antara lain meningkatkan kekuatan otot dan tulang, menjaga kesehatan jantung dan paru-paru, melancarkan peredaran darah, serta membantu mengontrol berat badan. "
 
       },
       {
@@ -277,7 +277,7 @@
             infoBox.innerHTML = `
               <div class="qa">
                 <strong>${act.name}</strong><br>
-                Solusi: ${act.solution}
+                 ${act.solution}
               </div>
             `;
             infoBox.style.display = "block";
