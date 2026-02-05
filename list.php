@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>pencegahaan penyakit tidak menular</title>
+  <title>Aktivitas Sehat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- BOOTSTRAP -->
@@ -21,7 +21,6 @@
       margin-bottom: 20px;
     }
 
-    /* ================= BUTTON LIST ================= */
     .button {
       height: 50px;
       width: 100%;
@@ -34,7 +33,6 @@
       margin-bottom: 12px;
     }
 
-    /* HOVER DIMATIKAN */
     .button:hover {
       box-shadow: none;
     }
@@ -77,7 +75,6 @@
       padding: 0 10px;
     }
 
-    /* ANIMASI AKTIF SETELAH DI KLIK */
     .button.done::after {
       transform: translateY(0) scale(1.2);
     }
@@ -90,8 +87,6 @@
       opacity: 0.7;
       pointer-events: none;
     }
-
-    /* =============================================== */
 
     button.btn-primary {
       background: #4a80f0;
@@ -114,7 +109,7 @@
     }
 
     .info-box {
-      background: #8e8e8e;
+      background: #71C9CE;
       color: white;
       padding: 16px;
       border-radius: 16px;
@@ -122,11 +117,24 @@
       display: none;
     }
 
-    .qa {
+    /* ===== TAMBAHAN (TANPA MENGUBAH YANG LAIN) ===== */
+    .info-empty {
+      border: 2px solid red;
+      border-radius: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      background: white;
+      color: red;
+      font-size: 14px;
+    }
+
+    /* ============================================= */
+
+    /* .qa {
       margin-bottom: 12px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255, 255, 255, .3);
-    }
+    } */
 
     .modal {
       position: fixed;
@@ -165,20 +173,15 @@
       border-radius: 12px;
       border: none;
     }
-
-    .close:hover {
-      background-color: #44444E;
-    }
   </style>
 </head>
 
 <body>
 
   <div class="container">
-    <h2 class="mb-5">Pencegahaan penyakit tidak menular</h2>
+    <h2 class="mb-5">Pencegahaan Penyakit tidak menular</h2>
 
     <div class="row justify-content-center g-4">
-
       <div class="col-lg-5 col-12">
         <div id="list"></div>
         <button class="btn-primary" onclick="submitCheck()">Lihat Kesehatan</button>
@@ -188,7 +191,6 @@
       <div class="col-lg-4 col-12">
         <div class="info-box" id="infoBox"></div>
       </div>
-
     </div>
 
     <div class="modal" id="modal">
@@ -198,40 +200,41 @@
 
   <script>
     const activities = [{
-        name: "Aktivitas Fisik",
+        name: "Mengonsumsi makanan bergizi seimbang",
         done: false,
-        impact: "Otot dan jantung melemah.",
-        solution: "Luangkan waktu olahraga minimal 30 menit/hari."
+        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular. ",
+        solution: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular."
+
       },
       {
-        name: "Jaga pola makan sehat",
+        name: "Membatasi gula, garam, dan lemak",
         done: false,
-        impact: "Daya tahan tubuh menurun.",
-        solution: "Pilih menu gizi seimbang."
+        impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
+        solution: "bertujuan untuk mengurangi beban kerja organ tubuh, terutama jantung dan ginjal, sehingga dapat mencegah hipertensi, obesitas, dan diabetes."
       },
       {
-        name: "Jaga berat badan ideal",
+        name: "Menjaga berat badan ideal",
         done: false,
-        impact: "Beban kerja jantung meningkat.",
-        solution: "Seimbangkan pola makan dan aktivitas fisik."
+        impact: "Risiko infeksi dan penyakit menular meningkat.",
+        solution: "berarti mempertahankan berat badan sesuai indeks massa tubuh normal, yang bermanfaat untuk mengurangi risiko penyakit seperti diabetes, tekanan darah tinggi, dan gangguan sendi."
       },
       {
-        name: "Hindari rokok dan alkohol",
+        name: "Istirahat dan tidur yang cukup",
         done: false,
-        impact: "Risiko kanker paru dan Kerusakan hati dan organ tubuh lainnya.",
-        solution: "Hindari dan jauhi rokok dan alkohol."
+        impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
+        solution: "kebiasaan memberikan waktu pemulihan bagi tubuh, yang bermanfaat untuk menjaga keseimbangan hormon, meningkatkan konsentrasi, dan memperkuat sistem imun."
       },
       {
-        name: "Istirahan yang cukup",
+        name: "Melakukan pemeriksaan kesehatan secara rutin",
         done: false,
-        impact: "Konsentrasi menurun.",
-        solution: "Atur waktu kerja dan istirahat."
+        impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
+        solution: "bertujuan untuk memantau kondisi tubuh secara berkala sehingga penyakit dapat dideteksi lebih awal dan ditangani dengan cepat"
       },
       {
-        name: "Cek kesehatan berkala",
+        name: "Menerapkan Perilaku Hidup Bersih dan Sehat",
         done: false,
-        impact: "Penyakit tidak terdeteksi sejak dini.",
-        solution: "Lakukan pemeriksaan meski merasa sehat."
+        impact: "Diabetes dapat berkembang tanpa disadari.",
+        solution: "kebiasaan hidup yang menjaga kebersihan diri dan lingkungan untuk mendukung kesehatan tubuh secara menyeluruh dan mencegah berbagai penyakit."
       }
     ];
 
@@ -242,12 +245,22 @@
 
     function render() {
       listEl.innerHTML = "";
-      infoBox.innerHTML = "";
-      const notDone = [];
+
+      const doneCount = activities.filter(a => a.done).length;
+
+      // ===== TAMBAHAN: kondisi awal =====
+      if (doneCount === 0) {
+        infoBox.innerHTML = `
+          <div class="info-empty">
+            Anda belum melakukan kegiatan<br>
+            apapun dalam list
+          </div>
+        `;
+        infoBox.style.display = "block";
+      }
+      // =================================
 
       activities.forEach(act => {
-        if (!act.done) notDone.push(act);
-
         const btn = document.createElement("button");
         btn.className = "button type1" + (act.done ? " done" : "");
         btn.setAttribute("data-text", act.name);
@@ -255,53 +268,116 @@
         btn.onclick = () => {
           if (!act.done) {
             act.done = true;
+
+            localStorage.setItem(
+              "activitiesStatus",
+              JSON.stringify(activities.map(a => a.done))
+            );
+
+            infoBox.innerHTML = `
+              <div class="qa">
+                <strong>${act.name}</strong><br>
+                 ${act.solution}
+              </div>
+            `;
+            infoBox.style.display = "block";
+
             render();
+
+            localStorage.setItem("infoBoxContent", infoBox.innerHTML);
+            localStorage.setItem("infoBoxVisible", "true");
           }
         };
 
         listEl.appendChild(btn);
       });
-
-      if (notDone.length) {
-        notDone.forEach(a => {
-          infoBox.innerHTML += `
-            <div class="qa">
-              <strong>${a.name}</strong><br>
-              Solusi: ${a.solution}
-            </div>`;
-        });
-        infoBox.style.display = "block";
-      }
     }
+
+    // ===== TAMBAHAN: ambil status dari localStorage =====
+    const savedStatus = JSON.parse(localStorage.getItem("activitiesStatus"));
+    if (savedStatus) {
+      activities.forEach((a, i) => {
+        if (savedStatus[i] !== undefined) {
+          a.done = savedStatus[i];
+        }
+      });
+    }
+
+    // ===== TAMBAHAN: restore info box =====
+    const savedInfo = localStorage.getItem("infoBoxContent");
+    const infoVisible = localStorage.getItem("infoBoxVisible");
+
+    if (savedInfo && infoVisible === "true") {
+      infoBox.innerHTML = savedInfo;
+      infoBox.style.display = "block";
+    }
+    // =====================================
+
+    // function submitCheck() {
+    //   const total = activities.length;
+    //   const doneCount = activities.filter(a => a.done).length;
+    //   const ratio = doneCount / total;
+
+    //   let kategori = "",
+    //     pesan = "",
+    //     bgColor = "";
+
+    //   if (ratio === 1) {
+    //     kategori = "Sangat Sehat";
+    //     pesan = "Bagus! Semua aktivitas telah dilakukan.";
+    //     bgColor = "#2ecc71";
+    //   } else if (ratio >= 0.5) {
+    //     kategori = "Sehat";
+    //     pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
+    //     bgColor = "#27ae60";
+    //   } else {
+    //     kategori = "Kurang Baik untuk Kesehatan";
+    //     pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
+    //     bgColor = "#e74c3c";
+    //   }
+
+    //   modalContent.innerHTML = `
+    //     <h3>${kategori}</h3>
+    //     <p>${pesan}</p>
+    //     <div class="warning">
+    //       <strong>Dampak jika tidak dilakukan:</strong>
+    //       <ul>
+    //         ${activities.filter(a => !a.done).map(a =>
+    //           `<li><strong>${a.name}:</strong> ${a.impact}</li>`
+    //         ).join("")}
+    //       </ul>
+    //     </div>
+    //     <button class="close" onclick="closeModal()">Tutup</button>
+    //   `;
+
+    //   modalContent.style.background = bgColor;
+    //   modalContent.style.color = "white";
+    //   modal.style.display = "flex";
+    // }
 
     function submitCheck() {
       const total = activities.length;
       const doneCount = activities.filter(a => a.done).length;
-      const ratio = doneCount / total;
 
       let kategori = "",
         pesan = "",
         bgColor = "";
 
-      if (ratio === 1) {
-        kategori = "Sangat Sehat";
-        pesan = "Bagus! Semua aktivitas telah dilakukan.";
-        bgColor = "#2ecc71"; // hijau cerah
-      } else if (ratio >= 0.5) {
+      if (doneCount === total) {
         kategori = "Sehat";
-        pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
-        bgColor = "#27ae60"; // hijau
+        pesan = "Mantap! Semua aktivitas telah dilakukan dengan baik.";
+        bgColor = "#2ecc71";
       } else {
-        kategori = "Kurang Baik untuk Kesehatan";
-        pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
-        bgColor = "#e74c3c"; // merah
+        kategori = "Kurang Sehat";
+        pesan = "Masih ada aktivitas penting yang belum dilakukan.";
+        bgColor = "#e74c3c";
       }
 
       modalContent.innerHTML = `
     <h3>${kategori}</h3>
     <p>${pesan}</p>
     <div class="warning">
-      <strong>Dampak jika tidak melakukan:</strong>
+      <strong>Dampak jika tidak dilakukan:</strong>
       <ul>
         ${activities.filter(a => !a.done).map(a =>
           `<li><strong>${a.name}:</strong> ${a.impact}</li>`
@@ -311,13 +387,10 @@
     <button class="close" onclick="closeModal()">Tutup</button>
   `;
 
-      /* TAMBAHAN AMAN (TIDAK MERUBAH STRUKTUR) */
       modalContent.style.background = bgColor;
       modalContent.style.color = "white";
-
       modal.style.display = "flex";
     }
-
 
     function closeModal() {
       modal.style.display = "none";
@@ -325,8 +398,12 @@
 
     function resetAll() {
       activities.forEach(a => a.done = false);
+      infoBox.style.display = "none";
       closeModal();
       render();
+      localStorage.removeItem("activitiesStatus");
+      localStorage.removeItem("infoBoxContent");
+      localStorage.removeItem("infoBoxVisible");
     }
 
     render();

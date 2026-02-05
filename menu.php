@@ -147,11 +147,11 @@
       </div>
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list-olahraga.html" class="menu-card w-100">Pencegahan penyakit menular</a>
+        <a href="listpm.php" class="menu-card w-100">Pencegahan penyakit menular</a>
       </div>
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list-kebersihan.html" class="menu-card w-100">Gizi seimbang</a>
+        <a href="listgizi.php" class="menu-card w-100">Gizi seimbang</a>
       </div>
 
 

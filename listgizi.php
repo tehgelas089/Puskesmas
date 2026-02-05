@@ -179,7 +179,7 @@
 <body>
 
   <div class="container">
-    <h2 class="mb-5">Perilaku Hidup Sehat</h2>
+    <h2 class="mb-5">Pencegahaan Penyakit menular</h2>
 
     <div class="row justify-content-center g-4">
       <div class="col-lg-5 col-12">
@@ -200,41 +200,41 @@
 
   <script>
     const activities = [{
-        name: "Aktivitas Fisik",
+        name: "Memenuhi kebutuhan karbohidrat",
         done: false,
-        impact: "Kurang bergerak meningkatkan risiko obesitas dan penyakit jantung.",
-        solution: "Aktivitas fisik adalah setiap gerakan tubuh yang dilakukan oleh otot rangka dan memerlukan energi.Ini mencakup aktivitas apapun yang menggerakkan tubuh, seperti bekerja, bermain, berjalan, dan melakukan pekerjaan rumah tangga. Dilakukan minimal 30 menit setiap hari.  <br> Manfaat aktivitas fisik sangat besar bagi kesehatan, antara lain meningkatkan kekuatan otot dan tulang, menjaga kesehatan jantung dan paru-paru, melancarkan peredaran darah, serta membantu mengontrol berat badan. "
+        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular. ",
+        solution: "mengonsumsi sumber energi seperti nasi, roti, jagung, atau umbi-umbian yang bermanfaat untuk mendukung aktivitas sehari-hari dan fungsi otak."
 
       },
       {
-        name: "Konsumsi buah dan sayur",
+        name: "Mengonsumsi protein hewani dan nabati",
         done: false,
         impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
-        solution: "Konsumsi buah dan sayur adalah kebiasaan mengonsumsi berbagai jenis buah dan sayuran setiap hari sebagai bagian dari pola makan seimbang. Buah dan sayur mengandung vitamin, mineral, serat, dan antioksidan yang dibutuhkan tubuh untuk menjaga fungsi organ serta meningkatkan daya tahan tubuh. <br> Manfaat konsumsi buah dan sayur sangat penting bagi kesehatan, di antaranya membantu melancarkan pencernaan, menjaga berat badan ideal, menurunkan risiko penyakit tidak menular seperti diabetes, hipertensi, dan penyakit jantung, serta membantu menjaga kesehatan kulit dan meningkatkan imunitas tubuh."
+        solution: "untuk membantu pertumbuhan, perbaikan sel tubuh, serta menjaga daya tahan tubuh agar tidak mudah sakit."
       },
       {
-        name: "Cuci tangan dengan benar",
+        name: "Membatasi lemak, gula, dan garam",
         done: false,
         impact: "Risiko infeksi dan penyakit menular meningkat.",
-        solution: "Cuci tangan yang benar adalah tindakan membersihkan tangan menggunakan air mengalir dan sabun dengan langkah yang tepat untuk menghilangkan kuman, bakteri, dan virus penyebab penyakit. Cuci tangan harus dilakukan terutama sebelum makan, setelah dari toilet, setelah beraktivitas, dan setelah menyentuh benda yang kotor <br> Manfaat cuci tangan yang benar sangat penting bagi kesehatan, yaitu mencegah penularan berbagai penyakit seperti diare, infeksi saluran pernapasan, dan penyakit menular lainnya. Kebiasaan cuci tangan juga membantu menjaga kebersihan diri, melindungi keluarga dan lingkungan sekitar, serta menjadi langkah sederhana namun efektif dalam menjaga kesehatan sehari-hari."
+        solution: "upaya menjaga keseimbangan asupan zat gizi agar terhindar dari risiko obesitas, diabetes, dan tekanan darah tinggi."
       },
       {
-        name: "Tidak merokok",
+        name: "Memperbanyak sayur dan buah",
         done: false,
         impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
-        solution: "Tidak merokok adalah perilaku hidup sehat dengan menghindari kebiasaan merokok serta paparan asap rokok, baik sebagai perokok aktif maupun pasif. Rokok mengandung zat berbahaya seperti nikotin, tar, dan karbon monoksida yang dapat merusak berbagai organ tubuh dan menurunkan kualitas kesehatan. <br> Manfaat tidak merokok sangat besar, antara lain menjaga kesehatan paru-paru dan jantung, menurunkan risiko penyakit tidak menular seperti kanker, stroke, dan penyakit jantung koroner, serta meningkatkan daya tahan tubuh."
+        solution: "memenuhi kebutuhan vitamin, mineral, dan serat yang bermanfaat untuk melancarkan pencernaan dan meningkatkan sistem imun."
       },
       {
-        name: "Cek tekanan darah",
+        name: "Minum air putih yang cukup",
         done: false,
         impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
-        solution: "Cek tekanan darah adalah pemeriksaan untuk mengetahui seberapa kuat tekanan darah yang mengalir di pembuluh darah saat jantung memompa darah ke seluruh tubuh. Pemeriksaan ini penting dilakukan secara rutin karena tekanan darah tinggi maupun rendah sering kali tidak menimbulkan gejala. <br> Manfaat cek tekanan darah secara rutin yaitu membantu mendeteksi hipertensi sejak dini, mencegah risiko penyakit jantung, stroke, dan gangguan pembuluh darah, serta membantu memantau kondisi kesehatan secara keseluruhan"
+        solution: "menjaga keseimbangan cairan tubuh, membantu proses metabolisme, dan mencegah dehidrasi."
       },
       {
-        name: "Cek gula darah",
+        name: "Makan dengan porsi seimbang",
         done: false,
         impact: "Diabetes dapat berkembang tanpa disadari.",
-        solution: "Cek gula darah adalah pemeriksaan untuk mengetahui kadar gula (glukosa) dalam darah sebagai sumber energi utama bagi tubuh. Pemeriksaan ini penting dilakukan secara rutin karena kadar gula darah yang tinggi atau rendah sering kali tidak menimbulkan gejala pada tahap awal. <br> Manfaat cek gula darah secara rutin yaitu membantu mendeteksi diabetes melitus sejak dini, mengontrol kadar gula darah agar tetap normal, serta mencegah terjadinya komplikasi seperti penyakit jantung, gangguan ginjal, dan gangguan saraf"
+        solution: "kebiasaan mengatur jumlah makanan sesuai kebutuhan tubuh agar energi tercukupi tanpa berlebihan."
       }
     ];
 

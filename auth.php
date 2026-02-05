@@ -7,14 +7,18 @@
   <title>Login</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body class="d-flex justify-content-center align-items-center min-vh-100 ">
 
+
   <!-- PERUBAHAN: method & action -->
   <form class="form_container" method="POST" action="proses.php">
 
-    <div class="logo_container"></div>
+    <div class="logo_container">
+      <img src="assets/images/puskes.png" alt="">
+    </div>
 
     <div class="title_container">
       <p class="title">Login untuk masuk</p>
@@ -36,14 +40,19 @@
 
     <div class="input_container">
       <label class="input_label">Password</label>
+
       <svg class="input_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
         class="bi bi-lock" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
           d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3" />
       </svg>
 
-      <!-- PERUBAHAN: name -->
       <input name="password" placeholder="Password" type="password" class="input_field">
+
+      <!-- TOMBOL LIHAT / TUTUP PASSWORD -->
+      <button type="button" class="toggle-password">
+        <i class="bi bi-eye-slash-fill"></i>
+      </button>
     </div>
 
     <!-- PERUBAHAN: BUTTON ADMIN BENAR -->
@@ -67,7 +76,10 @@
 
   <style>
     body {
-      background-color: #212121;
+      background-image: url('assets/images/bg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
     }
 
     .form_container {
@@ -78,9 +90,13 @@
       gap: 15px;
       padding: 40px;
       background-color: #ffffff;
-      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
       border-radius: 11px;
       font-family: "Inter", sans-serif;
+
+      /* SHADOW BARU */
+      box-shadow:
+        0 10px 25px rgba(191, 195, 194, 0.78),
+        0 5px 10px rgb(209, 215, 214);
     }
 
     .logo_container {
@@ -88,7 +104,17 @@
       height: 80px;
       border-radius: 11px;
       border: 1px solid #F7F7F8;
-      margin: auto;
+      margin: 0 auto 10px auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo_container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .title_container {
@@ -174,8 +200,37 @@
       background: black;
       border: none;
     }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      bottom: 9px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #8B8E98;
+      font-size: 16px;
+      padding: 0;
+    }
+
+    .toggle-password:focus {
+      outline: none;
+    }
   </style>
 
+  <script>
+    const toggleBtn = document.querySelector('.toggle-password');
+    const passwordInput = document.querySelector('input[name="password"]');
+
+    toggleBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+
+      passwordInput.type = isPassword ? 'text' : 'password';
+      toggleBtn.innerHTML = isPassword ?
+        '<i class="bi bi-eye-fill"></i>' :
+        '<i class="bi bi-eye-slash-fill"></i>';
+    });
+  </script>
 </body>
 
 </html>

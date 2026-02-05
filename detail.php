@@ -14,19 +14,26 @@ $data = mysqli_fetch_assoc(
   <meta charset="UTF-8">
   <title>Detail Postingan</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
     .detail-box {
-      background: #9e9e9e;
+      background: #EAEFEF;
       border-radius: 20px;
       padding: 30px;
       min-height: 100%;
+      border: 2px solid #000;
     }
 
     .detail-img {
       width: 100%;
       border-radius: 20px;
       object-fit: cover;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(1);
     }
   </style>
 </head>
@@ -35,6 +42,10 @@ $data = mysqli_fetch_assoc(
 
   <div class="container py-5">
     <h2 class="text-center mb-4">Halaman Detail</h2>
+
+    <div class="mt-4 mb-5">
+      <a href="home.php" class="btn btn-warning"><i class="bi bi-arrow-left-circle"></i></a>
+    </div>
 
     <div class="row g-4 align-items-stretch">
 
@@ -59,10 +70,10 @@ $data = mysqli_fetch_assoc(
 
           <?php if (count($foto) > 1) : ?>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselDetail" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon " style="background-color: aqua;"></span>
+              <span class="carousel-control-prev-icon "></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselDetail" data-bs-slide="next">
-              <span class="carousel-control-next-icon" style="background-color: aqua;"></span>
+              <span class="carousel-control-next-icon"></span>
             </button>
           <?php endif; ?>
         </div>
@@ -72,7 +83,7 @@ $data = mysqli_fetch_assoc(
       <!-- DETAIL -->
       <div class="col-lg-6 col-md-12">
         <div class="detail-box h-100">
-          <h4 class="mb-3 text-dark">Detail Postingan</h4>
+          <h4 class="mb-3 text-dark text-center fw-bold">Deskripsi Postingan</h4>
           <h5 class="fw-semibold text-dark mb-3">
             <?= $data['judul']; ?>
           </h5>
@@ -86,9 +97,7 @@ $data = mysqli_fetch_assoc(
 
     </div>
 
-    <div class="mt-4">
-      <a href="home.php" class="btn btn-secondary">← Kembali</a>
-    </div>
+
 
   </div>
 

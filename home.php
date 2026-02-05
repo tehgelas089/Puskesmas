@@ -59,15 +59,15 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
                   <a class="page-scroll active" href="#hero-area">Beranda</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll" href="#promosi">Promosi</a>
+                  <a class="page-scroll" href="#galeri">Agenda</a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="page-scroll" href="#galeri">Galeri</a>
+                  <a class="page-scroll" href="#blog">Edukasi</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="page-scroll" href="#contact">Kontak</a>
-                </li>
+                </li> -->
               </ul>
             </div>
 
@@ -213,7 +213,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
                     <div class="row g-0">
                       <div class="col-md-4">
                         <img src="assets/images/acara/<?= $row['gambar']; ?>"
-                          class="img-fluid rounded-start"
+                          class="img-fluid rounded-start" style="width: 980px;"
                           alt="acara">
                       </div>
                       <div class="col-md-8">
@@ -253,25 +253,27 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   </section>
 
   <!-- TAMBAHAN: percepat animasi slide -->
-   <style>
- /* ===== AGENDA ACARA STYLE FIX ===== */
-#acaraCarousel .card {
-  border: 2px solid #000;   /* border hitam */
-  background: transparent; /* tanpa background */
-}
+  <style>
+    /* ===== AGENDA ACARA STYLE FIX ===== */
+    #acaraCarousel .card {
+      border: 2px solid #000;
+      /* border hitam */
+      background: transparent;
+      /* tanpa background */
+    }
 
-/* icon panah hitam */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: invert(1);
-}
+    /* icon panah hitam */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter: invert(1);
+    }
 
-/* hover biar keliatan hidup */
-#acaraCarousel .card:hover {
-  transform: translateY(-4px);
-  transition: 0.3s ease;
-}
-</style>
+    /* hover biar keliatan hidup */
+    #acaraCarousel .card:hover {
+      transform: translateY(-4px);
+      transition: 0.3s ease;
+    }
+  </style>
 
 
   <!-- PERUBAHAN: percepat interval auto slide -->
@@ -720,13 +722,13 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
   <!-- ========================= map-section end ========================= -->
   <section class="map-section map-style-9">
-  <div class="map-container">
-    <object
-      style="border:0; height: 500px; width: 100%;"
-      data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9408290939426!2d107.5767775!3d-6.9974503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e94c18338fed%3A0xc33b63c7a6ba30c6!2sPuskesmas%20Sangkanhurip!5e0!3m2!1sid!2sid!4v1737550000000">
-    </object>
-  </div>
-</section>
+    <div class="map-container">
+      <object
+        style="border:0; height: 500px; width: 100%;"
+        data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9408290939426!2d107.5767775!3d-6.9974503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e94c18338fed%3A0xc33b63c7a6ba30c6!2sPuskesmas%20Sangkanhurip!5e0!3m2!1sid!2sid!4v1737550000000">
+      </object>
+    </div>
+  </section>
 
   <!-- ========================= map-section end ========================= -->
 
@@ -739,60 +741,42 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
           <div class="row">
             <div class="col-lg-4 col-md-6 col-12">
               <!-- Single Widget -->
-               <div class="footer-widget f-about">
-              <div class="logo">
-                <a href="index.html">
-                  <img src="assets/images/puskes.png" alt="" class="img-fluid" />
-                </a>
-              </div>
+              <div class="footer-widget f-about">
+                <div class="logo">
+                  <a href="index.html">
+                    <img src="assets/images/puskes.png" alt="" class="img-fluid" />
+                  </a>
+                </div>
                 <p>
-                  "Puskesmas Beraksi"
+                  "Sangkanhurip Beraksi"
                 </p>
                 <p class="copyright-text">
-                  <span>©Copyright SMKS Mahaputra 2026</span>Designed and Developed by
-                  <a href="javascript:void(0)" rel="nofollow"> Ayro UI </a>. <br> Distributed by <a href="http://themewagon.com" target="_blank">ThemeWagon</a>
-                </p>
+                  <span>©SMKS Mahputra 2026.</span>Dibuat dengan penuh perhatian
+                  <a href="#""> 💕 </a> 
+               </p>
               </div>
               <!-- End Single Widget -->
             </div>
-            <div class="col-lg-2 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget f-link">
-                <h5>Anggota</h5>
-                <ul>
-                  <li><a href="javascript:void(0)">Dion</a></li>
-                  <li><a href="javascript:void(0)">Aiman</a></li>
-                  <li><a href="javascript:void(0)">Septian</a></li>
-                  <!-- <li><a href="javascript:void(0)">Insights</a></li> -->
-                </ul>
-              </div>
-              <!-- End Single Widget -->
-            </div>
-            <div class="col-lg-2 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget f-link">
-                <h5>Support</h5>
-                <ul>
-                  <li><a href="javascript:void(0)">Pricing</a></li>
-                  <li><a href="javascript:void(0)">Documentation</a></li>
-                  <li><a href="javascript:void(0)">Guides</a></li>
-                  <li><a href="javascript:void(0)">API Status</a></li>
-                </ul>
-              </div>
-              <!-- End Single Widget -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget newsletter">
+            <div class=" col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
 
+                    <!-- End Single Widget -->
               </div>
-              <!-- End Single Widget -->
+              <div class="col-lg-2 col-md-6 col-12">
+                <!-- Single Widget -->
+
+                <!-- End Single Widget -->
+              </div>
+              <div class="col-lg-4 col-md-6 col-12">
+                <!-- Single Widget -->
+
+                <!-- End Single Widget -->
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--/ End Footer Top -->
+      <!--/ End Footer Top -->
   </footer>
   <!--/ End Footer Area -->
 

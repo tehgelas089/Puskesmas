@@ -33,22 +33,25 @@
 
     /* === TAMBAHAN STYLE (TIDAK MENGUBAH YANG LAMA) === */
     .preview-card {
-      width: 100%;
-      height: 180px;
-      background: #9e9e9e;
+      cursor: pointer;
+      background: #eee;
       border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
+      padding: 8px;
       text-align: center;
+      max-height: 260px;
+      /* tinggi card tetap */
       overflow: hidden;
     }
 
     .preview-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 220px;
+      /* gambar di-mini otomatis */
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      /* PASTI tidak kepotong */
+      border-radius: 12px;
     }
 
     .post-btn {
@@ -94,13 +97,23 @@
         placeholder="Deskripsi"
         required></textarea>
 
-      <div class="col-md-4">
+      <div class="col-md-4 h-50">
         <div class="preview-card" id="preview">
           Gambar Postingan
         </div>
       </div>
 
+
+
       <div class="col-md-8">
+
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm mt-2 w-25 h-25 mb-3"
+          onclick="tambahFile()">
+          + Tambah Foto
+        </button>
+
         <div id="file-wrapper">
           <input
             type="file"
@@ -111,12 +124,7 @@
             required>
         </div>
 
-        <button
-          type="button"
-          class="btn btn-secondary btn-sm mt-2"
-          onclick="tambahFile()">
-          + Tambah Foto
-        </button>
+
       </div>
 
     </div>

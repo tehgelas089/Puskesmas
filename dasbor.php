@@ -131,6 +131,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <h3>Data Postingan</h3>
       <a href="posting.php" class="btn btn-primary mb-3">Tambah Postingan</a>
 
+
       <table class="table table-bordered" style="border: 2px;">
         <tr class="text-center">
           <th>Postingan</th>
@@ -338,101 +339,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
   <section id="contact" class="contact-section">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-4">
-          <div class="contact-item-wrapper">
-            <div class="row">
-              <div class="col-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-phone"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Kontak</h4>
-                    <p>08124787781</p>
-                    <p>pkmsangkanhurip@bandungkab.go.id</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-map-marker"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Alamat</h4>
-                    <p>Jl.Katapang Andir No.117 RT 03 RW 06 Desa Sukamukti Kec.Katapang</p>
-                    <p>Bandung</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6 col-xl-12">
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="lni lni-alarm-clock"></i>
-                  </div>
-                  <div class="contact-content">
-                    <h4>Jam Operasi</h4>
-                    <p>5 jam / 6 Hari buka</p>
-                    <p>Senin-Kamis:07.30-11.00 WIB</p>
-                    <p>Jumat-Sabtu:07.30-10.00 WIB</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-8">
-          <div class="contact-form-wrapper">
-            <div class="row">
-              <div class="col-xl-10 col-lg-8 mx-auto">
-                <div class="section-title text-center">
-                  <span> Get in Touch </span>
-                  <h2>
-                    Ready to Get Started
-                  </h2>
-                  <p>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    quiblanditiis praesentium
-                  </p>
-                </div>
-              </div>
-            </div>
-            <form action="#" class="contact-form">
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" name="name" id="name" placeholder="Name" required />
-                </div>
-                <div class="col-md-6">
-                  <input type="email" name="email" id="email" placeholder="Email" required />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" name="phone" id="phone" placeholder="Phone" required />
-                </div>
-                <div class="col-md-6">
-                  <input type="text" name="subject" id="email" placeholder="Subject" required />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <textarea name="message" id="message" placeholder="Type Message" rows="5"></textarea>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="button text-center rounded-buttons">
-                    <button type="submit" class="btn primary-btn rounded-full">
-                      Send Message
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+    </div>
     </div>
   </section>
 
@@ -467,63 +374,35 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
                   </a>
                 </div>
                 <p>
-                  Making the world a better place through constructing elegant
-                  hierarchies.
+                  "Sangkanhurip Beraksi"
                 </p>
                 <p class="copyright-text">
-                  <span>© 2024 Ayro UI.</span>Designed and Developed by
-                  <a href="javascript:void(0)" rel="nofollow"> Ayro UI </a>. <br> Distributed by <a href="http://themewagon.com" target="_blank">ThemeWagon</a>
-                </p>
+                  <span>©SMKS Mahputra 2026.</span>Dibuat dengan penuh perhatian
+                  <a href="#""> 💕 </a> 
+               </p>
               </div>
               <!-- End Single Widget -->
             </div>
-            <div class="col-lg-2 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget f-link">
-                <h5>Solutions</h5>
-                <ul>
-                  <li><a href="javascript:void(0)">Marketing</a></li>
-                  <li><a href="javascript:void(0)">Analytics</a></li>
-                  <li><a href="javascript:void(0)">Commerce</a></li>
-                  <li><a href="javascript:void(0)">Insights</a></li>
-                </ul>
+            <div class=" col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+
+                    <!-- End Single Widget -->
               </div>
-              <!-- End Single Widget -->
-            </div>
-            <div class="col-lg-2 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget f-link">
-                <h5>Support</h5>
-                <ul>
-                  <li><a href="javascript:void(0)">Pricing</a></li>
-                  <li><a href="javascript:void(0)">Documentation</a></li>
-                  <li><a href="javascript:void(0)">Guides</a></li>
-                  <li><a href="javascript:void(0)">API Status</a></li>
-                </ul>
+              <div class="col-lg-2 col-md-6 col-12">
+                <!-- Single Widget -->
+
+                <!-- End Single Widget -->
               </div>
-              <!-- End Single Widget -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-              <!-- Single Widget -->
-              <div class="footer-widget newsletter">
-                <h5>Subscribe</h5>
-                <p>Subscribe to our newsletter for the latest updates</p>
-                <form action="#" method="get" target="_blank" class="newsletter-form">
-                  <input name="EMAIL" placeholder="Email address" required="required" type="email" />
-                  <div class="button">
-                    <button class="sub-btn">
-                      <i class="lni lni-envelope"></i>
-                    </button>
-                  </div>
-                </form>
+              <div class="col-lg-4 col-md-6 col-12">
+                <!-- Single Widget -->
+
+                <!-- End Single Widget -->
               </div>
-              <!-- End Single Widget -->
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--/ End Footer Top -->
+      <!--/ End Footer Top -->
   </footer>
   <!--/ End Footer Area -->
 
@@ -581,35 +460,38 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     }
   </script>
   <style>
-     #contact {
-    padding-bottom: 80px;
-  }
+    #contact {
+      padding-bottom: 80px;
+    }
 
-  .map-section {
-    position: relative;
-    z-index: 0;
-    margin-top: 120px;
-  }
-   .contact-item {
-  display: flex;
-  align-items: flex-start; /* BUKAN center */
-  gap: 16px;
-  padding: 24px;
-  min-height: 160px; /* bikin card tinggi */
-}
+    .map-section {
+      position: relative;
+      z-index: 0;
+      margin-top: 120px;
+    }
 
-.contact-icon {
-  flex-shrink: 0;
-}
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      /* BUKAN center */
+      gap: 16px;
+      padding: 24px;
+      min-height: 160px;
+      /* bikin card tinggi */
+    }
 
-.contact-content p {
-  margin-bottom: 6px;
-  line-height: 1.6;
-}
+    .contact-icon {
+      flex-shrink: 0;
+    }
 
-.contact-content h4 {
-  margin-bottom: 4% ;
-}
+    .contact-content p {
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+
+    .contact-content h4 {
+      margin-bottom: 4%;
+    }
   </style>
 </body>
 
