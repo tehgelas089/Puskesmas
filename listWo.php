@@ -200,41 +200,37 @@
 
   <script>
     const activities = [{
-        name: "Mengonsumsi makanan bergizi seimbang",
+        name: "Jogging atau Lari Ringan",
         done: false,
         impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular. ",
-        solution: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular."
+        solution: "Aktivitas fisik ringan dengan melangkahkan kaki secara teratur bermanfaat Melatih jantung dan paru-paru, meningkatkan daya tahan tubuh."
 
       },
       {
-        name: "Membatasi gula, garam, dan lemak",
+        name: "Bersepeda",
         done: false,
         impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
-        solution: "bertujuan untuk mengurangi beban kerja organ tubuh, terutama jantung dan ginjal, sehingga dapat mencegah hipertensi, obesitas, dan diabetes."
+        solution: "tetap memenuhi kebutuhan gizi seperti karbohidrat, protein, lemak sehat, vitamin, dan mineral."
       },
       {
-        name: "Menjaga berat badan ideal",
+        name: "Senam atau Aerobik",
         done: false,
         impact: "Risiko infeksi dan penyakit menular meningkat.",
-        solution: "berarti mempertahankan berat badan sesuai indeks massa tubuh normal, yang bermanfaat untuk mengurangi risiko penyakit seperti diabetes, tekanan darah tinggi, dan gangguan sendi."
+        solution: "Gerakan tubuh teratur yang diiringi musik atau hitungan tertentu. Bermanfaat Meningkatkan kebugaran, kelenturan tubuh, dan menjaga berat badan ideal."
       },
       {
-        name: "Istirahat dan tidur yang cukup",
+        name: "Minum Air Putih yang cukup",
         done: false,
         impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
-        solution: "kebiasaan memberikan waktu pemulihan bagi tubuh, yang bermanfaat untuk menjaga keseimbangan hormon, meningkatkan konsentrasi, dan memperkuat sistem imun."
+        solution: "Membantu metabolisme, melancarkan pencernaan, dan mengurangi rasa lapar. minimal kebutuhan air putih orang dewasa adalah ±2 liter per hari atau sekitar 8 gelas (1 gelas ±250 ml)."
       },
+
+
       {
-        name: "Melakukan pemeriksaan kesehatan secara rutin",
-        done: false,
-        impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
-        solution: "bertujuan untuk memantau kondisi tubuh secara berkala sehingga penyakit dapat dideteksi lebih awal dan ditangani dengan cepat"
-      },
-      {
-        name: "Menerapkan Perilaku Hidup Bersih dan Sehat",
+        name: "Peregangan",
         done: false,
         impact: "Diabetes dapat berkembang tanpa disadari.",
-        solution: "kebiasaan hidup yang menjaga kebersihan diri dan lingkungan untuk mendukung kesehatan tubuh secara menyeluruh dan mencegah berbagai penyakit."
+        solution: "Gerakan untuk meregangkan otot sebelum atau sesudah aktivitas.Bermanfaat Mencegah cedera, mengurangi kaku otot, dan menjaga kelenturan tubuh"
       }
     ];
 

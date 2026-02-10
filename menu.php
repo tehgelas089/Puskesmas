@@ -56,7 +56,7 @@
 </head>
 
 <body>
-  <section class="navbar-area navbar-nine position-fixed">
+  <section class="navbar-area navbar-nine">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -85,8 +85,12 @@
       </div>
       <!-- row -->
     </div>
-
+    <!-- container -->
   </section>
+
+  <!--====== NAVBAR NINE PART ENDS ======-->
+
+  <!--====== SIDEBAR PART START ======-->
 
   <div class="sidebar-left">
     <div class="sidebar-close">
@@ -96,14 +100,14 @@
       <div class="sidebar-logo">
         <a href="index.html"><img src="assets/images/puskes.png" alt="Logo" style="width: 80px; height: 80px;" /></a>
       </div>
-      <p class="text">Lorem ipsum dolor sit amet adipisicing elit. Sapiente fuga nisi rerum iusto intro.</p>
+      <p class="text text-uppercase text-black fw-bold">Sangkanhurip Beraksi.</p>
       <!-- logo -->
       <div class="sidebar-menu">
-        <h5 class="menu-title">Quick Links</h5>
+        <h5 class="menu-title">Menu</h5>
         <ul>
-          <li><a href="menu.php">About Us</a></li>
-          <li><a href="admin/konten.php">Our Team</a></li>
-          <li><a href="admin/konten.php">Latest News</a></li>
+          <li><a href="menu.php">List</a></li>
+          <li><a href="dasbor.php">Posting</a></li>
+          <li><a href="Agenda.php">Agenda Acara</a></li>
           <li><a href="admin/konten.php">Contact Us</a></li>
         </ul>
       </div>
@@ -156,17 +160,63 @@
 
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list-kebersihan.html" class="menu-card w-100">Kebersihan</a>
+        <a href="list.diet.php" class="menu-card w-100">Menjaga Berat Badan ideal</a>
       </div>
 
 
       <div class="col-12 col-sm-6 col-md-5 col-lg-4">
-        <a href="list-kebersihan.html" class="menu-card w-100">Kebersihan</a>
+        <a href="listWo.php" class="menu-card w-100">Aktivitas fisik</a>
       </div>
 
     </div>
   </div>
 
 </body>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/glightbox.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/tiny-slider.js"></script>
+<script>
+  //===== close navbar-collapse when a  clicked
+  let navbarTogglerNine = document.querySelector(
+    ".navbar-nine .navbar-toggler"
+  );
+  navbarTogglerNine.addEventListener("click", function() {
+    navbarTogglerNine.classList.toggle("active");
+  });
+
+  // ==== left sidebar toggle
+  let sidebarLeft = document.querySelector(".sidebar-left");
+  let overlayLeft = document.querySelector(".overlay-left");
+  let sidebarClose = document.querySelector(".sidebar-close .close");
+
+  overlayLeft.addEventListener("click", function() {
+    sidebarLeft.classList.toggle("open");
+    overlayLeft.classList.toggle("open");
+  });
+  sidebarClose.addEventListener("click", function() {
+    sidebarLeft.classList.remove("open");
+    overlayLeft.classList.remove("open");
+  });
+
+  // ===== navbar nine sideMenu
+  let sideMenuLeftNine = document.querySelector(".navbar-nine .menu-bar");
+
+  sideMenuLeftNine.addEventListener("click", function() {
+    sidebarLeft.classList.add("open");
+    overlayLeft.classList.add("open");
+  });
+
+  //========= glightbox
+
+  function openHapusModal(id) {
+    document.getElementById('hapusId').value = id;
+    const modal = new bootstrap.Modal(
+      document.getElementById('hapusModal')
+    );
+    modal.show();
+  }
+</script>
 
 </html>

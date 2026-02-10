@@ -179,7 +179,7 @@
 <body>
 
   <div class="container">
-    <h2 class="mb-5">Pencegahaan Penyakit tidak menular</h2>
+    <h2 class="mb-5">Menjaga Berat Badan Ideal</h2>
 
     <div class="row justify-content-center g-4">
       <div class="col-lg-5 col-12">
@@ -200,41 +200,41 @@
 
   <script>
     const activities = [{
-        name: "Mengonsumsi makanan bergizi seimbang",
+        name: "Makan Teratur",
         done: false,
         impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular. ",
-        solution: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular."
+        solution: "Makan dilakukan secara terjadwal tanpa melewatkan waktu makan utama,Bermanfaat Menjaga metabolisme tubuh tetap stabil dan mencegah rasa lapar berlebihan"
 
       },
       {
-        name: "Membatasi gula, garam, dan lemak",
+        name: "Makanan Bergizi Seimbang",
         done: false,
         impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
-        solution: "bertujuan untuk mengurangi beban kerja organ tubuh, terutama jantung dan ginjal, sehingga dapat mencegah hipertensi, obesitas, dan diabetes."
+        solution: "tetap memenuhi kebutuhan gizi seperti karbohidrat, protein, lemak sehat, vitamin, dan mineral."
       },
       {
-        name: "Menjaga berat badan ideal",
+        name: "Pembatasan Gula dan Lemak Berlebih",
         done: false,
         impact: "Risiko infeksi dan penyakit menular meningkat.",
-        solution: "berarti mempertahankan berat badan sesuai indeks massa tubuh normal, yang bermanfaat untuk mengurangi risiko penyakit seperti diabetes, tekanan darah tinggi, dan gangguan sendi."
+        solution: "mengurangi konsumsi makanan tinggi gula, gorengan, dan makanan cepat saji, Menurunkan risiko obesitas, diabetes, dan penyakit jantung."
       },
       {
-        name: "Istirahat dan tidur yang cukup",
+        name: "Minum Air Putih yang cukup",
         done: false,
         impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
-        solution: "kebiasaan memberikan waktu pemulihan bagi tubuh, yang bermanfaat untuk menjaga keseimbangan hormon, meningkatkan konsentrasi, dan memperkuat sistem imun."
+        solution: "Membantu metabolisme, melancarkan pencernaan, dan mengurangi rasa lapar. minimal kebutuhan air putih orang dewasa adalah ±2 liter per hari atau sekitar 8 gelas (1 gelas ±250 ml)."
       },
       {
-        name: "Melakukan pemeriksaan kesehatan secara rutin",
+        name: "Aktivitas Fisik Teratur",
         done: false,
         impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
-        solution: "bertujuan untuk memantau kondisi tubuh secara berkala sehingga penyakit dapat dideteksi lebih awal dan ditangani dengan cepat"
+        solution: "kombinasikan dengan olahraga atau aktivitas fisik ringan, bermanfaat Membantu pembakaran kalori, menjaga kebugaran, dan mempercepat hasil berat badan ideal."
       },
       {
-        name: "Menerapkan Perilaku Hidup Bersih dan Sehat",
+        name: "Istirahat yang Cukup",
         done: false,
         impact: "Diabetes dapat berkembang tanpa disadari.",
-        solution: "kebiasaan hidup yang menjaga kebersihan diri dan lingkungan untuk mendukung kesehatan tubuh secara menyeluruh dan mencegah berbagai penyakit."
+        solution: "Tidur yang cukup menjadi bagian dari pola hidup sehat menjaga berat badan ideal,bermanfaat Menjaga keseimbangan hormon dan mengontrol nafsu makan."
       }
     ];
 

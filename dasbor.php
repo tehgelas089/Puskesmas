@@ -131,55 +131,55 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <h3>Data Postingan</h3>
       <a href="posting.php" class="btn btn-primary mb-3">Tambah Postingan</a>
 
-
-      <table class="table table-bordered" style="border: 2px;">
-        <tr class="text-center">
-          <th>Postingan</th>
-          <th>Judul</th>
-          <th>Deskripsi</th>
-          <th>Aksi</th>
-        </tr>
-
-
-        <?php while ($row = mysqli_fetch_assoc($data)) : ?>
-          <tr>
-            <td>
-              <!-- <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="postingan" style="width: 100px;" height="100px"> -->
-              <?php
-              $gambar = explode(',', $row['gambar']);
-              $preview = $gambar[0];
-              ?>
-
-              <img src="assets/images/blog/<?= $preview ?>"
-                class="card-img-top"
-                alt="postingan"
-                style="width: 100px; height:100px; object-fit:cover;">
-
-            </td>
-            <td><?= $row['judul'] ?></td>
-
-            <td><?= $row['deskripsi'] ?></td>
-            <td>
-
-
-
-              <a href=" edit.php?id=<?= $row['id'] ?>" class="cdn" style="line-height: 2.3em;">
-                EDIT
-              </a>
-              <form action="hapus.php" method="POST" style="display:inline;"
-                onsubmit="return confirm('Yakin mau hapus?')">
-                <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                <button type="submit" class="hps">
-                  Hapus
-                </button>
-              </form>
-
-            </td>
+      <div class="table-responsive">
+        <table class="table table-bordered table-fixed w-100" style="border: 2px;">
+          <tr class="text-center">
+            <th>Postingan</th>
+            <th>Judul</th>
+            <th>Deskripsi</th>
+            <th>Aksi</th>
           </tr>
-        <?php endwhile; ?>
-      </table>
 
-    </div>
+
+          <?php while ($row = mysqli_fetch_assoc($data)) : ?>
+            <tr>
+              <td>
+                <!-- <img src="assets/images/blog/<?= $row['gambar']; ?>" class="card-img-top" alt="postingan" style="width: 100px;" height="100px"> -->
+                <?php
+                $gambar = explode(',', $row['gambar']);
+                $preview = $gambar[0];
+                ?>
+
+                <img src="assets/images/blog/<?= $preview ?>"
+                  class="card-img-top"
+                  alt="postingan"
+                  style="width: 100px; height:100px; object-fit:cover;">
+
+              </td>
+              <td><?= $row['judul'] ?></td>
+
+              <td><?= $row['deskripsi'] ?></td>
+              <td class="text-center align-middle">
+
+
+                <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                  <a href=" edit.php?id=<?= $row['id'] ?>" class="cdn" style="line-height: 2.3em;">
+                    EDIT
+                  </a>
+                  <form action="hapus.php" method="POST" style="display:inline;"
+                    onsubmit="return confirm('Yakin mau hapus?')">
+                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                    <button type="submit" class="hps">
+                      Hapus
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </table>
+
+      </div>
   </section>
 
 
