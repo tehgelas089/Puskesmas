@@ -12,7 +12,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f3f6fa;
+      background: #d6dbd6;
       padding: 20px;
     }
 
@@ -41,7 +41,7 @@
       content: "Selesai ✓";
       height: 50px;
       width: 100%;
-      background-color: #27ae60;
+      background-color: #1f6a4e;
       color: #fff;
       position: absolute;
       top: 0;
@@ -59,7 +59,7 @@
       content: attr(data-text);
       height: 50px;
       width: 100%;
-      background-color: #4a80f0;
+      background-color: #3d6373;
       color: #fff;
       position: absolute;
       top: 0;
@@ -109,8 +109,8 @@
     }
 
     .info-box {
-      background: #71C9CE;
-      color: white;
+      background: #c1e8fb;
+      color: black;
       padding: 16px;
       border-radius: 16px;
       font-size: 14px;
@@ -199,12 +199,17 @@
   </div>
 
   <script>
+    /* ===== KEY KHUSUS UNTUK LIST PM ===== */
+    const STORAGE_KEY_STATUS = "activitiesStatus_pm";
+    const STORAGE_KEY_INFO = "infoBoxContent_pm";
+    const STORAGE_KEY_VISIBLE = "infoBoxVisible_pm";
+    /* =================================== */
+
     const activities = [{
         name: "Menerapkan Perilaku Hidup Bersih dan Sehat",
         done: false,
-        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular. ",
+        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular.",
         solution: "merupakan upaya menjaga kebersihan diri dan lingkungan yang bermanfaat untuk mengurangi risiko penyebaran penyakit menular."
-
       },
       {
         name: "Menggunakan masker saat sakit atau di tempat berisiko",
@@ -234,7 +239,7 @@
         name: "Tidak berbagi barang pribadi",
         done: false,
         impact: "Diabetes dapat berkembang tanpa disadari.",
-        solution: "ktindakan menghindari penggunaan barang secara bersama-sama agar kuman tidak berpindah dari satu orang ke orang lain."
+        solution: "tindakan menghindari penggunaan barang secara bersama-sama agar kuman tidak berpindah dari satu orang ke orang lain."
       }
     ];
 
@@ -248,17 +253,15 @@
 
       const doneCount = activities.filter(a => a.done).length;
 
-      // ===== TAMBAHAN: kondisi awal =====
       if (doneCount === 0) {
         infoBox.innerHTML = `
-          <div class="info-empty">
-            Anda belum melakukan kegiatan<br>
-            apapun dalam list
-          </div>
-        `;
+        <div class="info-empty">
+          Anda belum melakukan kegiatan<br>
+          apapun dalam list
+        </div>
+      `;
         infoBox.style.display = "block";
       }
-      // =================================
 
       activities.forEach(act => {
         const btn = document.createElement("button");
@@ -270,22 +273,22 @@
             act.done = true;
 
             localStorage.setItem(
-              "activitiesStatus",
+              STORAGE_KEY_STATUS,
               JSON.stringify(activities.map(a => a.done))
             );
 
             infoBox.innerHTML = `
-              <div class="qa">
-                <strong>${act.name}</strong><br>
-                 ${act.solution}
-              </div>
-            `;
+            <div class="qa">
+              <strong>${act.name}</strong><br>
+              ${act.solution}
+            </div>
+          `;
             infoBox.style.display = "block";
 
-            render();
+            localStorage.setItem(STORAGE_KEY_INFO, infoBox.innerHTML);
+            localStorage.setItem(STORAGE_KEY_VISIBLE, "true");
 
-            localStorage.setItem("infoBoxContent", infoBox.innerHTML);
-            localStorage.setItem("infoBoxVisible", "true");
+            render();
           }
         };
 
@@ -293,8 +296,8 @@
       });
     }
 
-    // ===== TAMBAHAN: ambil status dari localStorage =====
-    const savedStatus = JSON.parse(localStorage.getItem("activitiesStatus"));
+    /* ===== RESTORE STATUS ===== */
+    const savedStatus = JSON.parse(localStorage.getItem(STORAGE_KEY_STATUS));
     if (savedStatus) {
       activities.forEach((a, i) => {
         if (savedStatus[i] !== undefined) {
@@ -303,57 +306,14 @@
       });
     }
 
-    // ===== TAMBAHAN: restore info box =====
-    const savedInfo = localStorage.getItem("infoBoxContent");
-    const infoVisible = localStorage.getItem("infoBoxVisible");
+    /* ===== RESTORE INFO BOX ===== */
+    const savedInfo = localStorage.getItem(STORAGE_KEY_INFO);
+    const infoVisible = localStorage.getItem(STORAGE_KEY_VISIBLE);
 
     if (savedInfo && infoVisible === "true") {
       infoBox.innerHTML = savedInfo;
       infoBox.style.display = "block";
     }
-    // =====================================
-
-    // function submitCheck() {
-    //   const total = activities.length;
-    //   const doneCount = activities.filter(a => a.done).length;
-    //   const ratio = doneCount / total;
-
-    //   let kategori = "",
-    //     pesan = "",
-    //     bgColor = "";
-
-    //   if (ratio === 1) {
-    //     kategori = "Sangat Sehat";
-    //     pesan = "Bagus! Semua aktivitas telah dilakukan.";
-    //     bgColor = "#2ecc71";
-    //   } else if (ratio >= 0.5) {
-    //     kategori = "Sehat";
-    //     pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
-    //     bgColor = "#27ae60";
-    //   } else {
-    //     kategori = "Kurang Baik untuk Kesehatan";
-    //     pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
-    //     bgColor = "#e74c3c";
-    //   }
-
-    //   modalContent.innerHTML = `
-    //     <h3>${kategori}</h3>
-    //     <p>${pesan}</p>
-    //     <div class="warning">
-    //       <strong>Dampak jika tidak dilakukan:</strong>
-    //       <ul>
-    //         ${activities.filter(a => !a.done).map(a =>
-    //           `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-    //         ).join("")}
-    //       </ul>
-    //     </div>
-    //     <button class="close" onclick="closeModal()">Tutup</button>
-    //   `;
-
-    //   modalContent.style.background = bgColor;
-    //   modalContent.style.color = "white";
-    //   modal.style.display = "flex";
-    // }
 
     function submitCheck() {
       const total = activities.length;
@@ -374,18 +334,18 @@
       }
 
       modalContent.innerHTML = `
-    <h3>${kategori}</h3>
-    <p>${pesan}</p>
-    <div class="warning">
-      <strong>Dampak jika tidak dilakukan:</strong>
-      <ul>
-        ${activities.filter(a => !a.done).map(a =>
-          `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-        ).join("")}
-      </ul>
-    </div>
-    <button class="close" onclick="closeModal()">Tutup</button>
-  `;
+      <h3>${kategori}</h3>
+      <p>${pesan}</p>
+      <div class="warning">
+        <strong>Dampak jika tidak dilakukan:</strong>
+        <ul>
+          ${activities.filter(a => !a.done).map(a =>
+            `<li><strong>${a.name}:</strong> ${a.impact}</li>`
+          ).join("")}
+        </ul>
+      </div>
+      <button class="close" onclick="closeModal()">Tutup</button>
+    `;
 
       modalContent.style.background = bgColor;
       modalContent.style.color = "white";
@@ -401,9 +361,9 @@
       infoBox.style.display = "none";
       closeModal();
       render();
-      localStorage.removeItem("activitiesStatus");
-      localStorage.removeItem("infoBoxContent");
-      localStorage.removeItem("infoBoxVisible");
+      localStorage.removeItem(STORAGE_KEY_STATUS);
+      localStorage.removeItem(STORAGE_KEY_INFO);
+      localStorage.removeItem(STORAGE_KEY_VISIBLE);
     }
 
     render();

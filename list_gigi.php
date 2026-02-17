@@ -199,42 +199,47 @@
   </div>
 
   <script>
+    /* ===== KEY KHUSUS UNTUK LIST GIGI ===== */
+    const STORAGE_KEY_STATUS = "activitiesStatus_gigi";
+    const STORAGE_KEY_INFO = "infoBoxContent_gigi";
+    const STORAGE_KEY_VISIBLE = "infoBoxVisible_gigi";
+    /* ==================================== */
+
     const activities = [{
         name: "Aktivitas Fisik",
         done: false,
         impact: "Kurang bergerak meningkatkan risiko obesitas dan penyakit jantung.",
-        solution: "Aktivitas fisik adalah setiap gerakan tubuh yang dilakukan oleh otot rangka dan memerlukan energi.Ini mencakup aktivitas apapun yang menggerakkan tubuh, seperti bekerja, bermain, berjalan, dan melakukan pekerjaan rumah tangga. Dilakukan minimal 30 menit setiap hari.  <br> Manfaat aktivitas fisik sangat besar bagi kesehatan, antara lain meningkatkan kekuatan otot dan tulang, menjaga kesehatan jantung dan paru-paru, melancarkan peredaran darah, serta membantu mengontrol berat badan. "
-
+        solution: "Aktivitas fisik adalah setiap gerakan tubuh yang dilakukan oleh otot rangka dan memerlukan energi. Dilakukan minimal 30 menit setiap hari untuk menjaga kebugaran tubuh."
       },
       {
         name: "Konsumsi buah dan sayur",
         done: false,
         impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
-        solution: "Konsumsi buah dan sayur adalah kebiasaan mengonsumsi berbagai jenis buah dan sayuran setiap hari sebagai bagian dari pola makan seimbang. Buah dan sayur mengandung vitamin, mineral, serat, dan antioksidan yang dibutuhkan tubuh untuk menjaga fungsi organ serta meningkatkan daya tahan tubuh. <br> Manfaat konsumsi buah dan sayur sangat penting bagi kesehatan, di antaranya membantu melancarkan pencernaan, menjaga berat badan ideal, menurunkan risiko penyakit tidak menular seperti diabetes, hipertensi, dan penyakit jantung, serta membantu menjaga kesehatan kulit dan meningkatkan imunitas tubuh."
+        solution: "Mengonsumsi buah dan sayur setiap hari membantu menjaga daya tahan tubuh, melancarkan pencernaan, dan mencegah penyakit tidak menular."
       },
       {
         name: "Cuci tangan dengan benar",
         done: false,
         impact: "Risiko infeksi dan penyakit menular meningkat.",
-        solution: "Cuci tangan yang benar adalah tindakan membersihkan tangan menggunakan air mengalir dan sabun dengan langkah yang tepat untuk menghilangkan kuman, bakteri, dan virus penyebab penyakit. Cuci tangan harus dilakukan terutama sebelum makan, setelah dari toilet, setelah beraktivitas, dan setelah menyentuh benda yang kotor <br> Manfaat cuci tangan yang benar sangat penting bagi kesehatan, yaitu mencegah penularan berbagai penyakit seperti diare, infeksi saluran pernapasan, dan penyakit menular lainnya. Kebiasaan cuci tangan juga membantu menjaga kebersihan diri, melindungi keluarga dan lingkungan sekitar, serta menjadi langkah sederhana namun efektif dalam menjaga kesehatan sehari-hari."
+        solution: "Mencuci tangan dengan sabun dan air mengalir secara rutin dapat mencegah penyebaran kuman dan penyakit."
       },
       {
         name: "Tidak merokok",
         done: false,
         impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
-        solution: "Tidak merokok adalah perilaku hidup sehat dengan menghindari kebiasaan merokok serta paparan asap rokok, baik sebagai perokok aktif maupun pasif. Rokok mengandung zat berbahaya seperti nikotin, tar, dan karbon monoksida yang dapat merusak berbagai organ tubuh dan menurunkan kualitas kesehatan. <br> Manfaat tidak merokok sangat besar, antara lain menjaga kesehatan paru-paru dan jantung, menurunkan risiko penyakit tidak menular seperti kanker, stroke, dan penyakit jantung koroner, serta meningkatkan daya tahan tubuh."
+        solution: "Tidak merokok membantu menjaga kesehatan paru-paru, jantung, dan meningkatkan kualitas hidup."
       },
       {
         name: "Cek tekanan darah",
         done: false,
         impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
-        solution: "Cek tekanan darah adalah pemeriksaan untuk mengetahui seberapa kuat tekanan darah yang mengalir di pembuluh darah saat jantung memompa darah ke seluruh tubuh. Pemeriksaan ini penting dilakukan secara rutin karena tekanan darah tinggi maupun rendah sering kali tidak menimbulkan gejala. <br> Manfaat cek tekanan darah secara rutin yaitu membantu mendeteksi hipertensi sejak dini, mencegah risiko penyakit jantung, stroke, dan gangguan pembuluh darah, serta membantu memantau kondisi kesehatan secara keseluruhan"
+        solution: "Pemeriksaan tekanan darah secara rutin membantu mendeteksi masalah kesehatan sejak dini."
       },
       {
         name: "Cek gula darah",
         done: false,
         impact: "Diabetes dapat berkembang tanpa disadari.",
-        solution: "Cek gula darah adalah pemeriksaan untuk mengetahui kadar gula (glukosa) dalam darah sebagai sumber energi utama bagi tubuh. Pemeriksaan ini penting dilakukan secara rutin karena kadar gula darah yang tinggi atau rendah sering kali tidak menimbulkan gejala pada tahap awal. <br> Manfaat cek gula darah secara rutin yaitu membantu mendeteksi diabetes melitus sejak dini, mengontrol kadar gula darah agar tetap normal, serta mencegah terjadinya komplikasi seperti penyakit jantung, gangguan ginjal, dan gangguan saraf"
+        solution: "Pemeriksaan gula darah rutin membantu mencegah komplikasi dan menjaga kadar gula tetap normal."
       }
     ];
 
@@ -248,17 +253,15 @@
 
       const doneCount = activities.filter(a => a.done).length;
 
-      // ===== TAMBAHAN: kondisi awal =====
       if (doneCount === 0) {
         infoBox.innerHTML = `
-          <div class="info-empty">
-            Anda belum melakukan kegiatan<br>
-            apapun dalam list
-          </div>
-        `;
+        <div class="info-empty">
+          Anda belum melakukan kegiatan<br>
+          apapun dalam list
+        </div>
+      `;
         infoBox.style.display = "block";
       }
-      // =================================
 
       activities.forEach(act => {
         const btn = document.createElement("button");
@@ -270,22 +273,22 @@
             act.done = true;
 
             localStorage.setItem(
-              "activitiesStatus",
+              STORAGE_KEY_STATUS,
               JSON.stringify(activities.map(a => a.done))
             );
 
             infoBox.innerHTML = `
-              <div class="qa">
-                <strong>${act.name}</strong><br>
-                 ${act.solution}
-              </div>
-            `;
+            <div class="qa">
+              <strong>${act.name}</strong><br>
+              ${act.solution}
+            </div>
+          `;
             infoBox.style.display = "block";
 
-            render();
+            localStorage.setItem(STORAGE_KEY_INFO, infoBox.innerHTML);
+            localStorage.setItem(STORAGE_KEY_VISIBLE, "true");
 
-            localStorage.setItem("infoBoxContent", infoBox.innerHTML);
-            localStorage.setItem("infoBoxVisible", "true");
+            render();
           }
         };
 
@@ -293,8 +296,8 @@
       });
     }
 
-    // ===== TAMBAHAN: ambil status dari localStorage =====
-    const savedStatus = JSON.parse(localStorage.getItem("activitiesStatus"));
+    /* ===== RESTORE STATUS ===== */
+    const savedStatus = JSON.parse(localStorage.getItem(STORAGE_KEY_STATUS));
     if (savedStatus) {
       activities.forEach((a, i) => {
         if (savedStatus[i] !== undefined) {
@@ -303,57 +306,14 @@
       });
     }
 
-    // ===== TAMBAHAN: restore info box =====
-    const savedInfo = localStorage.getItem("infoBoxContent");
-    const infoVisible = localStorage.getItem("infoBoxVisible");
+    /* ===== RESTORE INFO BOX ===== */
+    const savedInfo = localStorage.getItem(STORAGE_KEY_INFO);
+    const infoVisible = localStorage.getItem(STORAGE_KEY_VISIBLE);
 
     if (savedInfo && infoVisible === "true") {
       infoBox.innerHTML = savedInfo;
       infoBox.style.display = "block";
     }
-    // =====================================
-
-    // function submitCheck() {
-    //   const total = activities.length;
-    //   const doneCount = activities.filter(a => a.done).length;
-    //   const ratio = doneCount / total;
-
-    //   let kategori = "",
-    //     pesan = "",
-    //     bgColor = "";
-
-    //   if (ratio === 1) {
-    //     kategori = "Sangat Sehat";
-    //     pesan = "Bagus! Semua aktivitas telah dilakukan.";
-    //     bgColor = "#2ecc71";
-    //   } else if (ratio >= 0.5) {
-    //     kategori = "Sehat";
-    //     pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
-    //     bgColor = "#27ae60";
-    //   } else {
-    //     kategori = "Kurang Baik untuk Kesehatan";
-    //     pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
-    //     bgColor = "#e74c3c";
-    //   }
-
-    //   modalContent.innerHTML = `
-    //     <h3>${kategori}</h3>
-    //     <p>${pesan}</p>
-    //     <div class="warning">
-    //       <strong>Dampak jika tidak dilakukan:</strong>
-    //       <ul>
-    //         ${activities.filter(a => !a.done).map(a =>
-    //           `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-    //         ).join("")}
-    //       </ul>
-    //     </div>
-    //     <button class="close" onclick="closeModal()">Tutup</button>
-    //   `;
-
-    //   modalContent.style.background = bgColor;
-    //   modalContent.style.color = "white";
-    //   modal.style.display = "flex";
-    // }
 
     function submitCheck() {
       const total = activities.length;
@@ -374,18 +334,18 @@
       }
 
       modalContent.innerHTML = `
-    <h3>${kategori}</h3>
-    <p>${pesan}</p>
-    <div class="warning">
-      <strong>Dampak jika tidak dilakukan:</strong>
-      <ul>
-        ${activities.filter(a => !a.done).map(a =>
-          `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-        ).join("")}
-      </ul>
-    </div>
-    <button class="close" onclick="closeModal()">Tutup</button>
-  `;
+      <h3>${kategori}</h3>
+      <p>${pesan}</p>
+      <div class="warning">
+        <strong>Dampak jika tidak dilakukan:</strong>
+        <ul>
+          ${activities.filter(a => !a.done).map(a =>
+            `<li><strong>${a.name}:</strong> ${a.impact}</li>`
+          ).join("")}
+        </ul>
+      </div>
+      <button class="close" onclick="closeModal()">Tutup</button>
+    `;
 
       modalContent.style.background = bgColor;
       modalContent.style.color = "white";
@@ -401,9 +361,9 @@
       infoBox.style.display = "none";
       closeModal();
       render();
-      localStorage.removeItem("activitiesStatus");
-      localStorage.removeItem("infoBoxContent");
-      localStorage.removeItem("infoBoxVisible");
+      localStorage.removeItem(STORAGE_KEY_STATUS);
+      localStorage.removeItem(STORAGE_KEY_INFO);
+      localStorage.removeItem(STORAGE_KEY_VISIBLE);
     }
 
     render();

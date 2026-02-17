@@ -199,42 +199,47 @@
   </div>
 
   <script>
+    /* ===== KEY KHUSUS UNTUK LIST GIZI ===== */
+    const STORAGE_KEY_STATUS = "activitiesStatus_gizi";
+    const STORAGE_KEY_INFO = "infoBoxContent_gizi";
+    const STORAGE_KEY_VISIBLE = "infoBoxVisible_gizi";
+    /* ==================================== */
+
     const activities = [{
         name: "Memenuhi kebutuhan karbohidrat",
         done: false,
-        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular. ",
+        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular.",
         solution: "mengonsumsi sumber energi seperti nasi, roti, jagung, atau umbi-umbian yang bermanfaat untuk mendukung aktivitas sehari-hari dan fungsi otak."
-
       },
       {
         name: "Mengonsumsi protein hewani dan nabati",
         done: false,
-        impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
-        solution: "untuk membantu pertumbuhan, perbaikan sel tubuh, serta menjaga daya tahan tubuh agar tidak mudah sakit."
+        impact: "Kekurangan zat gizi dapat menurunkan daya tahan tubuh.",
+        solution: "membantu pertumbuhan, perbaikan sel tubuh, serta menjaga daya tahan tubuh agar tidak mudah sakit."
       },
       {
         name: "Membatasi lemak, gula, dan garam",
         done: false,
-        impact: "Risiko infeksi dan penyakit menular meningkat.",
-        solution: "upaya menjaga keseimbangan asupan zat gizi agar terhindar dari risiko obesitas, diabetes, dan tekanan darah tinggi."
+        impact: "Risiko penyakit tidak menular meningkat.",
+        solution: "menjaga keseimbangan asupan gizi agar terhindar dari obesitas, diabetes, dan hipertensi."
       },
       {
         name: "Memperbanyak sayur dan buah",
         done: false,
-        impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
-        solution: "memenuhi kebutuhan vitamin, mineral, dan serat yang bermanfaat untuk melancarkan pencernaan dan meningkatkan sistem imun."
+        impact: "Kekurangan serat dapat mengganggu pencernaan.",
+        solution: "memenuhi kebutuhan vitamin, mineral, dan serat untuk meningkatkan sistem imun."
       },
       {
         name: "Minum air putih yang cukup",
         done: false,
-        impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
-        solution: "menjaga keseimbangan cairan tubuh, membantu proses metabolisme, dan mencegah dehidrasi."
+        impact: "Dehidrasi dapat mengganggu fungsi tubuh.",
+        solution: "menjaga keseimbangan cairan tubuh dan membantu metabolisme."
       },
       {
         name: "Makan dengan porsi seimbang",
         done: false,
         impact: "Diabetes dapat berkembang tanpa disadari.",
-        solution: "kebiasaan mengatur jumlah makanan sesuai kebutuhan tubuh agar energi tercukupi tanpa berlebihan."
+        solution: "mengatur jumlah makanan sesuai kebutuhan tubuh agar energi cukup tanpa berlebihan."
       }
     ];
 
@@ -248,17 +253,15 @@
 
       const doneCount = activities.filter(a => a.done).length;
 
-      // ===== TAMBAHAN: kondisi awal =====
       if (doneCount === 0) {
         infoBox.innerHTML = `
-          <div class="info-empty">
-            Anda belum melakukan kegiatan<br>
-            apapun dalam list
-          </div>
-        `;
+        <div class="info-empty">
+          Anda belum melakukan kegiatan<br>
+          apapun dalam list
+        </div>
+      `;
         infoBox.style.display = "block";
       }
-      // =================================
 
       activities.forEach(act => {
         const btn = document.createElement("button");
@@ -270,22 +273,22 @@
             act.done = true;
 
             localStorage.setItem(
-              "activitiesStatus",
+              STORAGE_KEY_STATUS,
               JSON.stringify(activities.map(a => a.done))
             );
 
             infoBox.innerHTML = `
-              <div class="qa">
-                <strong>${act.name}</strong><br>
-                 ${act.solution}
-              </div>
-            `;
+            <div class="qa">
+              <strong>${act.name}</strong><br>
+              ${act.solution}
+            </div>
+          `;
             infoBox.style.display = "block";
 
-            render();
+            localStorage.setItem(STORAGE_KEY_INFO, infoBox.innerHTML);
+            localStorage.setItem(STORAGE_KEY_VISIBLE, "true");
 
-            localStorage.setItem("infoBoxContent", infoBox.innerHTML);
-            localStorage.setItem("infoBoxVisible", "true");
+            render();
           }
         };
 
@@ -293,8 +296,8 @@
       });
     }
 
-    // ===== TAMBAHAN: ambil status dari localStorage =====
-    const savedStatus = JSON.parse(localStorage.getItem("activitiesStatus"));
+    /* ===== RESTORE STATUS ===== */
+    const savedStatus = JSON.parse(localStorage.getItem(STORAGE_KEY_STATUS));
     if (savedStatus) {
       activities.forEach((a, i) => {
         if (savedStatus[i] !== undefined) {
@@ -303,57 +306,14 @@
       });
     }
 
-    // ===== TAMBAHAN: restore info box =====
-    const savedInfo = localStorage.getItem("infoBoxContent");
-    const infoVisible = localStorage.getItem("infoBoxVisible");
+    /* ===== RESTORE INFO BOX ===== */
+    const savedInfo = localStorage.getItem(STORAGE_KEY_INFO);
+    const infoVisible = localStorage.getItem(STORAGE_KEY_VISIBLE);
 
     if (savedInfo && infoVisible === "true") {
       infoBox.innerHTML = savedInfo;
       infoBox.style.display = "block";
     }
-    // =====================================
-
-    // function submitCheck() {
-    //   const total = activities.length;
-    //   const doneCount = activities.filter(a => a.done).length;
-    //   const ratio = doneCount / total;
-
-    //   let kategori = "",
-    //     pesan = "",
-    //     bgColor = "";
-
-    //   if (ratio === 1) {
-    //     kategori = "Sangat Sehat";
-    //     pesan = "Bagus! Semua aktivitas telah dilakukan.";
-    //     bgColor = "#2ecc71";
-    //   } else if (ratio >= 0.5) {
-    //     kategori = "Sehat";
-    //     pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
-    //     bgColor = "#27ae60";
-    //   } else {
-    //     kategori = "Kurang Baik untuk Kesehatan";
-    //     pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
-    //     bgColor = "#e74c3c";
-    //   }
-
-    //   modalContent.innerHTML = `
-    //     <h3>${kategori}</h3>
-    //     <p>${pesan}</p>
-    //     <div class="warning">
-    //       <strong>Dampak jika tidak dilakukan:</strong>
-    //       <ul>
-    //         ${activities.filter(a => !a.done).map(a =>
-    //           `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-    //         ).join("")}
-    //       </ul>
-    //     </div>
-    //     <button class="close" onclick="closeModal()">Tutup</button>
-    //   `;
-
-    //   modalContent.style.background = bgColor;
-    //   modalContent.style.color = "white";
-    //   modal.style.display = "flex";
-    // }
 
     function submitCheck() {
       const total = activities.length;
@@ -365,27 +325,27 @@
 
       if (doneCount === total) {
         kategori = "Sehat";
-        pesan = "Mantap! Semua aktivitas telah dilakukan dengan baik.";
+        pesan = "Mantap! Semua aktivitas gizi telah dilakukan dengan baik.";
         bgColor = "#2ecc71";
       } else {
         kategori = "Kurang Sehat";
-        pesan = "Masih ada aktivitas penting yang belum dilakukan.";
+        pesan = "Masih ada aktivitas gizi penting yang belum dilakukan.";
         bgColor = "#e74c3c";
       }
 
       modalContent.innerHTML = `
-    <h3>${kategori}</h3>
-    <p>${pesan}</p>
-    <div class="warning">
-      <strong>Dampak jika tidak dilakukan:</strong>
-      <ul>
-        ${activities.filter(a => !a.done).map(a =>
-          `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-        ).join("")}
-      </ul>
-    </div>
-    <button class="close" onclick="closeModal()">Tutup</button>
-  `;
+      <h3>${kategori}</h3>
+      <p>${pesan}</p>
+      <div class="warning">
+        <strong>Dampak jika tidak dilakukan:</strong>
+        <ul>
+          ${activities.filter(a => !a.done).map(a =>
+            `<li><strong>${a.name}:</strong> ${a.impact}</li>`
+          ).join("")}
+        </ul>
+      </div>
+      <button class="close" onclick="closeModal()">Tutup</button>
+    `;
 
       modalContent.style.background = bgColor;
       modalContent.style.color = "white";
@@ -401,9 +361,9 @@
       infoBox.style.display = "none";
       closeModal();
       render();
-      localStorage.removeItem("activitiesStatus");
-      localStorage.removeItem("infoBoxContent");
-      localStorage.removeItem("infoBoxVisible");
+      localStorage.removeItem(STORAGE_KEY_STATUS);
+      localStorage.removeItem(STORAGE_KEY_INFO);
+      localStorage.removeItem(STORAGE_KEY_VISIBLE);
     }
 
     render();

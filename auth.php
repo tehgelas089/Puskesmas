@@ -56,7 +56,7 @@
     </div>
 
     <!-- PERUBAHAN: BUTTON ADMIN BENAR -->
-    <button type="submit" class="sign-in_btn">
+    <button type="submit" class="sign-in_btn" style="background-color: #3d6373;">
       <span>Login Admin</span>
     </button>
 
@@ -68,7 +68,7 @@
     </div>
 
     <!-- PERUBAHAN: BUTTON USER LANGSUNG MASUK -->
-    <a href="home.php" class="sign-in_apl d-flex justify-content-center align-items-center">
+    <a href="home.php" class="sign-in_apl d-flex justify-content-center align-items-center" style="background-color: #4d6357;">
       <span>Lanjutkan sebagai pengguna</span>
     </a>
 

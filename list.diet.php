@@ -197,14 +197,18 @@
       <div class="modal-content" id="modalContent"></div>
     </div>
   </div>
-
   <script>
+    /* ===== KEY KHUSUS UNTUK LIST DIET ===== */
+    const STORAGE_KEY_STATUS = "activitiesStatus_diet";
+    const STORAGE_KEY_INFO = "infoBoxContent_diet";
+    const STORAGE_KEY_VISIBLE = "infoBoxVisible_diet";
+    /* ==================================== */
+
     const activities = [{
         name: "Makan Teratur",
         done: false,
-        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular. ",
-        solution: "Makan dilakukan secara terjadwal tanpa melewatkan waktu makan utama,Bermanfaat Menjaga metabolisme tubuh tetap stabil dan mencegah rasa lapar berlebihan"
-
+        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular.",
+        solution: "Makan dilakukan secara terjadwal tanpa melewatkan waktu makan utama, bermanfaat menjaga metabolisme tubuh tetap stabil dan mencegah rasa lapar berlebihan."
       },
       {
         name: "Makanan Bergizi Seimbang",
@@ -216,25 +220,25 @@
         name: "Pembatasan Gula dan Lemak Berlebih",
         done: false,
         impact: "Risiko infeksi dan penyakit menular meningkat.",
-        solution: "mengurangi konsumsi makanan tinggi gula, gorengan, dan makanan cepat saji, Menurunkan risiko obesitas, diabetes, dan penyakit jantung."
+        solution: "mengurangi konsumsi makanan tinggi gula, gorengan, dan makanan cepat saji, menurunkan risiko obesitas, diabetes, dan penyakit jantung."
       },
       {
         name: "Minum Air Putih yang cukup",
         done: false,
         impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
-        solution: "Membantu metabolisme, melancarkan pencernaan, dan mengurangi rasa lapar. minimal kebutuhan air putih orang dewasa adalah ±2 liter per hari atau sekitar 8 gelas (1 gelas ±250 ml)."
+        solution: "membantu metabolisme, melancarkan pencernaan, dan mengurangi rasa lapar. Kebutuhan air putih ±2 liter per hari atau sekitar 8 gelas."
       },
       {
         name: "Aktivitas Fisik Teratur",
         done: false,
         impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
-        solution: "kombinasikan dengan olahraga atau aktivitas fisik ringan, bermanfaat Membantu pembakaran kalori, menjaga kebugaran, dan mempercepat hasil berat badan ideal."
+        solution: "kombinasikan dengan olahraga atau aktivitas fisik ringan untuk membantu pembakaran kalori dan menjaga kebugaran."
       },
       {
         name: "Istirahat yang Cukup",
         done: false,
         impact: "Diabetes dapat berkembang tanpa disadari.",
-        solution: "Tidur yang cukup menjadi bagian dari pola hidup sehat menjaga berat badan ideal,bermanfaat Menjaga keseimbangan hormon dan mengontrol nafsu makan."
+        solution: "tidur yang cukup membantu menjaga keseimbangan hormon dan mengontrol nafsu makan."
       }
     ];
 
@@ -248,17 +252,15 @@
 
       const doneCount = activities.filter(a => a.done).length;
 
-      // ===== TAMBAHAN: kondisi awal =====
       if (doneCount === 0) {
         infoBox.innerHTML = `
-          <div class="info-empty">
-            Anda belum melakukan kegiatan<br>
-            apapun dalam list
-          </div>
-        `;
+        <div class="info-empty">
+          Anda belum melakukan kegiatan<br>
+          apapun dalam list
+        </div>
+      `;
         infoBox.style.display = "block";
       }
-      // =================================
 
       activities.forEach(act => {
         const btn = document.createElement("button");
@@ -270,22 +272,22 @@
             act.done = true;
 
             localStorage.setItem(
-              "activitiesStatus",
+              STORAGE_KEY_STATUS,
               JSON.stringify(activities.map(a => a.done))
             );
 
             infoBox.innerHTML = `
-              <div class="qa">
-                <strong>${act.name}</strong><br>
-                 ${act.solution}
-              </div>
-            `;
+            <div class="qa">
+              <strong>${act.name}</strong><br>
+              ${act.solution}
+            </div>
+          `;
             infoBox.style.display = "block";
 
-            render();
+            localStorage.setItem(STORAGE_KEY_INFO, infoBox.innerHTML);
+            localStorage.setItem(STORAGE_KEY_VISIBLE, "true");
 
-            localStorage.setItem("infoBoxContent", infoBox.innerHTML);
-            localStorage.setItem("infoBoxVisible", "true");
+            render();
           }
         };
 
@@ -293,8 +295,8 @@
       });
     }
 
-    // ===== TAMBAHAN: ambil status dari localStorage =====
-    const savedStatus = JSON.parse(localStorage.getItem("activitiesStatus"));
+    /* ===== RESTORE STATUS ===== */
+    const savedStatus = JSON.parse(localStorage.getItem(STORAGE_KEY_STATUS));
     if (savedStatus) {
       activities.forEach((a, i) => {
         if (savedStatus[i] !== undefined) {
@@ -303,57 +305,14 @@
       });
     }
 
-    // ===== TAMBAHAN: restore info box =====
-    const savedInfo = localStorage.getItem("infoBoxContent");
-    const infoVisible = localStorage.getItem("infoBoxVisible");
+    /* ===== RESTORE INFO BOX ===== */
+    const savedInfo = localStorage.getItem(STORAGE_KEY_INFO);
+    const infoVisible = localStorage.getItem(STORAGE_KEY_VISIBLE);
 
     if (savedInfo && infoVisible === "true") {
       infoBox.innerHTML = savedInfo;
       infoBox.style.display = "block";
     }
-    // =====================================
-
-    // function submitCheck() {
-    //   const total = activities.length;
-    //   const doneCount = activities.filter(a => a.done).length;
-    //   const ratio = doneCount / total;
-
-    //   let kategori = "",
-    //     pesan = "",
-    //     bgColor = "";
-
-    //   if (ratio === 1) {
-    //     kategori = "Sangat Sehat";
-    //     pesan = "Bagus! Semua aktivitas telah dilakukan.";
-    //     bgColor = "#2ecc71";
-    //   } else if (ratio >= 0.5) {
-    //     kategori = "Sehat";
-    //     pesan = "Sudah cukup baik, namun masih perlu ditingkatkan.";
-    //     bgColor = "#27ae60";
-    //   } else {
-    //     kategori = "Kurang Baik untuk Kesehatan";
-    //     pesan = "Masih banyak aktivitas penting yang belum dilakukan.";
-    //     bgColor = "#e74c3c";
-    //   }
-
-    //   modalContent.innerHTML = `
-    //     <h3>${kategori}</h3>
-    //     <p>${pesan}</p>
-    //     <div class="warning">
-    //       <strong>Dampak jika tidak dilakukan:</strong>
-    //       <ul>
-    //         ${activities.filter(a => !a.done).map(a =>
-    //           `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-    //         ).join("")}
-    //       </ul>
-    //     </div>
-    //     <button class="close" onclick="closeModal()">Tutup</button>
-    //   `;
-
-    //   modalContent.style.background = bgColor;
-    //   modalContent.style.color = "white";
-    //   modal.style.display = "flex";
-    // }
 
     function submitCheck() {
       const total = activities.length;
@@ -374,18 +333,18 @@
       }
 
       modalContent.innerHTML = `
-    <h3>${kategori}</h3>
-    <p>${pesan}</p>
-    <div class="warning">
-      <strong>Dampak jika tidak dilakukan:</strong>
-      <ul>
-        ${activities.filter(a => !a.done).map(a =>
-          `<li><strong>${a.name}:</strong> ${a.impact}</li>`
-        ).join("")}
-      </ul>
-    </div>
-    <button class="close" onclick="closeModal()">Tutup</button>
-  `;
+      <h3>${kategori}</h3>
+      <p>${pesan}</p>
+      <div class="warning">
+        <strong>Dampak jika tidak dilakukan:</strong>
+        <ul>
+          ${activities.filter(a => !a.done).map(a =>
+            `<li><strong>${a.name}:</strong> ${a.impact}</li>`
+          ).join("")}
+        </ul>
+      </div>
+      <button class="close" onclick="closeModal()">Tutup</button>
+    `;
 
       modalContent.style.background = bgColor;
       modalContent.style.color = "white";
@@ -401,13 +360,14 @@
       infoBox.style.display = "none";
       closeModal();
       render();
-      localStorage.removeItem("activitiesStatus");
-      localStorage.removeItem("infoBoxContent");
-      localStorage.removeItem("infoBoxVisible");
+      localStorage.removeItem(STORAGE_KEY_STATUS);
+      localStorage.removeItem(STORAGE_KEY_INFO);
+      localStorage.removeItem(STORAGE_KEY_VISIBLE);
     }
 
     render();
   </script>
+
 
 </body>
 

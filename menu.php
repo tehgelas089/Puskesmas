@@ -34,8 +34,8 @@
     }
 
     .menu-card {
-      background: #71C9CE;
-      color: black;
+      background: #1f6a4e;
+      color: white;
       border-radius: 18px;
       height: 110px;
       display: flex;
@@ -46,17 +46,19 @@
       cursor: pointer;
       transition: 0.2s;
       text-decoration: none;
+
     }
 
     .menu-card:hover {
-      background: #A6E3E9;
+      background: #a8f2ce;
       transform: scale(1.03);
+      color: black;
     }
   </style>
 </head>
 
 <body>
-  <section class="navbar-area navbar-nine">
+  <section class="navbar-area navbar-nine" style="background-color: #1f6a4e;">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">

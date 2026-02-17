@@ -39,7 +39,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
   <!--====== NAVBAR NINE PART START ======-->
 
-  <section class="navbar-area navbar-nine">
+  <section class="navbar-area navbar-nine" style="background-color: #1f6a4e;">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -129,7 +129,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="container">
 
       <h3>Data Postingan</h3>
-      <a href="posting.php" class="btn btn-primary mb-3">Tambah Postingan</a>
+      <a href="posting.php" class="btn mb-3" style="background-color: #c1e8fb;">Tambah Postingan</a>
 
       <div class="table-responsive">
         <table class="table table-bordered table-fixed w-100" style="border: 2px;">
@@ -188,7 +188,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       width: 6.5em;
       height: 2.3em;
       margin: 0.5em;
-      background: #EEA727;
+      background: #a8f2ce;
       color: white;
       border: none;
       border-radius: 0.625em;
@@ -207,7 +207,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
     .cdn:after {
       content: "";
-      background: #222222;
+      background: #4d6357;
       position: absolute;
       z-index: -1;
       left: -20%;
@@ -228,7 +228,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       width: 6.5em;
       height: 2.3em;
       margin: 0.5em;
-      background: #FF4646;
+      background: #ba1a1a;
       color: white;
       border: none;
       border-radius: 0.625em;
@@ -247,7 +247,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
     .hps:after {
       content: "";
-      background: #222222;
+      background: #4d6357;
       position: absolute;
       z-index: -1;
       left: -20%;
@@ -408,7 +408,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
 
 
-  <a href="#" class="scroll-top btn-hover">
+  <a href="#" class="scroll-top btn-hover" style="background-color: #1f6a4e;">
     <i class="lni lni-chevron-up"></i>
   </a>
 
