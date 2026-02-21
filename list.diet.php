@@ -207,37 +207,37 @@
     const activities = [{
         name: "Makan Teratur",
         done: false,
-        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular.",
+        impact: "Saat Anda menunda makan, tubuh akan mengirim sinyal lapar yang sangat kuat, sehingga pada waktu makan berikutnya Anda cenderung makan berlebihan dan sulit mengontrol porsi.",
         solution: "Makan dilakukan secara terjadwal tanpa melewatkan waktu makan utama, bermanfaat menjaga metabolisme tubuh tetap stabil dan mencegah rasa lapar berlebihan."
       },
       {
         name: "Makanan Bergizi Seimbang",
         done: false,
-        impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
+        impact: "Tubuh kekurangan nutrisi penting namun kelebihan kalori kosong, yang mempercepat penumpukan lemak jahat.",
         solution: "tetap memenuhi kebutuhan gizi seperti karbohidrat, protein, lemak sehat, vitamin, dan mineral."
       },
       {
         name: "Pembatasan Gula dan Lemak Berlebih",
         done: false,
-        impact: "Risiko infeksi dan penyakit menular meningkat.",
+        impact: "Kelebihan energi dari gula dan lemak yang tidak terpakai akan langsung disimpan tubuh sebagai cadangan lemak beresiko obesitas.",
         solution: "mengurangi konsumsi makanan tinggi gula, gorengan, dan makanan cepat saji, menurunkan risiko obesitas, diabetes, dan penyakit jantung."
       },
       {
         name: "Minum Air Putih yang cukup",
         done: false,
-        impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
+        impact: "Dehidrasi ringan saja sudah cukup untuk membuat Anda mudah marah, cemas, dan kehilangan fokus saat bekerja.",
         solution: "membantu metabolisme, melancarkan pencernaan, dan mengurangi rasa lapar. Kebutuhan air putih ±2 liter per hari atau sekitar 8 gelas."
       },
       {
         name: "Aktivitas Fisik Teratur",
         done: false,
-        impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
+        impact: "Kalori yang masuk tidak terbakar, menyebabkan penumpukan lemak di perut dan pembuluh darah.",
         solution: "kombinasikan dengan olahraga atau aktivitas fisik ringan untuk membantu pembakaran kalori dan menjaga kebugaran."
       },
       {
         name: "Istirahat yang Cukup",
         done: false,
-        impact: "Diabetes dapat berkembang tanpa disadari.",
+        impact: "Mengganggu hormon pengendali rasa lapar (leptin dan ghrelin), sehingga Anda cenderung ingin makan makanan manis/berlemak di malam hari.",
         solution: "tidur yang cukup membantu menjaga keseimbangan hormon dan mengontrol nafsu makan."
       }
     ];
@@ -329,7 +329,7 @@
       } else {
         kategori = "Kurang Sehat";
         pesan = "Masih ada aktivitas penting yang belum dilakukan.";
-        bgColor = "#e74c3c";
+        bgColor = "#ba1a1a";
       }
 
       modalContent.innerHTML = `

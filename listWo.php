@@ -208,31 +208,31 @@
     const activities = [{
         name: "Jogging atau Lari Ringan",
         done: false,
-        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular.",
+        impact: "Jantung tidak terlatih untuk memompa darah secara efisien ke seluruh tubuh.",
         solution: "Aktivitas fisik ringan dengan melangkahkan kaki secara teratur bermanfaat Melatih jantung dan paru-paru, meningkatkan daya tahan tubuh."
       },
       {
         name: "Bersepeda",
         done: false,
-        impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
+        impact: "Tanpa latihan kardio seperti bersepeda, aliran darah ke pembuluh darah kecil menjadi kurang optimal.",
         solution: "tetap memenuhi kebutuhan gizi seperti karbohidrat, protein, lemak sehat, vitamin, dan mineral."
       },
       {
         name: "Senam atau Aerobik",
         done: false,
-        impact: "Risiko infeksi dan penyakit menular meningkat.",
+        impact: "Anda mungkin merasa lebih kaku atau sering kehilangan keseimbangan karena koordinasi motorik tidak terlatih.",
         solution: "Gerakan tubuh teratur yang diiringi musik atau hitungan tertentu. Bermanfaat Meningkatkan kebugaran, kelenturan tubuh, dan menjaga berat badan ideal."
       },
       {
         name: "Minum Air Putih yang cukup",
         done: false,
-        impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
+        impact: "Tanpa air yang cukup, otot akan lebih mudah mengalami kram dan terasa nyeri saat atau setelah beraktivitas.",
         solution: "Membantu metabolisme, melancarkan pencernaan, dan mengurangi rasa lapar. minimal kebutuhan air putih orang dewasa adalah ±2 liter per hari atau sekitar 8 gelas (1 gelas ±250 ml)."
       },
       {
         name: "Peregangan",
         done: false,
-        impact: "Diabetes dapat berkembang tanpa disadari.",
+        impact: "Otot menjadi pendek dan kaku. Hal ini meningkatkan risiko cedera, nyeri punggung, serta membuat postur tubuh menjadi buruk karena ruang gerak sendi yang terbatas.",
         solution: "Gerakan untuk meregangkan otot sebelum atau sesudah aktivitas.Bermanfaat Mencegah cedera, mengurangi kaku otot, dan menjaga kelenturan tubuh"
       }
     ];
@@ -324,7 +324,7 @@
       } else {
         kategori = "Kurang Sehat";
         pesan = "Masih ada aktivitas penting yang belum dilakukan.";
-        bgColor = "#e74c3c";
+        bgColor = "#ba1a1a";
       }
 
       modalContent.innerHTML = `

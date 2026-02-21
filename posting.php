@@ -23,12 +23,12 @@
 
     .notif-success {
       background: #e6f4ea;
-      color: #2e7d32;
+      color: #316a42;
     }
 
     .notif-error {
       background: #fdecea;
-      color: #c62828;
+      color: #ba1a1a;
     }
 
     /* === TAMBAHAN STYLE (TIDAK MENGUBAH YANG LAMA) === */
@@ -39,18 +39,15 @@
       padding: 8px;
       text-align: center;
       max-height: 260px;
-      /* tinggi card tetap */
       overflow: hidden;
     }
 
     .preview-card img {
       max-width: 100%;
       max-height: 220px;
-      /* gambar di-mini otomatis */
       width: auto;
       height: auto;
       object-fit: contain;
-      /* PASTI tidak kepotong */
       border-radius: 12px;
     }
 
@@ -60,82 +57,80 @@
       font-weight: 600;
     }
 
-    .preview-card {
-      cursor: pointer;
-    }
-
     #file-wrapper {
       max-height: 200px;
-      /* muat ±4 input file */
       overflow-y: auto;
-      /* scroll ke bawah */
       padding-right: 6px;
-      /* biar scrollbar nggak nabrak */
+    }
+
+    /* === CARD HALAMAN (TAMBAHAN SAJA) === */
+    .page-card {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
   </style>
 </head>
 
-<body class="p-4">
+<body class="p-4 bg-light">
 
-  <h3>Tambah Postingan</h3>
+  <!-- === PEMBUNGKUS CARD (TANPA UBAH ISI) === -->
+  <div class="page-card">
 
-  <form method="POST" enctype="multipart/form-data">
+    <h3>Tambah Postingan</h3>
 
-    <!-- === BAGIAN TAMPILAN FILE + PREVIEW (DITERAPKAN LANGSUNG) === -->
-    <div class="row g-3 mb-3">
+    <form method="POST" enctype="multipart/form-data">
 
+      <div class="row g-3 mb-3">
 
-      <!-- === INPUT YANG LAMA TETAP === -->
-      <input type="text"
-        name="judul"
-        class="form-control mb-3"
-        placeholder="Judul Postingan"
-        required>
+        <input type="text"
+          name="judul"
+          class="form-control mb-3"
+          placeholder="Judul Postingan"
+          required>
 
-      <textarea name="deskripsi"
-        class="form-control mb-3"
-        placeholder="Deskripsi"
-        required></textarea>
+        <textarea name="deskripsi"
+          class="form-control mb-3"
+          placeholder="Deskripsi"
+          required></textarea>
 
-      <div class="col-md-4 h-50">
-        <div class="preview-card" id="preview">
-          Gambar Postingan
-        </div>
-      </div>
-
-
-
-      <div class="col-md-8">
-
-        <button
-          type="button"
-          class="btn btn-secondary btn-sm mt-2 w-25 h-25 mb-3"
-          onclick="tambahFile()">
-          + Tambah Foto
-        </button>
-
-        <div id="file-wrapper">
-          <input
-            type="file"
-            name="gambar[]"
-            class="form-control mb-2"
-            accept="image/*"
-            onchange="previewImage(this)"
-            required>
+        <div class="col-md-4 h-50">
+          <div class="preview-card" id="preview"></div>
         </div>
 
+        <div class="col-md-8">
+          <button
+            type="button"
+            class="btn btn-sm mt-2 w-25 h-25 mb-3 text-white fw-bold" style="background-color: #506352;"
+            onclick="tambahFile()">
+            + Tambah Foto
+          </button>
+
+          <div id="file-wrapper">
+            <input
+              type="file"
+              name="gambar[]"
+              class="form-control mb-2"
+              accept="image/*"
+              onchange="previewImage(this)"
+              required>
+          </div>
+        </div>
 
       </div>
 
-    </div>
+      <button class="btn w-100 post-btn fw-bold" style="background-color: #316a42; color: white;" name="simpan">
+        Posting
+      </button>
+    </form>
 
+  </div>
+  <!-- === END CARD === -->
 
-    <button class="btn btn-success w-100 post-btn" name="simpan">
-      Posting
-    </button>
-  </form>
-
-  <!-- MODAL (TETAP) -->
+  <!-- MODAL -->
   <div class="modal fade" id="notifModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -154,8 +149,6 @@
     </div>
   </div>
 
-
-  <!-- BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
@@ -189,7 +182,6 @@
 
     function tambahFile() {
       const wrapper = document.getElementById('file-wrapper');
-
       const input = document.createElement('input');
       input.type = 'file';
       input.name = 'gambar[]';
@@ -198,35 +190,28 @@
       input.onchange = function() {
         previewImage(this);
       };
-
       wrapper.appendChild(input);
     }
 
-    /* === TAMBAHAN PREVIEW GAMBAR === */
     function previewImage(input) {
       const preview = document.getElementById('preview');
-
       if (input.files && input.files[0]) {
         const reader = new FileReader();
-
         reader.onload = function(e) {
           preview.innerHTML = `<img src="${e.target.result}">`;
         };
-
         reader.readAsDataURL(input.files[0]);
       }
     }
+
     document.getElementById('preview').addEventListener('click', function() {
       const input = document.querySelector('#file-wrapper input[type="file"]');
-      if (input) {
-        input.click();
-      }
+      if (input) input.click();
     });
   </script>
 
   <?php
   if (isset($_POST['simpan'])) {
-
     $judul = $_POST['judul'];
     $deskripsi = $_POST['deskripsi'];
 

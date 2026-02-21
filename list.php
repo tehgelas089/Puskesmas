@@ -208,37 +208,37 @@
     const activities = [{
         name: "Mengonsumsi makanan bergizi seimbang",
         done: false,
-        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular.",
+        impact: "Menyebabkan kekurangan vitamin/mineral atau justru kelebihan kalori yang memicu kerusakan sel dan penurunan sistem imun.",
         solution: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular."
       },
       {
         name: "Membatasi gula, garam, dan lemak",
         done: false,
-        impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
+        impact: "Kombinasi dari pembuluh darah yang sudah menyempit/mengeras (akibat Lemak & Gula) dan tekanan aliran darah yang sangat kuat (akibat Garam) akan menciptakan masalah dalam kesehatan",
         solution: "bertujuan untuk mengurangi beban kerja organ tubuh, terutama jantung dan ginjal, sehingga dapat mencegah hipertensi, obesitas, dan diabetes."
       },
       {
         name: "Menjaga berat badan ideal",
         done: false,
-        impact: "Risiko infeksi dan penyakit menular meningkat.",
+        impact: "Mengakibatkan Obesitas, yang merupakan 'pintu masuk' utama bagi hampir semua penyakit kronis dan gangguan sendi.",
         solution: "berarti mempertahankan berat badan sesuai indeks massa tubuh normal, yang bermanfaat untuk mengurangi risiko penyakit seperti diabetes, tekanan darah tinggi, dan gangguan sendi."
       },
       {
         name: "Istirahat dan tidur yang cukup",
         done: false,
-        impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
+        impact: "Mengganggu metabolisme tubuh, meningkatkan hormon stres (kortisol), dan mengacaukan regenerasi sel jantung serta pembuluh darah.",
         solution: "kebiasaan memberikan waktu pemulihan bagi tubuh, yang bermanfaat untuk menjaga keseimbangan hormon, meningkatkan konsentrasi, dan memperkuat sistem imun."
       },
       {
         name: "Melakukan pemeriksaan kesehatan secara rutin",
         done: false,
-        impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
+        impact: "Penyakit tidak terdeteksi sejak dini (silent killer). Saat gejala akhirnya muncul, biasanya kondisi sudah parah atau terjadi komplikasi kronis.",
         solution: "bertujuan untuk memantau kondisi tubuh secara berkala sehingga penyakit dapat dideteksi lebih awal dan ditangani dengan cepat"
       },
       {
         name: "Menerapkan Perilaku Hidup Bersih dan Sehat",
         done: false,
-        impact: "Diabetes dapat berkembang tanpa disadari.",
+        impact: "Memperbesar risiko infeksi sekunder yang dapat memperburuk kondisi tubuh yang sudah memiliki bakat penyakit tidak menular.",
         solution: "kebiasaan hidup yang menjaga kebersihan diri dan lingkungan untuk mendukung kesehatan tubuh secara menyeluruh dan mencegah berbagai penyakit."
       }
     ];
@@ -330,7 +330,7 @@
       } else {
         kategori = "Kurang Sehat";
         pesan = "Masih ada aktivitas penting yang belum dilakukan.";
-        bgColor = "#e74c3c";
+        bgColor = "#ba1a1a";
       }
 
       modalContent.innerHTML = `

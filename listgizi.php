@@ -330,7 +330,7 @@
       } else {
         kategori = "Kurang Sehat";
         pesan = "Masih ada aktivitas gizi penting yang belum dilakukan.";
-        bgColor = "#e74c3c";
+        bgColor = "#ba1a1a";
       }
 
       modalContent.innerHTML = `

@@ -12,7 +12,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #d6dbd6;
+      background: #D3DAD9;
       padding: 20px;
     }
 
@@ -208,37 +208,37 @@
     const activities = [{
         name: "Menerapkan Perilaku Hidup Bersih dan Sehat",
         done: false,
-        impact: "kebiasaan mengonsumsi makanan yang mengandung karbohidrat, protein, lemak, vitamin, dan mineral sesuai kebutuhan tubuh, sehingga dapat menjaga fungsi organ dan mencegah berbagai penyakit tidak menular.",
+        impact: "Menjadi cara termudah bagi kuman, bakteri, dan virus masuk ke tubuh.",
         solution: "merupakan upaya menjaga kebersihan diri dan lingkungan yang bermanfaat untuk mengurangi risiko penyebaran penyakit menular."
       },
       {
         name: "Menggunakan masker saat sakit atau di tempat berisiko",
         done: false,
-        impact: "Kekurangan vitamin dan serat dapat menurunkan imunitas tubuh.",
+        impact: "Di tempat yang ramai berisiko, kuman orang lain bisa melayang di udara dan berisiko masuk kedalam tubuh.",
         solution: "bertujuan untuk mencegah penularan kuman melalui droplet dari batuk, bersin, atau berbicara."
       },
       {
         name: "Menjaga kebersihan lingkungan",
         done: false,
-        impact: "Risiko infeksi dan penyakit menular meningkat.",
+        impact: "kebersihan lingkungan	Lingkungan kotor menjadi sarang vektor penyakit.",
         solution: "kegiatan membersihkan dan mengelola lingkungan agar tidak menjadi tempat berkembangnya kuman dan vektor penyakit"
       },
       {
         name: "Menjaga daya tahan tubuh",
         done: false,
-        impact: "Merokok dapat merusak paru-paru dan meningkatkan risiko kanker.",
+        impact: "Tubuh menjadi lemah. Kuman yang seharusnya bisa dilawan oleh imun akan dengan mudah menginfeksi dan menyebabkan sakit yang lebih lama atau parah.",
         solution: "berarti memenuhi kebutuhan nutrisi tubuh agar sistem imun tetap kuat dalam melawan infeksi."
       },
       {
         name: "Melakukan imunisasi atau vaksinasi sesuai anjuran",
         done: false,
-        impact: "Hipertensi bisa tidak terdeteksi dan menyebabkan stroke.",
+        impact: ". Anda berisiko tinggi terkena komplikasi berat dari penyakit yang sebenarnya bisa dicegah, seperti polio atau campak.",
         solution: "upaya memberikan kekebalan tubuh terhadap penyakit tertentu sehingga dapat mencegah penularan dan keparahan penyakit."
       },
       {
         name: "Tidak berbagi barang pribadi",
         done: false,
-        impact: "Diabetes dapat berkembang tanpa disadari.",
+        impact: "Meningkatkan risiko penularan penyakit kulit (jamur/scabies), hepatitis, hingga infeksi mata melalui penggunaan barang pribadi yang bergantian.",
         solution: "tindakan menghindari penggunaan barang secara bersama-sama agar kuman tidak berpindah dari satu orang ke orang lain."
       }
     ];

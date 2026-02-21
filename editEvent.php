@@ -4,12 +4,10 @@ $id = $_GET['id'];
 $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM promosi WHERE id='$id'"));
 ?>
 
-
-
 <style>
   .wrap {
     max-width: 800px;
-    margin: auto;
+    margin: 80px auto;
   }
 
   label {
@@ -72,37 +70,44 @@ $data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM promosi WHERE id='
     font-size: 16px;
   }
 
-  .wrap {
-    max-width: 800px;
-    margin: 80px auto;
-    /* ⬅️ ini yang bikin turun, tapi gak ke bawah banget */
+  /* === CARD HALAMAN (TAMBAHAN SAJA) === */
+  .page-card {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  body {
+    background: #f5f5f5;
   }
 </style>
 
-<form method="POST" enctype="multipart/form-data" class="wrap">
+<!-- === CARD PEMBUNGKUS (FORM TETAP) === -->
+<div class="page-card">
 
-  <label>Tanggal</label>
-  <input type="date" name="tanggal"
-    value="<?= $data['tanggal']; ?>"
-    class="input-grey">
+  <form method="POST" enctype="multipart/form-data" class="wrap">
 
-  <label>Deskripsi</label>
-  <textarea name="deskripsi"
-    class="input-grey"><?= $data['deskripsi']; ?></textarea>
+    <label>Tanggal</label>
+    <input type="date" name="tanggal"
+      value="<?= $data['tanggal']; ?>"
+      class="input-grey">
 
-  <!-- <div class="bottom-area">
-    <div class="preview">
-      <img src="assets/images/promosi/<?= $data['gambar']; ?>">
-    </div> -->
+    <label>Deskripsi</label>
+    <textarea name="deskripsi"
+      class="input-grey"><?= $data['deskripsi']; ?></textarea>
 
-  <div class="right-side">
-    <input type="file" name="gambar" class="input-grey">
-    <button name="update" class="btn-posting">Posting</button>
-  </div>
-  </div>
+    <div class="right-side">
+      <input type="file" name="gambar" class="input-grey">
+      <button name="update" class="btn-posting">Posting</button>
+    </div>
 
+  </form>
 
-</form>
+</div>
+<!-- === END CARD === -->
 
 <?php
 if (isset($_POST['update'])) {
