@@ -44,7 +44,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <div class="row">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="assets/images/puskes.png" alt="Logo" style="height: 50px; width: 50px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
@@ -136,7 +136,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         $acara = mysqli_query($conn, "SELECT * FROM promosi ORDER BY tanggal DESC");
         ?>
 
-        <h3 class="mb-3">Data Promosi Acara</h3>
+        <h3 class="mb-3">Agenda Acara</h3>
         <a href="addEvent.php" class="btn  mb-3" style="background-color: #c1e8fb;">+ Tambah Acara</a>
 
         <div class="table-responsive">
@@ -156,11 +156,12 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
                 <td><?= $row['deskripsi']; ?></td>
                 <td><?= date('d M Y', strtotime($row['tanggal'])); ?></td>
                 <td>
-                  <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                    <a href="editEvent.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                  <div class="d-flex flex-column justify-content-center align-items-center gap-2 w-50 mx-auto">
+                    <a href="editEvent.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm w-100">Edit</a>
                     <a href="deleteEvent.php?id=<?= $row['id']; ?>"
-                      class="btn btn-danger btn-sm"
+                      class="btn btn-danger btn-sm w-100"
                       onclick="return confirm('Hapus acara?')">Hapus</a>
+                  </div>
                 </td>
               </tr>
             <?php endwhile; ?>

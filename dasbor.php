@@ -44,14 +44,11 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
       <div class="row">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="assets/images/puskes.png" alt="Logo" style="height: 50px; width: 50px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
               aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
@@ -59,7 +56,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
             </div>
 
-            <div class="navbar-btn d-none d-lg-inline-block">
+            <div class="navbar-btn">
               <a class="menu-bar" href="#side-menu-left"><i class="lni lni-menu"></i></a>
             </div>
           </nav>
@@ -81,34 +78,30 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     </div>
     <div class="sidebar-content">
       <div class="sidebar-logo">
-        <a href="index.html"><img src="assets/images/puskes.png" alt="Logo" style="width: 80px; height: 80px;" /></a>
+        <a href="index.php"><img src="assets/images/puskes.png" alt="Logo" style="width: 80px; height: 80px;" /></a>
       </div>
       <p class="text text-uppercase text-black fw-bold">Sangkanhurip Beraksi.</p>
       <!-- logo -->
       <div class="sidebar-menu">
         <h5 class="menu-title">Menu</h5>
         <ul>
-          <li><a href="menu.php">List</a></li>
+          <li><a href="menu.php">List Praktik kesehatan</a></li>
           <li><a href="dasbor.php">Posting</a></li>
           <li><a href="Agenda.php">Agenda Acara</a></li>
-          <li><a href="admin/konten.php">Contact Us</a></li>
+
         </ul>
       </div>
       <!-- menu -->
       <div class="sidebar-social align-items-center justify-content-center">
-        <h5 class="social-title">Follow Us On</h5>
+        <h5 class="social-title">Ikuti Media Sosial Kami</h5>
         <ul>
+
           <li>
-            <a href="admin/konten.php"><i class="lni lni-facebook-filled"></i></a>
+            <a href="https://www.instagram.com/pkm.sangkanhurip?igsh=MWRxdTltZzljczl0dA=="><i class="lni lni-instagram-original"></i></a>
           </li>
+
           <li>
-            <a href="admin/konten.php"><i class="lni lni-twitter-original"></i></a>
-          </li>
-          <li>
-            <a href="admin/konten.php"><i class="lni lni-linkedin-original"></i></a>
-          </li>
-          <li>
-            <a href="admin/konten.php"><i class="lni lni-youtube"></i></a>
+            <a href="https://www.youtube.com/@puskesmassangkanhurip9277"><i class="lni lni-youtube"></i></a>
           </li>
         </ul>
       </div>
@@ -128,11 +121,11 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
   <section class="about-area about-five" id="promosi">
     <div class="container">
 
-      <h3>Data Postingan</h3>
+      <h3>Postingan</h3>
       <a href="posting.php" class="btn mb-3" style="background-color: #c1e8fb;">Tambah Postingan</a>
 
       <div class="table-responsive">
-        <table class="table table-bordered table-fixed w-100" style="border: 2px;">
+        <table class="table table-bordered table-fixed w-100" style="border: 2px;" id="postTable">
           <tr class="text-center">
             <th>Postingan</th>
             <th>Judul</th>
@@ -178,10 +171,65 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
             </tr>
           <?php endwhile; ?>
         </table>
-
+        <div id="pagination" class="mt-3 d-flex justify-content-center"></div>
       </div>
   </section>
+  <script>
+    const rowsPerPage = 5;
+    const table = document.getElementById("postTable");
+    const rows = table.getElementsByTagName("tr");
 
+    // Lewati row pertama (header)
+    const dataRows = Array.from(rows).slice(1);
+
+    let currentPage = 1;
+    const totalPages = Math.ceil(dataRows.length / rowsPerPage);
+
+    function showPage(page) {
+      currentPage = page;
+
+      dataRows.forEach((row, index) => {
+        row.style.display =
+          (index >= (page - 1) * rowsPerPage && index < page * rowsPerPage) ?
+          "" :
+          "none";
+      });
+
+      renderPagination();
+    }
+
+    function renderPagination() {
+      const container = document.getElementById("pagination");
+      container.innerHTML = "";
+
+      let buttons = "";
+
+      // Prev
+      if (currentPage > 1) {
+        buttons += `<button class="btn btn-light mx-1" onclick="showPage(${currentPage - 1})">kembali</button>`;
+      }
+
+      // Number Buttons
+      for (let i = 1; i <= totalPages; i++) {
+        buttons += `
+        <button class="btn ${i === currentPage ? "btn-success" : "btn-light"} mx-1"
+                onclick="showPage(${i})">
+          ${i}
+        </button>
+      `;
+      }
+
+      // Next
+      if (currentPage < totalPages) {
+        buttons += `<button class="btn btn-light mx-1" onclick="showPage(${currentPage + 1})">lanjut</button>`;
+      }
+
+      container.innerHTML = buttons;
+    }
+
+    // Tampilkan halaman 1 saat load
+    showPage(1);
+  </script>
 
   <style>
     .cdn {
@@ -369,7 +417,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
               <!-- Single Widget -->
               <div class="footer-widget f-about">
                 <div class="logo">
-                  <a href="index.html">
+                  <a href="index.php">
                     <img src="assets/images/puskes.png" alt="" class="img-fluid" />
                   </a>
                 </div>

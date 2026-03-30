@@ -54,11 +54,11 @@
                   <a class="page-scroll active" href="#hero-area">Beranda</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll" href="#galeri">Pelayanan</a>
+                  <a class="page-scroll" href="#galeri">Maklumat</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="page-scroll" href="#call-action">Maklumat</a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                   <a class="page-scroll" href="#contact">Kontak</a>
@@ -189,141 +189,10 @@
 
   <!-- ===== service-area start ===== -->
   <section id="galeri" class="services-area services-eight" >
-    <!--======  Start Section Title Five ======-->
-    <div class="section-title-five">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              
-              <h2 class="fw-bold">Pelayanan</h2>
-              <p>
-                Puskesmas Sangkanhurip menyediakan pelayanan:
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- row -->
-      </div>
-      <!-- container -->
-    </div>
-    <!--======  End Section Title Five ======-->
-   <div class="container">
-  <div class="row g-4">
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="assets/images/client-logo/IMG_9543.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Pengecekan Kesehatan Darah</h4>
-          <p>Petugas Puskesmas melakukan pengecekan darah dalam kegiatan Cek Kesehatan Gratis (CKG) untuk mengetahui kondisi kesehatan dan melakukan deteksi dini.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="assets/images/client-logo/IMG_9627 (1).jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Konsultasi Kesehatan</h4>
-          <p>Petugas Puskesmas melakukan konsultasi dengan memverifikasi data, menjelaskan hasil pemeriksaan awal, serta memberikan edukasi dan arahan kesehatan.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="assets/images/client-logo/IMG-20260115-WA0079 (1).jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Pengisian skrinning</h4>
-          <p>Petugas Puskesmas melakukan pengisian skrining kesehatan masyarakat dalam kegiatan Cek Kesehatan Gratis (CKG) untuk pendataan dan deteksi dini faktor risiko kesehatan.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="container">
-  <div class="row g-4">
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="assets/images/client-logo/IMG_9592.jpg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Pengecekan Kesehatan Darah</h4>
-          <p>Petugas Puskesmas melakukan pengecekan darah dalam kegiatan Cek Kesehatan Gratis (CKG) untuk mengetahui kondisi kesehatan dasar dan deteksi dini masyarakat.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="assets/images/client-logo/bu della pelayanan.jpeg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Pengecekan Tekanan Darah</h4>
-          <p>Pegawai Puskesmas melakukan pengecekan tekanan darah (tensi) dalam kegiatan Cek Kesehatan Gratis (CKG) untuk mengetahui kondisi tekanan darah serta mendeteksi dini risiko hipertensi.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="single-services gallery-card">
-        <div class="gallery-image">
-          <img src="assets/images/client-logo/bu ratna.jpeg" alt="Gallery Image">
-        </div>
-        <div class="service-content text-center">
-          <h4>Mengelola data</h4>
-          <p>Pegawai Puskesmas sedang melakukan pendataan dan pengelolaan administrasi pelayanan kesehatan untuk mendukung kelancaran pelayanan.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+  
   </section>
 
-  <style>
   
-    .gallery-card {
-  height: 100%;
-  transition: 0.3s ease;
-}
-
-.gallery-image {
-  width: 100%;
-  aspect-ratio: 4 / 3; /* bisa ganti 1/1 atau 16/9 */
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.gallery-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* INI KUNCI BIAR GK KE POTONG */
-}
-
-/* Hover efek (opsional) */
-.gallery-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
-
-  </style>
   <!-- ===== service-area end ===== -->
 
 

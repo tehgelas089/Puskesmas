@@ -42,19 +42,17 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">
+          <nav class="navbar navbar-expand-lg d-flex align-items-center position-relative w-100">
+            <a class="navbar-brand" href="index.php">
               <img src="assets/images/puskes.png" alt="Logo" style="width: 60px; height: 60px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
               aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
+
             </button>
 
-            <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
-              <ul class="navbar-nav me-auto">
+            <div class="navbar-nav sub-menu-bar" id="navbarNine">
+              <ul class="navbar-nav ms-auto me-3">
                 <li class="nav-item">
                   <a class="page-scroll active" href="#hero-area">Beranda</a>
                 </li>
@@ -71,9 +69,11 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
               </ul>
             </div>
 
-            <div class="navbar-btn d-none d-lg-inline-block">
+            <div class="navbar-btn ms-auto">
               <a class="menu-bar" href="#side-menu-left"><i class="lni lni-menu"></i></a>
             </div>
+
+
           </nav>
           <!-- navbar -->
         </div>
@@ -93,34 +93,29 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
     </div>
     <div class="sidebar-content">
       <div class="sidebar-logo">
-        <a href="index.html"><img src="assets/images/puskes.png" alt="Logo" style="width: 100px; height: 100px;" /></a>
+        <a href="index.php"><img src="assets/images/puskes.png" alt="Logo" style="width: 100px; height: 100px;" /></a>
       </div>
       <p class="text text-uppercase text-black fw-bold">Sangkanhurip Beraksi.</p>
       <!-- logo -->
       <div class="sidebar-menu">
         <h5 class="menu-title">Menu</h5>
         <ul>
-          <li><a href="menu.php">List</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Latest News</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="menu.php">List praktik kesehatan</a></li>
+
+
         </ul>
       </div>
       <!-- menu -->
       <div class="sidebar-social align-items-center justify-content-center">
-        <h5 class="social-title">Follow Us On</h5>
+        <h5 class="social-title">Ikuti Media Sosial Kami</h5>
         <ul>
+
           <li>
-            <a href="#"><i class="lni lni-facebook-filled"></i></a>
+            <a href="https://www.instagram.com/pkm.sangkanhurip?igsh=MWRxdTltZzljczl0dA=="><i class="lni lni-instagram-original"></i></a>
           </li>
+
           <li>
-            <a href="#"><i class="lni lni-twitter-original"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="lni lni-linkedin-original"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="lni lni-youtube"></i></a>
+            <a href="https://www.youtube.com/@puskesmassangkanhurip9277"><i class="lni lni-youtube"></i></a>
           </li>
         </ul>
       </div>
@@ -431,7 +426,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
                 <div class="card h-100 shadow">
                   <img src="assets/images/blog/<?= $foto[0]; ?>" class="card-img-top">
                   <div class="card-body">
-                    <h6 class="fw-semibold mb-1"><?= $row['judul']; ?></h6>
+                    <h6 class="fw-bold mb-1"><?= $row['judul']; ?></h6>
                     <p class="card-text"><?= $row['deskripsi']; ?></p>
 
                   </div>
@@ -443,6 +438,31 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
         </div>
 
       </section>
+      <style>
+        .card-link {
+          text-decoration: none;
+        }
+
+        .card-link h6 {
+          font-weight: 700;
+          color: #1f6a4e;
+          border: none;
+          outline: none;
+        }
+
+        .card-link:hover h6 {
+          text-decoration: none;
+        }
+
+        .card-text {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          /* jumlah baris */
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      </style>
     </div>
   </div>
   <!-- End Single News -->
@@ -460,7 +480,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
 
               <h2 class="fw-bold">Dibangun oleh:</h2>
               <p>
-                Website ini dibangun oleh Puskesmas Sangkanhurip yang berkolaborasi dengan SMKS Mahaputra cerdas utama
+                Website ini dibangun oleh SMKS Mahaputra yang berkolaborasi dengan Puskesmas Sangkanhurip
               </p>
             </div>
           </div>
@@ -517,7 +537,7 @@ $data = mysqli_query($conn, "SELECT * FROM postingan ORDER BY id DESC");
               <!-- Single Widget -->
               <div class="footer-widget f-about">
                 <div class="logo">
-                  <a href="index.html">
+                  <a href="index.php">
                     <img src="assets/images/puskes.png" alt="" class="img-fluid" />
                   </a>
                 </div>

@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="assets/images/puskes.png" alt="Logo" style="height: 50px; width: 50px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
@@ -107,27 +107,23 @@
       <div class="sidebar-menu">
         <h5 class="menu-title">Menu</h5>
         <ul>
-          <li><a href="menu.php">List</a></li>
+          <li><a href="menu.php">List Praktik Kesehatan</a></li>
           <li><a href="dasbor.php">Posting</a></li>
           <li><a href="Agenda.php">Agenda Acara</a></li>
-          <li><a href="admin/konten.php">Contact Us</a></li>
+
         </ul>
       </div>
       <!-- menu -->
       <div class="sidebar-social align-items-center justify-content-center">
-        <h5 class="social-title">Follow Us On</h5>
+        <h5 class="social-title">Ikuti Media Sosial Kami</h5>
         <ul>
+
           <li>
-            <a href="admin/konten.php"><i class="lni lni-facebook-filled"></i></a>
+            <a href="https://www.instagram.com/pkm.sangkanhurip?igsh=MWRxdTltZzljczl0dA=="><i class="lni lni-instagram-original"></i></a>
           </li>
+
           <li>
-            <a href="admin/konten.php"><i class="lni lni-twitter-original"></i></a>
-          </li>
-          <li>
-            <a href="admin/konten.php"><i class="lni lni-linkedin-original"></i></a>
-          </li>
-          <li>
-            <a href="admin/konten.php"><i class="lni lni-youtube"></i></a>
+            <a href="https://www.youtube.com/@puskesmassangkanhurip9277"><i class="lni lni-youtube"></i></a>
           </li>
         </ul>
       </div>
